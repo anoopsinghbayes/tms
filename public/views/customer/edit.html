@@ -1,0 +1,221 @@
+<div id="page" >
+
+    <div class="row well well-sm">
+        <form role="form" name="myForm">
+            <fieldset>
+                <legend>Customer Master</legend>
+                <div class="row">
+
+
+                    <div class="col-sm-3">
+
+
+                        <div class="form-group ">
+                            <label for="txtCustomerId" data-lblreq="">Customer ID</label>
+                            <input type="text" class="form-control" id="txtCustomerId" name="txtCustomerId" placeholder="Customer ID" data-ng-model="Customer.CutomerID" readonly="true" />
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="form-group has-error">
+                            <label for="txtxCustomerName" data-lblreq="">Customer Name</label>
+                            <input type="text" class="form-control" id="txtxCustomerName" name="txtxCustomerName" placeholder="Customer Name" data-ng-model="Customer.CustomerName" />
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtxSalesRep" data-lblreq="">Sales Representative</label>
+                            <input type="text" class="form-control" id="txtxSalesRep" name="txtxSalesRep" placeholder="Sales Representative" data-ng-model="Customer.SalesRep" />
+                            <p class="help-block">Example block-level help text here.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3">
+
+
+                        <div class="form-group">
+                            <label for="txtCustomerEmail" data-lblreq="">date</label>
+                            <input type="date" class="form-control" id="Email1" name="txtCustomerEmail" placeholder="Customer Email" ng-model="data" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtCustomerEmail" data-lblreq="">Customer Email</label>
+                            <input type="email" class="form-control" id="txtCustomerEmail" name="txtCustomerEmail" placeholder="Customer Email" data-ng-model="Customer.Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="txtdate" data-lblreq="">Date</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" datepicker-popup="dd-MM-yyyy" show-weeks="false" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" 
+                                    
+                                     ng-required="true"  />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" ng-click="open()"><span class="glyphicon glyphicon-calendar"></span></button>
+                                </span>
+                               
+                            </div>
+                            <div class="form-group">
+                                 <input name="selstate" class="form-control" ng-model='result' typeahead-editable="false" typeahead-on-select='onSelect($item, $model, $label)' typeahead='state.code as state.name for state in states1 | filter:$viewValue'>
+                                <p class="help-block" data-ng-show="myForm.selstate.$error.editable">Invalid</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtstate" data-lblreq="">state</label>
+                                 <input name="txtstate" class="form-control" ng-model='state' required>
+                            </div>
+                            <!-- /input-group -->
+                            <!--<input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" ng-click="open()"><span class="glyphicon glyphicon-calendar"></span></button>
+                            </span>-->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtCustomerEmail" data-lblreq="">Time</label>
+                            <input type="time" class="form-control" id="time" name="txtCustomerEmail" placeholder="Customer Email" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="col-sm-3">
+
+
+                        <div class="form-group">
+                            <label class="control-label" for="txtCustomerCredit">Credit Limit</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">{{CurrencySymbol}}</span>
+                                <input type="number" class="form-control" id="txtCustomerCredit" name="txtCustomerCredit" data-ng-model="Customer.CreditLimit" />
+
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="col-sm-3">
+                        <!--    <fieldset>
+                        <legend>&nbsp;</legend>
+                      <div class="form-group row">
+                            <div class="col-sm-5">
+                            <div ng-model="mytime"  class="" style="display: inline-block;">
+                                <timepicker hour-step="1" minute-step="15" show-meridian="ismeridian"></timepicker>
+                            </div>
+                                </div>
+                            <div class="col-sm-9"></div>
+                        </div>
+                          </fieldset>-->
+                    </div>
+
+                </div>
+            </fieldset>
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <fieldset>
+                       
+                        <legend>Address(s)
+                                <button type="button" class="btn btn-default pull-right" title="ADD"><span class="glyphicon glyphicon-plus"></span></button>
+
+                        </legend>
+                        <!--      <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="txtCustomerAddress">Customer Address</label>
+                                    <textarea class="form-control" rows="2" id="Textarea1" name="txtxSalesRep" placeholder="Customer Address"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="optionsRadios">Priamry</label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="optionsRadios">Delete</label>
+                                    <button class="btn "><span class="glyphicon glyphicon-plus"></span> ADD</button>
+                                </div>
+                            </div>-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Primary</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="line in Customer.Address">
+                                    <td>
+                                        <div class="form-group">
+
+                                            <textarea class="form-control" rows="2" id="Textarea2" data-ng-model="line" name="txtxSalesRep" placeholder="Customer Address"></textarea>
+
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="form-group">
+
+                                            <input type="radio" name="radAddress" value="option1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <button class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+
+                </div>
+                <div class="col-sm-6">
+                    <fieldset>
+                        <legend>Contact(s)
+                             <button class="btn btn-info pull-right"><span class="glyphicon glyphicon-plus"></span> ADD</button></legend>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Contact Number</th>
+                                    <th>Primary</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="line in Customer.Contact">
+                                    <td>
+                                        <div class="form-group">
+
+                                            <input type="tel" class="form-control" data-ng-model="line" id="txtContactno" name="txtContactno" placeholder="Contact Number" />
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <input type="radio" name="radContact" id="Radio2" value="option1" checked>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <button class="btn "><span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+
+
+            </div>
+            <button type="submit" class="btn btn-success">SAVE</button>
+            <button type="button" class="btn btn-danger">CANCEL</button>
+        </form>
+    </div>
+
+</div>
+
