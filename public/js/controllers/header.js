@@ -14,6 +14,15 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         'title': 'Edit Customer',
         'link': 'customer/edit'
 		
+    },
+				  {
+        'title': 'Create BP',
+        'link': 'businessPartners/create'
+		
+    },			  {
+        'title': "BP's",
+        'link': 'businessPartners'
+		
     }];
     
     $scope.isCollapsed = false;

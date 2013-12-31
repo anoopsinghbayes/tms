@@ -23,6 +23,14 @@ angular.module('mean').config(['$routeProvider',
 		when('/customer/edit',{
 		templateUrl:'views/customer/edit.html'
 		}).
+		when('/businessPartners/create',{
+		templateUrl:'views/BP/create.html',
+			controller:'BPController'
+		}).
+		when('/businessPartners',{
+		templateUrl:'views/BP/list.html',
+			controller:'BPController'
+		}).
         otherwise({
             redirectTo: '/'
         });

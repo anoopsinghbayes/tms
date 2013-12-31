@@ -1,0 +1,23 @@
+<h2>BP List</h2>
+<section data-ng-controller="BPController" data-ng-init="find()">
+	<table class="table table-bordered">
+		<thead>
+		<th>Name</th>
+		<th>Sales Rep</th>
+			<th>Created Data</th>
+		</thead>
+		<tbody>
+		<tr data-ng-repeat="bp in bps">
+		
+			<td>{{bp.name}}</td>
+			<td>{{bp.salesrep}}</td>
+			<td>{{bp.created | date:'medium'}}</td>	
+			</tr>
+		</tbody>
+			 
+		
+			<!--<h2><a data-ng-href="#!/articles/{{article._id}}">{{article.title}}</a></h2>-->
+			
+	</table>
+	<h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/#!/articles/create">Create One</a>?</h1>
+</section>

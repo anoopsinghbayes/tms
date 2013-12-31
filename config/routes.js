@@ -72,6 +72,12 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
+	
+	//BP routes
+	 var bp = require('../app/controllers/bp.js');
+	app.post('/bussinessPartners', auth.requiresLogin, bp.create);
+	app.get('/bussinessPartners/:BPId', bp.show);
+	 app.get('/bussinessPartners', bp.all);
     //Home route
     var index = require('../app/controllers/index');
     app.get('/', index.render);
