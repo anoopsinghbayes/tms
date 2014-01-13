@@ -1,9 +1,9 @@
 'use strict';
 
 //Setting up route
-angular.module('mean').config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
+angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+        $stateProvider.
         when('/articles', {
             templateUrl: 'views/articles/list.html'
         }).
