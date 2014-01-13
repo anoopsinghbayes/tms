@@ -5,23 +5,30 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
     $scope.menu = [{
         'title': 'Articles',
-        'link': 'articles'
+        'link': 'articles',
+        'state':''
+
     }, {
         'title': 'Create New Article',
-        'link': 'articles/create'
+        'link': 'articles/create',
+        'state':''
 		
     }, {
         'title': 'Edit Customer',
-        'link': 'customer/edit'
+        'link': 'customer/edit','state':'customer.edit'
 		
     },
 				  {
         'title': 'Create BP',
-        'link': 'businessPartners/create'
+        'link': 'businessPartners/create',
+                      'state':''
+
 		
     },			  {
         'title': "BP's",
-        'link': 'businessPartners'
+        'link': 'businessPartners',
+            'state':''
+
 		
     }];
     

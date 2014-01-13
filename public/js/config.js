@@ -4,36 +4,41 @@
 angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
         $stateProvider.
-        when('/articles', {
+        state('articles',{
+            url:'/articles',
             templateUrl: 'views/articles/list.html'
         }).
-        when('/articles/create', {
+        state('article.create',
+            {url:'/articles/create',
 			controller:'ArticlesController',
             templateUrl: 'views/articles/create.html'
         }).
-        when('/articles/:articleId/edit', {
+        state('article.edit',
+            {url:'/articles/:articleId/edit',
             templateUrl: 'views/articles/edit.html'
         }).
-        when('/articles/:articleId', {
+        state('article.view',
+            {url:'/articles/:articleId',
             templateUrl: 'views/articles/view.html'
         }).
-        when('/', {
+        state('otherwise',
+            {url:'/',
             templateUrl: 'views/index.html'
         }).
-		when('/customer/edit',{
+		state('edit',
+            {url:'/customer/edit',
 		templateUrl:'views/customer/edit.html'
 		}).
-		when('/businessPartners/create',{
+		state('bp.create',
+            {url:'/businessPartners/create',
 		templateUrl:'views/BP/create.html',
 			controller:'BPController'
 		}).
-		when('/businessPartners',{
+		state('bp.all',
+            {url:'/businessPartners',
 		templateUrl:'views/BP/list.html',
 			controller:'BPController'
-		}).
-        otherwise({
-            redirectTo: '/'
-        });
+		});
     }
 ]);
 
