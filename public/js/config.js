@@ -27,7 +27,20 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
         }).
 		state('edit',
             {url:'/customer/edit',
+			 
 		templateUrl:'views/customer/edit.html'
+		}).
+		state('edit.address',
+            {url:'/address',
+		templateUrl:'views/customer/address.html'
+		}).
+		state('contacts',
+            {url:'/contacts',
+		templateUrl:'views/customer/contacts.html'
+		}).
+		state('edit.contacts',
+            {url:'/contacts',
+		templateUrl:'views/customer/contacts.html'
 		}).
 		state('bp.create',
             {url:'/businessPartners/create',

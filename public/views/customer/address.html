@@ -1,0 +1,62 @@
+  <div >
+
+                    <fieldset>
+                       
+                        <legend>Address(s)
+                                <button type="button" class="btn btn-default pull-right" title="ADD"><span class="glyphicon glyphicon-plus"></span></button>
+
+                        </legend>
+                        <!--      <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="txtCustomerAddress">Customer Address</label>
+                                    <textarea class="form-control" rows="2" id="Textarea1" name="txtxSalesRep" placeholder="Customer Address"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="optionsRadios">Priamry</label>
+                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label for="optionsRadios">Delete</label>
+                                    <button class="btn "><span class="glyphicon glyphicon-plus"></span> ADD</button>
+                                </div>
+                            </div>-->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>Primary</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="line in Customer.Address">
+                                    <td>
+                                        <div class="form-group">
+
+                                            <textarea class="form-control" rows="2" id="Textarea2" data-ng-model="line" name="txtxSalesRep" placeholder="Customer Address"></textarea>
+
+                                        </div>
+                                    </td>
+                                    <td class="">
+                                        <div class="form-group">
+
+                                            <input type="radio" name="radAddress" value="option1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <button class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+
+                </div>

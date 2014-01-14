@@ -1,0 +1,40 @@
+  <div >
+                    <fieldset>
+                        <legend>Contact(s)
+                             <button class="btn btn-info pull-right"><span class="glyphicon glyphicon-plus"></span> ADD</button></legend>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Contact Number</th>
+                                    <th>Primary</th>
+                                    <th>Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="line in Customer.Contact">
+                                    <td>
+                                        <div class="form-group">
+
+                                            <input type="tel" class="form-control" data-ng-model="line" id="txtContactno" name="txtContactno" placeholder="Contact Number" />
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <input type="radio" name="radContact" id="Radio2" value="option1" checked>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+
+                                            <button class="btn "><span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                </div>
+

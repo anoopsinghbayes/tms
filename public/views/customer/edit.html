@@ -1,4 +1,4 @@
-<div id="page" >
+<div id="page"  ng-controller="TabsDemoCtrl">
 
     <div class="row well well-sm">
         <form role="form" name="myForm">
@@ -118,109 +118,31 @@
                 </div>
             </fieldset>
             <div class="row">
-                <div class="col-sm-6">
-
-                    <fieldset>
-                       
-                        <legend>Address(s)
-                                <button type="button" class="btn btn-default pull-right" title="ADD"><span class="glyphicon glyphicon-plus"></span></button>
-
-                        </legend>
-                        <!--      <div class="col-sm-8">
-                                <div class="form-group">
-                                    <label for="txtCustomerAddress">Customer Address</label>
-                                    <textarea class="form-control" rows="2" id="Textarea1" name="txtxSalesRep" placeholder="Customer Address"></textarea>
-
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <label for="optionsRadios">Priamry</label>
-                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <label for="optionsRadios">Delete</label>
-                                    <button class="btn "><span class="glyphicon glyphicon-plus"></span> ADD</button>
-                                </div>
-                            </div>-->
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Address</th>
-                                    <th>Primary</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr data-ng-repeat="line in Customer.Address">
-                                    <td>
-                                        <div class="form-group">
-
-                                            <textarea class="form-control" rows="2" id="Textarea2" data-ng-model="line" name="txtxSalesRep" placeholder="Customer Address"></textarea>
-
-                                        </div>
-                                    </td>
-                                    <td class="">
-                                        <div class="form-group">
-
-                                            <input type="radio" name="radAddress" value="option1">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-
-                                            <button class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </fieldset>
-
-                </div>
-                <div class="col-sm-6">
-                    <fieldset>
-                        <legend>Contact(s)
-                             <button class="btn btn-info pull-right"><span class="glyphicon glyphicon-plus"></span> ADD</button></legend>
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Contact Number</th>
-                                    <th>Primary</th>
-                                    <th>Remove</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr data-ng-repeat="line in Customer.Contact">
-                                    <td>
-                                        <div class="form-group">
-
-                                            <input type="tel" class="form-control" data-ng-model="line" id="txtContactno" name="txtContactno" placeholder="Contact Number" />
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-
-                                            <input type="radio" name="radContact" id="Radio2" value="option1" checked>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-
-                                            <button class="btn "><span class="glyphicon glyphicon-remove"></span>&nbsp;</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </fieldset>
-                </div>
-
-
+				<div class="col-lg-12">
+				
+							 
+				<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                <li class="active"><a ui-sref=".contacts" data-toggle="tab">contacts</a></li>
+                <li><a ui-sref=".address" data-toggle="tab">address</a></li>
+                <li class="disabled"><a>Disabled</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Dropdown <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#dropdown2" data-toggle="tab">Another action</a></li>
+                  </ul>
+                </li>
+              </ul>
+				<div class="tab-content">
+				<section ui-view=""></section>
+  				</div>
+		<!--<a ui-sref=".address">address</a>
+				<a ui-sref=".contacts">contact</a>
+            <div ui-view=""></div>-->
+              </div>
             </div>
             <button type="submit" class="btn btn-success">SAVE</button>
             <button type="button" class="btn btn-danger">CANCEL</button>

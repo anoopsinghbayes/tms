@@ -4,7 +4,7 @@
             
         </li>
         <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
-            <a href="#!/{{item.link}}">{{item.title}}</a>
+            <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
     </ul>
     <ul class="nav pull-right navbar-nav" data-ng-hide="global.authenticated">
