@@ -3,8 +3,8 @@ angular.module('mean').controller('MapCtrl', ['$scope','$window','$timeout' ,fun
 	$scope.toLocation='';
     $scope.distance=0;
 	$scope.mapOptions = {
-      center: new google.maps.LatLng(18.9750, 72.8258),
-      zoom: 7,
+      center: new google.maps.LatLng(21.1500, 79.0900),
+      zoom: 5,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var directionsDisplay;
