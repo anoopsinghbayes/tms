@@ -11,6 +11,8 @@ script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
 script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
 script(type='text/javascript', src='/lib/angular-ui-router/release/angular-ui-router.js')
+script(type='text/javascript', src='/lib/angular-ui-utils/modules/event/event.js')
+script(type='text/javascript', src='/lib/angular-ui-map/ui-map.js')
 
 //Application Init
 script(type='text/javascript', src='/js/app.js')
@@ -28,7 +30,11 @@ script(type='text/javascript', src='/js/controllers/articles.js')
 script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/controllers/bp.js')
+script(type='text/javascript', src='/js/controllers/map.js')
 script(type='text/javascript', src='/js/init.js')
+//google map related files
+script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&sensor=false&callback=onGoogleReady')
+
 
 if (process.env.NODE_ENV == 'development')
     //Livereload script rendered

@@ -30,6 +30,13 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             'state':'edit.address'
 
 		
+    },			 
+				   {
+        'title': "Map",
+        'link': 'map',
+            'state':'map'
+
+		
     }];
     
     $scope.isCollapsed = false;
