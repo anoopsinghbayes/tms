@@ -56,6 +56,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
 			
+		}).state('map2',
+            {url:'/map2',
+		templateUrl:'views/map/map2.html',
+			 controller:'CtrlGMap2'
+			
 		});
     }
 ]);
