@@ -9,6 +9,7 @@
          var autocomplete = new google.maps.places.Autocomplete(elm[0], {});
 google.maps.event.addListener(autocomplete, 'place_changed', function() {
 $scope.$apply(function(){
+    console.log(elm.val());
 	var place = autocomplete.getPlace();
 //$scope.location = place.geometry.location.lat() + ',' + place.geometry.location.lng();
 	if(place.formatted_address)

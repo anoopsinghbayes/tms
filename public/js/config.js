@@ -56,7 +56,12 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
 			
-		});
+		}).state('order',
+            {url:'/order',
+                templateUrl:'views/order/order.html',
+                controller:'orderCtrl'
+
+            });
     }
 ]);
 
