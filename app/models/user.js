@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 
 
 /**
- * User Schema
+    * User Schema
  */
 var UserSchema = new Schema({
     name: String,

@@ -37,6 +37,13 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             'state':'map'
 
 		
+    },			 
+				   {
+        'title': "Map2",
+        'link': 'map2',
+            'state':'map2'
+
+		
     }];
     
     $scope.isCollapsed = false;
