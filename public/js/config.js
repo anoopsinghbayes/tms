@@ -64,7 +64,22 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 		});
     }
 ]);
+//setting application wide date format for UI datetimepicker from $locale
+//this sets dateformat to one which is defined in the locale.js included in foot.jade
+angular.module('mean').config(function ($localeProvider,datepickerPopupConfig) {
 
+    datepickerPopupConfig.dateFormat=$localeProvider.$get().DATETIME_FORMATS.longDate;
+
+
+});
+
+angular.module('mean').run(function ($locale,datepickerPopupConfig) {
+    //datepickerPopupConfig.dateFormat=$locale.DATETIME_FORMATS.longDate
+   // console.log($locale);
+
+
+    //datepickerConfig.showWeeks = false;
+});
 //Setting HTML5 Location Mode
 angular.module('mean').config(['$locationProvider',
     function($locationProvider) {
