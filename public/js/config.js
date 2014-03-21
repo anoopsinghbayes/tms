@@ -51,20 +51,35 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/businessPartners',
 		templateUrl:'views/BP/list.html',
 			controller:'BPController'
-		}).state('map',
+		}).state('order',
+            {url:'/order',
+                templateUrl:'views/Order/order.html',
+                controller:'orderCtrl'
+            })
+            .state('map',
             {url:'/map',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
 			
-		}).state('map2',
-            {url:'/map2',
-		templateUrl:'views/map/map2.html',
-			 controller:'CtrlGMap2'
-			
 		});
     }
 ]);
+//setting application wide date format for UI datetimepicker from $locale
+//this sets dateformat to one which is defined in the locale.js included in foot.jade
+angular.module('mean').config(function ($localeProvider,datepickerPopupConfig) {
 
+    datepickerPopupConfig.dateFormat=$localeProvider.$get().DATETIME_FORMATS.longDate;
+
+
+});
+
+angular.module('mean').run(function ($locale,datepickerPopupConfig) {
+    //datepickerPopupConfig.dateFormat=$locale.DATETIME_FORMATS.longDate
+   // console.log($locale);
+
+
+    //datepickerConfig.showWeeks = false;
+});
 //Setting HTML5 Location Mode
 angular.module('mean').config(['$locationProvider',
     function($locationProvider) {

@@ -1,0 +1,158 @@
+
+<div class="row ">
+    <form role="form" name="myForm">
+        <fieldset>
+            <legend>Order</legend>
+            <div class="row">
+
+
+                <div class="col-sm-4">
+
+
+                    <div class="form-group">
+                        <label for="txtorderNo" data-lblreq="">Order Number</label>
+                        <input type="text" class="form-control" id="txtorderNo" name="txtorderNo" placeholder="Order NUmber" data-ng-model="Customer.CutomerID" readonly="true" />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txtorderDate" data-lblreq="">Order Date</label>
+                        <input id="txtorderDate" name="txtorderDate" class="form-control" type="text" datepicker-popup=""
+                        data-ng-model="orderdate"  />
+
+                    </div>
+                   <div class="form-group">
+                        <label for="txtloadingrDate" data-lblreq="">Loading Date</label>
+                        <input id="txtloadingrDate" name="txtloadingrDate" class="form-control" type="text" datepicker-popup="dd-MM-yyyy" show-weeks="false" ng-model="dl"  min="minDate" max="'2015-06-22'"
+                               ng-required="true"  />
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="txtcustomerName" data-lblreq="">Customer Name</label>
+                        <input type="text" class="form-control" id="txtcustomerName" name="txtcustomerName" placeholder="Customer Name" data-ng-model="Customer.CutomerID"  />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFromLocation" data-lblreq="">From Location</label>
+                        <input type="text" class="form-control" id="txtFromLocation" name="txtFromLocation" placeholder="From" data-ng-model="Customer.CutomerID"  />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txtcustomerOrderNo" data-lblreq="">Customer Order No.</label>
+                        <input type="text" class="form-control" id="txtcustomerOrderNo" name="txtcustomerOrderNo" placeholder="Customer Order No." data-ng-model="Customer.CutomerID"  />
+
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="txtContactNo" data-lblreq="">Customer Contact No.</label>
+                        <input type="text" class="form-control" id="txtContactNo" name="txtContactNo" placeholder="Customer Contact No." data-ng-model="Customer.CutomerID"  />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txtToLocation" data-lblreq="">To Location</label>
+                        <input type="text" class="form-control" id="txtToLocation" name="txtToLocation" placeholder="From" data-ng-model="Customer.CutomerID"  />
+
+                    </div>
+                </div>
+                </div>
+            <tabset>
+                <tab heading="Trip Details">
+                <div class="tab-content">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity(l/Kg)</th>
+                            <th>Gross Weight</th>
+                            <th>Tyre Weight</th>
+                            <th>Net Weight</th>
+                            <th>Tanker/Truck Reg.No.</th>
+                            <th>LR.</th>
+                            <th>Remarks</th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                </tab>
+                <tab heading="Pricing">
+                    <div class="row">
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <label for="txtpicupLocation" data-lblreq="">Pickup Location</label>
+                                <input type="text" class="form-control" id="txtpicupLocation" name="txtpicupLocation" placeholder="Product" data-ng-model="Customer.CutomerID"  />
+
+                            </div>
+                            </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="txtdropoffLocation" data-lblreq="">Drop-off Location</label>
+                                <input type="text" class="form-control" id="txtdropoffLocation" name="txtdropoffLocation" placeholder="Drop-off Location" data-ng-model="Customer.CutomerID"  />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="txtdistance" data-lblreq="">Distance(In Kms.)</label>
+                                <input type="text" class="form-control" id="txtdistance" name="txtdistance" placeholder="Distance" data-ng-model="Customer.CutomerID"  />
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="txttripdays" data-lblreq="">Estimated Trip days</label>
+                                <input type="number" min="1" class="form-control" id="txttripdays" name="txttripdays" placeholder="Distance" data-ng-model="Customer.CutomerID"  />
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="txtvehicleCapacity" data-lblreq="">Vehicle Capacity  [l/tonnes]</label>
+                                <input type="number" min="1" class="form-control" id="txtvehicleCapacity" name="txtvehicleCapacity" placeholder="Vehicle Capacity"   />
+
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="form-group">
+                                <label for="txtnoOFTrips" data-lblreq="">No. trip</label>
+                                <input type="number" min="1" class="form-control" id="txtnoOFTrips" name="txtnoOFTrips" placeholder=""   />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="txtmiscExp" data-lblreq="">miscellaneous Expenses(per Trip/day) </label>
+                                <input type="number" min="1" class="form-control" id="txtmiscExp" name="txtmiscExp" placeholder="miscellaneous Expenses"   />
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="txtdieselCost" data-lblreq="">Diesel Cost /Km.</label>
+                                <input type="number" min="1" class="form-control" id="txtdieselCost" name="txtdieselCost" placeholder="Diesel Cost"   />
+
+                            </div>
+                        </div>
+                    </div>
+                 </tab>
+                <tab heading="Long Justified">Long Labeled Justified content</tab>
+            </tabset>
+
+        </fieldset>
+        </form>
+    </div>
