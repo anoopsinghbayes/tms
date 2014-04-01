@@ -73,6 +73,10 @@ angular.module('mean').config(function ($localeProvider,datepickerPopupConfig) {
 
 });
 
+//config for setting ui-select theme to bootstrap
+angular.module('mean').config(function(uiSelectConfig) {
+  uiSelectConfig.theme = 'bootstrap';
+});
 angular.module('mean').run(function ($locale,datepickerPopupConfig) {
     //datepickerPopupConfig.dateFormat=$locale.DATETIME_FORMATS.longDate
    // console.log($locale);

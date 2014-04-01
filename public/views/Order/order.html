@@ -21,16 +21,21 @@
 
                     </div>
                    <div class="form-group">
-                        <label for="txtloadingrDate" data-lblreq="">Loading Date</label>
-                        <input id="txtloadingrDate" name="txtloadingrDate" class="form-control" type="text" datepicker-popup="dd-MM-yyyy" show-weeks="false" ng-model="dl"  min="minDate" max="'2015-06-22'"
-                               ng-required="true"  />
+                        <label for="selStatus" data-lblreq="">Status</label>
+                        <select id="selStatus" name="selStatus" class="form-control" ></select>
 
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="txtcustomerName" data-lblreq="">Customer Name</label>
-                        <input type="text" class="form-control" id="txtcustomerName" name="txtcustomerName" placeholder="Customer Name" data-ng-model="Customer.CutomerID"  />
+                        <label for="txtcustomerNo" data-lblreq="">Customer No.</label>
+                     <ui-select ng-model="person.selected" theme="bootstrap">
+              <match placeholder="Select or search a person in the list...">{{$select.selected.name}}</match>
+              <choices repeat="item in people | filter: $select.search">
+                <span ng-bind-html="item.name | highlight: $select.search"></span>
+                <small ng-bind-html="item.email | highlight: $select.search"></small>
+              </choices>
+            </ui-select>
 
                     </div>
                     <div class="form-group">
