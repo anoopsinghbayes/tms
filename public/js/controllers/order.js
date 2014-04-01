@@ -21,6 +21,6 @@ angular.module('mean').controller('orderCtrl', ['$scope',function ($scope) {
     { name: 'Estefanía', email: 'estefanía@email.com', age: 16 },
     { name: 'Natasha',   email: 'natasha@email.com',   age: 54 },
     { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
-    { name: 'Adrian',    email: 'adrian@email.com',    age: 21 }
+    { name: 'Adrian',    email: 'adrian@gmail.com',    age: 21 }
   ];
 }]);
