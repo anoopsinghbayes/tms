@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+	
     Article = mongoose.model('Article'),
     _ = require('lodash');
 
@@ -12,6 +13,7 @@ var mongoose = require('mongoose'),
  * Find article by id
  */
 exports.article = function(req, res, next, id) {
+	
     Article.load(id, function(err, article) {
         if (err) return next(err);
         if (!article) return next(new Error('Failed to load article ' + id));
@@ -24,6 +26,8 @@ exports.article = function(req, res, next, id) {
  * Create a article
  */
 exports.create = function(req, res) {
+	Article =mongoose.mtModel('tenant1.Article');
+	
     var article = new Article(req.body);
     article.user = req.user;
 
@@ -88,6 +92,7 @@ exports.show = function(req, res) {
  * List of Articles
  */
 exports.all = function(req, res) {
+	console.log(req);
     Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
         if (err) {
             res.render('error', {

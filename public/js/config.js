@@ -8,12 +8,12 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             url:'/articles',
             templateUrl: 'views/articles/list.html'
         }).
-        state('article.create',
-            {url:'/articles/create',
+        state('articles.create',
+            {url:'/create',
 			controller:'ArticlesController',
             templateUrl: 'views/articles/create.html'
         }).
-        state('article.edit',
+        state('articles.edit',
             {url:'/articles/:articleId/edit',
             templateUrl: 'views/articles/edit.html'
         }).
@@ -55,6 +55,12 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/order',
                 templateUrl:'views/Order/order.html',
                 controller:'orderCtrl'
+            }).
+		state('test',
+            {url:'/test',
+             
+			controller:'ArticlesController',
+            templateUrl: 'views/articles/create.html'
             })
             .state('map',
             {url:'/map',

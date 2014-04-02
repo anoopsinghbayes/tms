@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-
+require('mongoose-multitenant')('_');
 
 /**
  * Article Schema
@@ -47,4 +47,4 @@ ArticleSchema.statics.load = function(id, cb) {
     }).populate('user', 'name username').exec(cb);
 };
 
-mongoose.model('Article', ArticleSchema);
+mongoose.mtModel('Article', ArticleSchema);
