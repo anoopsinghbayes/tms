@@ -26,7 +26,7 @@ exports.article = function(req, res, next, id) {
  * Create a article
  */
 exports.create = function(req, res) {
-	Article =mongoose.mtModel('tenant1.Article');
+	Article =mongoose.mtModel(req.user.name+'.Article');
 	
     var article = new Article(req.body);
     article.user = req.user;
