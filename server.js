@@ -24,6 +24,7 @@ var config = require('./config/config'),
 
 //Bootstrap db connection
 var db = mongoose.connect(config.db);
+console.log("connectred to dataBASE")
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';
