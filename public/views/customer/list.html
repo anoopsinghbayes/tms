@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+            <tr>
+
+                <th>Id</th>
+                <th>Name</th>
+                <th>Sales Representative</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Credit Details</th>
+
+            </tr>
+            </thead>
+            <tbody>
+<tr data-ng-repeat="customer in customers">
+    <td>{{customer.id}}</td>
+    <td>{{customer.companyName}}</td>
+    <td>{{customer.salesRep}}</td>
+    <td>{{customer.email}}</td>
+    <td>{{customer.phone}}</td>
+    <td>{{customer.address}}</td>
+    <td>{{customer.creditLimit}}</td>
+</tr>
+            </tbody>
+        </table>
+    </div>
+</div>

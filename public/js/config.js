@@ -21,10 +21,13 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/articles/:articleId',
             templateUrl: 'views/articles/view.html'
         }).
-        state('otherwise',
-            {url:'/',
-            templateUrl: 'views/index.html'
-        }).
+        state('customer',
+            {
+                url:'/customer',
+                controller:'listCustomer',
+                templateUrl:'views/customer/list.html'
+            }
+        ).
 		state('edit',
             {url:'/customer/edit',
 			 
@@ -67,7 +70,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
 			
-		});
+		}).state('otherwise',
+            {url:'/',
+                templateUrl: 'views/index.html'
+            });
     }
 ]);
 //setting application wide date format for UI datetimepicker from $locale

@@ -44,7 +44,13 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             'state':'map2'
 
 		
-    }];
+    },
+    {
+        'title':"Customers",
+        'link':'Customers',
+        'state':'customer'
+    }
+    ];
     
     $scope.isCollapsed = false;
 }]);
