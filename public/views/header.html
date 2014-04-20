@@ -3,7 +3,7 @@
         <li><div class="navbar-header"><a class="navbar-brand" href="/">MEAN - A Modern Stack</a></div>
             
         </li>
-        <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
+        <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
     </ul>
