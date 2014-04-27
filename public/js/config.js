@@ -58,6 +58,18 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/order',
                 templateUrl:'views/Order/order.html',
                 controller:'orderCtrl'
+            })
+            .state('order.editTrip',
+            {
+                url: '/editTrip',
+                views: {
+                    "@" : {
+                        templateUrl:'views/Trip/EditTrip.html',
+                        controller: 'EditTripCtrl'
+                    }
+                //templateUrl:'views/Trip/EditTrip.html'
+                //controller:''
+                        }
             }).
 		state('test',
             {url:'/test',

@@ -1,0 +1,149 @@
+<style>
+    .map-canvas { height: 350px; }
+</style>
+<form>
+    <legend>Edit Trip #123</legend>
+    <div class="row">
+        <h4>Location Details</h4>
+        <hr>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="control-label">Pick-up Location</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="fromLocation" data-places="" id="location1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Pick-up Date</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label class="control-label">Drop-off Location</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" data-places="" id="location2" data-ng-model="toLocation">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Drop-off Date</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2"><br>
+                    <button data-ng-click="findPath()" class="btn btn-info">Calculate</button>
+                </div>
+            </div>
+            <div class="row">
+            <div class="form-group col-md-3">
+                <label class="control-label">Trip Distance</label>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-ng-model="distance">
+                        <span class="input-group-addon">Km(s)</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <section id="map">
+                <div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Other Details</h4>
+        <hr>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Vehicle Registration Number</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Diesel Used</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Capacity</label>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="text" class="form-control" disabled>
+                        <span class="input-group-addon">Tons</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Product</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <h4>Weight details (At Pick-up)</h4>
+        <hr>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Tyre Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Net Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gross Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Tyre Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Net Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Gross Weight</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <h4>Weight details (At Drop-off)</h4>
+        <hr>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
+</form>
