@@ -20,6 +20,27 @@ var BPSchema = new Schema({
         required:true,
         trim: true
     },
+    contact:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    email:{
+        type:String,
+        required:true,
+        trim:true
+
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    credit:{
+        limit:{type:Number,min:0,required:false},
+        period:{type:Number,min:0,required:false}
+
+    },
+
     salesrep: {
         type: String,
         required:true,
