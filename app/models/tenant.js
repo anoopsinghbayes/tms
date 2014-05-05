@@ -1,8 +1,8 @@
+'use strict';
 /**
  * Created by anoop on 4/5/14.
  */
 
-'use strict';
 
 /**
  * Module dependencies.
@@ -27,4 +27,4 @@ var TenantSchema = new Schema({
     }
 });
 
-mongoose.Model('tenant', TenantSchema);
+mongoose.model('Tenant', TenantSchema);

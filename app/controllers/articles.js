@@ -13,7 +13,8 @@ var mongoose = require('mongoose'),
  * Find article by id
  */
 exports.article = function(req, res, next, id) {
-	Article =mongoose.mtModel(req.user.name+'.Article');
+	console.log(req.user.tenant);
+	Article =mongoose.mtModel(req.user.tenant+'.Article');
     Article.load(id, function(err, article) {
         if (err) return next(err);
         if (!article) return next(new Error('Failed to load article ' + id));
@@ -26,7 +27,7 @@ exports.article = function(req, res, next, id) {
  * Create a article
  */
 exports.create = function(req, res) {
-	Article =mongoose.mtModel(req.user.name+'.Article');
+	Article =mongoose.mtModel(req.user.tenant+'.Article');
 	
     var article = new Article(req.body);
     article.user = req.user;

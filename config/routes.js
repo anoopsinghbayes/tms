@@ -78,6 +78,10 @@ module.exports = function (app, passport, auth) {
 	app.post('/bussinessPartners', auth.requiresLogin, bp.create);
 	app.get('/bussinessPartners/:BPId', bp.show);
 	app.get('/bussinessPartners', bp.all);
+	//Tenant routes
+	var tenant=require('../app/controllers/tenant');
+	app.get('/tenants', auth.requiresLogin, tenant.all);
+	app.post('/tenants',auth.requiresLogin,tenant.create);
 	//Home route
 	var index = require('../app/controllers/index');
 	app.get('/', index.render);

@@ -82,7 +82,12 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
 			
-		}).state('otherwise',
+		}).state('tenantscreate',
+            {url:'/tenants/create',
+			controller:'TenantCtrl',
+            templateUrl: 'views/tenants/tenant.html'
+        })
+		.state('otherwise',
             {url:'/',
                 templateUrl: 'views/index.html'
             });
