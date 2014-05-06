@@ -10,7 +10,7 @@ var mongoose = require('mongoose'),
 /**
  * Bussiness Partner Schema
  */
-var BPSchema = new Schema({
+var CustomerSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -51,4 +51,4 @@ var BPSchema = new Schema({
     }
 });
 
-mongoose.model('BussinessPartner', BPSchema);
+mongoose.model('Customer', CustomerSchema);

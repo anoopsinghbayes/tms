@@ -21,15 +21,15 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/articles/:articleId',
             templateUrl: 'views/articles/view.html'
         }).
-        state('customer',
+        state('customers',
             {
                 url:'/customer',
                 controller:'listCustomer',
                 templateUrl:'views/customer/list.html'
             }
         ).
-		state('edit',
-            {url:'/customer/edit',
+		state('customers.edit',
+            {url:'/customer/:CustomerId/edit',
 			 
 		templateUrl:'views/customer/edit.html'
 		}).

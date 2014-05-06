@@ -1,22 +1,22 @@
 'use strict';
 
-angular.module('mean.BP').controller('BPController', ['$scope', '$routeParams', '$location', 'Global', 'bussinesspartner', function ($scope, $routeParams, $location, Global, bussinesspartner) {
+angular.module('mean').controller('BPController', ['$scope', '$routeParams', '$location', 'Global', 'Customer', function ($scope, $routeParams, $location, Global, Customer) {
 
 	 $scope.find = function() {
-        bussinesspartner.query(function(bps) {
+        Customer.query(function(bps) {
             $scope.bps = bps;
         });
     };
 
     $scope.create = function() {
-		console.log(this);
+		
 	
-        var bp = new bussinesspartner({
+        var customer = new Customer({
 			name: this.name,
             salesrep: this.salesrep,
         });
-        bp.$save(function(response) {
-            $location.path('bussinessPartners/' + response._id);
+        customer.$save(function(response) {
+            $location.path('customers/' + response._id);
         });
 
         this.title = '';

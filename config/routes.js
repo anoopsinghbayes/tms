@@ -73,11 +73,14 @@ module.exports = function (app, passport, auth) {
 	app.param('articleId', articles.article);
 
 
-	//BP routes
-	var bp = require('../app/controllers/bp.js');
-	app.post('/bussinessPartners', auth.requiresLogin, bp.create);
-	app.get('/bussinessPartners/:BPId', bp.show);
-	app.get('/bussinessPartners', bp.all);
+	//Customer routes
+	var customer = require('../app/controllers/customer.js');
+	app.post('/customers', auth.requiresLogin, customer.create);
+	app.get('/customers/:CustomerId', customer.show);
+	app.get('/customers', customer.all);
+	app.put('/customers/:CustomerId', auth.requiresLogin, auth.article.hasAuthorization, customer.update);
+	
+	
 	//Tenant routes
 	var tenant=require('../app/controllers/tenant');
 	app.get('/tenants', auth.requiresLogin, tenant.all);

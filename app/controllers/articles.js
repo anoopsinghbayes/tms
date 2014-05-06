@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
  * Find article by id
  */
 exports.article = function(req, res, next, id) {
-	console.log(req.user.tenant);
+	
 	Article =mongoose.mtModel(req.user.tenant+'.Article');
     Article.load(id, function(err, article) {
         if (err) return next(err);
