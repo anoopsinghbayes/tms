@@ -42,10 +42,23 @@ var CustomerSchema = new Schema({
     },
 
     salesrep: {
-        type: String,
-        required:true,
-        trim: true
-    }, user: {
+        name:
+        {
+            type: String,
+            required:true,
+            trim: true
+        },
+        phoneno:
+        {
+            type:String,
+            trim:true
+        },
+        mobile:{
+            type:String,
+            trim:true
+        }
+    },
+    user: {
         type: Schema.ObjectId,
         ref: 'User'
     }

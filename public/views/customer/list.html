@@ -1,3 +1,7 @@
+
+<div class="row">
+    <a ui-sref="customers.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Customer</a>
+</div>
 <div class="row">
     <div class="col-md-12">
         <table class="table">
@@ -16,7 +20,7 @@
             </thead>
             <tbody>
 <tr data-ng-repeat="customer in customers">
-    <td>{{customer.id}}</td>
+    <td > <a ui-sref="customers.edit({ customerId: customer.id })"> {{customer.id}}</a></td>
     <td>{{customer.companyName}}</td>
     <td>{{customer.salesRep}}</td>
     <td>{{customer.email}}</td>

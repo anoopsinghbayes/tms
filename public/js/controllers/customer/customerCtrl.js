@@ -1,7 +1,8 @@
 /**
  * Created by anoop on 19/4/14.
  */
-angular.module('mean').controller('listCustomer', ['$scope', function ($scope) {
+angular.module('mean').controller('listCustomer', ['$scope','Customers', function ($scope,Customers) {
+
     $scope.customers=[
         {
             "id": 0,
@@ -283,5 +284,31 @@ angular.module('mean').controller('listCustomer', ['$scope', function ($scope) {
             "latitude": 24,
             "longitude": -82
         }
-    ]
+    ];
+
+
+}]);
+
+angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', function ($scope,Customers) {
+    $scope.create = function() {
+        customer = new Customers({
+            name: $scope.customer.name,
+            contact: $scope.customer.contact,
+            email: $scope.customer.email,
+            address: $scope.customer.address,
+            credit:{limit:$scope.customer.credit.limit,
+                period:$scope.customer.credit.period
+            },
+            salesrep:{
+                name:$scope.customer.salesrep.name,
+                phoneno:$scope.customer.salesrep.phoneno
+            }
+
+        });
+
+
+        customer.$save(function(response) {
+            $location.path('articles/' + response._id);
+        });
+    }
 }]);

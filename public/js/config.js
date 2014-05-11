@@ -7,7 +7,8 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
         state('articles',{
             url:'/articles',
             templateUrl: 'views/articles/list.html'
-        }).
+        })
+            .
         state('articles.create',
             {url:'/create',
 			controller:'ArticlesController',
@@ -23,16 +24,29 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
         }).
         state('customers',
             {
-                url:'/customer',
+                url:'/customers',
                 controller:'listCustomer',
                 templateUrl:'views/customer/list.html'
             }
         ).
+            state('customers.create',
+            {url:'/new',
+                views: {
+                    "@" : {
+                        templateUrl:'views/customer/edit.html',controller:"createCustomerCtrl"
+                    }
+                }
+            }
+        ).
 		state('customers.edit',
-            {url:'/customer/:CustomerId/edit',
-			 
-		templateUrl:'views/customer/edit.html'
-		}).
+            {url:'/:customerId',
+                views: {
+                    "@" : {
+		                    templateUrl:'views/customer/edit.html'
+		                  }
+                        }
+            }
+            ).
 		state('edit.address',
             {url:'/address',
 		templateUrl:'views/customer/address.html'

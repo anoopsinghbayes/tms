@@ -13,14 +13,17 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         'link': 'articles/create',
         'state':'edit'
 		
-    }, {
-        'title': 'Edit Customer',
-        'link': 'customer/edit','state':'edit.contacts'
+    }
+        //, {
+        //'title': 'Edit Customer',
+        //'link': 'customers/edit',
+        //'state':'customers.edit'
 		
-    },
+    //}
+    ,
 				  {
         'title': 'Create BP',
-        'link': 'businessPartners/create',
+       // 'link': 'businessPartners/create',
                       'state':'contacts'
 
 		
@@ -48,7 +51,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     {
         'title':"Customers",
         'link':'Customers',
-        'state':'customer'
+        'state':'customers'
     }
     ];
     

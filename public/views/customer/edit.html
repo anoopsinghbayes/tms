@@ -1,138 +1,106 @@
-<div id="page"  ng-controller="TabsDemoCtrl">
-
-    <div class="row well well-sm">
-        <form role="form" name="myForm">
-            <fieldset>
-                <legend>Customer Master</legend>
-                <div class="row">
-
-
-                    <div class="col-sm-3">
-
-
-                        <div class="form-group ">
-                            <label for="txtCustomerId" data-lblreq="">Customer ID</label>
-                            <input type="text" class="form-control" id="txtCustomerId" name="txtCustomerId" placeholder="Customer ID" data-ng-model="Customer.CutomerID" readonly="true" />
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="form-group has-error">
-                            <label for="txtxCustomerName" data-lblreq="">Customer Name</label>
-                            <input type="text" class="form-control" id="txtxCustomerName" name="txtxCustomerName" placeholder="Customer Name" data-ng-model="Customer.CustomerName" />
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtxSalesRep" data-lblreq="">Sales Representative</label>
-                            <input type="text" class="form-control" id="txtxSalesRep" name="txtxSalesRep" placeholder="Sales Representative" data-ng-model="Customer.SalesRep" />
-                            <p class="help-block">Example block-level help text here.</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-3">
-
-
-                        <div class="form-group">
-                            <label for="txtCustomerEmail" data-lblreq="">date</label>
-                            <input type="date" class="form-control" id="Email1" name="txtCustomerEmail" placeholder="Customer Email" ng-model="data" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="txtCustomerEmail" data-lblreq="">Customer Email</label>
-                            <input type="email" class="form-control" id="txtCustomerEmail" name="txtCustomerEmail" placeholder="Customer Email" data-ng-model="Customer.Email" />
-                        </div>
-                        <div class="form-group">
-                            <label for="txtdate" data-lblreq="">Date</label>
-                            <div class="input-group">
-                                <input class="form-control" type="text" datepicker-popup="dd-MM-yyyy" show-weeks="false" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" 
-                                    
-                                     ng-required="true"  />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary" ng-click="open()"><span class="glyphicon glyphicon-calendar"></span></button>
-                                </span>
-                               
-                            </div>
-                            <div class="form-group">
-                                 <input name="selstate" class="form-control" ng-model='result' typeahead-editable="false" typeahead-on-select='onSelect($item, $model, $label)' typeahead='state.code as state.name for state in states1 | filter:$viewValue'>
-                                <p class="help-block" data-ng-show="myForm.selstate.$error.editable">Invalid</p>
-                            </div>
-                            <div class="form-group">
-                                <label for="txtstate" data-lblreq="">state</label>
-                                 <input name="txtstate" class="form-control" ng-model='state' required>
-                            </div>
-                            <!-- /input-group -->
-                            <!--<input class="form-control" type="text" datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" />
-                            <span class="input-group-btn">
-                                <button class="btn btn-info" ng-click="open()"><span class="glyphicon glyphicon-calendar"></span></button>
-                            </span>-->
-                        </div>
-
-                        <div class="form-group">
-                            <label for="txtCustomerEmail" data-lblreq="">Time</label>
-                            <input type="time" class="form-control" id="time" name="txtCustomerEmail" placeholder="Customer Email" />
-
-                        </div>
-
-
-                    </div>
-                    <div class="col-sm-3">
-
-
-                        <div class="form-group">
-                            <label class="control-label" for="txtCustomerCredit">Credit Limit</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">{{CurrencySymbol}}</span>
-                                <input type="number" class="form-control" id="txtCustomerCredit" name="txtCustomerCredit" data-ng-model="Customer.CreditLimit" />
-
-                            </div>
-                        </div>
-  <div class="form-group">
-                            <label class="control-label" for="txtstatus">Status</label>
-                            
-                                
-                                <select class="form-control" id="txtcustomerstatus" name="txtcustomerstatus"  >
-	   <option value="active">Active</option>
-  <option value="inactive">Inactive</option>
-	  </select>
-
-                          
-                        </div>
-
-
-
-
-                    </div>
-                    <div class="col-sm-3">
-                        <!--    <fieldset>
-                        <legend>&nbsp;</legend>
-                      <div class="form-group row">
-                            <div class="col-sm-5">
-                            <div ng-model="mytime"  class="" style="display: inline-block;">
-                                <timepicker hour-step="1" minute-step="15" show-meridian="ismeridian"></timepicker>
-                            </div>
-                                </div>
-                            <div class="col-sm-9"></div>
-                        </div>
-                          </fieldset>-->
-                    </div>
-
+<form xmlns="http://www.w3.org/1999/html">
+    <!-- <div class="row">          <legend>Customer</legend>          <div class="col-md-4"></div>          <div class="col-md-4"></div>          <div class="col-md-4"></div>        </div>-->
+    <div class="row">
+        <h4>Details</h4>
+        <hr>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.name">
                 </div>
-            </fieldset>
-            <div class="row">
-				<div class="col-lg-12">
-	 <tabset>
-   <tab select="alertMe()">
-      <tab-heading>
-        <i class="glyphicon glyphicon-bell"></i> Alert!
-      </tab-heading>
-      I've got an HTML heading, and a select callback. Pretty cool!
-    </tab>
-  </tabset>
-              </div>
             </div>
-            <button type="submit" class="btn btn-success">SAVE</button>
-            <button type="button" class="btn btn-danger">CANCEL</button>
-        </form>
+            <div class="form-group">
+                <label class="control-label">ID</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.id">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Contact no</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.contact">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Website</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">e-mail</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.email">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Address</label>
+                <div class="controls">
+                    <textarea class="form-control" rows="4" data-ng-model="customer.address"></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-
-</div>
-
+    <div class="row">
+        <h4>Credit Details</h4>
+        <hr>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Credit Limit</label>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-ng-model="customer.credit.limit">
+                        <span class="input-group-addon">Rs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Credit Period</label>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="text" class="form-control" data-ng-model="customer.credit.period">
+                        <span class="input-group-addon">Months</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <h4>Sales Representative</h4>
+        <hr>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Sales Represntative</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.salesrep.name">
+                </div>
+            </div>
+            <button class="btn btn-primary" data-ng-click="create()">Save</button>
+            <button class="btn btn-danger">Cancel</button>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Phone Number</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Mobile Number</label>
+                <div class="controls">
+                    <input type="text" class="form-control" data-ng-model="customer.salesrep.phoneno">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
