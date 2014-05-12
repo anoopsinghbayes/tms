@@ -29,6 +29,11 @@ footer p {
 }
 
 /*to show ngMessages*/
+.error-messages{
+    -webkit-transition:0.1s linear all;
+  transition:0.1s linear all;
+
+}
 .error-messages.ng-active {
 background-color: #e74c3c;
 border-color: #e74c3c;
@@ -37,6 +42,13 @@ color: #ffffff;
   margin-top:5px;
   position:relative;
 	border-radius: 3px;
+	/* remember to add this */
+  display:block!important;
+  opacity:1;
+ 
+}
+.error-messages.ng-inactive {
+  opacity:0;
  
 }
 .error-messages.ng-active:after {
