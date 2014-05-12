@@ -1,4 +1,5 @@
-<form xmlns="http://www.w3.org/1999/html">
+<div class="well">
+	<form name="customerFrm" class="form">
     <!-- <div class="row">          <legend>Customer</legend>          <div class="col-md-4"></div>          <div class="col-md-4"></div>          <div class="col-md-4"></div>        </div>-->
     <div class="row">
         <h4>Details</h4>
@@ -30,12 +31,17 @@
                     <input type="text" class="form-control">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label class="control-label">e-mail</label>
                 <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.email">
-                </div>
+                    <input type="email" name="customerEmail" class="form-control" data-ng-model="customer.email" required>
+               	<div ng-messages="customerFrm.customerEmail.$error" class="error-messages">
+					<div ng-message="email">Invalid email address</div>
+					<div ng-message="required">Please Enter email address</div>
+				</div>
+				</div>
             </div>
+			 
         </div>
         <div class="col-md-4">
             <div class="form-group">
@@ -104,3 +110,4 @@
         </div>
     </div>
 </form>
+</div>
