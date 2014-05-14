@@ -30,7 +30,7 @@ exports.create = function(req, res) {
 
     bp.save(function(err) {
         if (err) {
-            return res.send('users/signup', {
+            return res.send('500', {
                 errors: err.errors,
                 bp: bp
             });

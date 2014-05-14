@@ -36,6 +36,7 @@
                 <div class="controls">
                     <input type="email" name="customerEmail" class="form-control" data-ng-model="customer.email" required>
                	<div ng-messages="customerFrm.customerEmail.$error" class="error-messages">
+					<i class="fa fa-warning"></i>
 					<div ng-message="email">Invalid email address</div>
 					<div ng-message="required">Please Enter email address</div>
 				</div>

@@ -5,7 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-require('mongoose-multitenant')('.');
+require('mongoose-multitenant')('_');
 
 /**
  * Article Schema

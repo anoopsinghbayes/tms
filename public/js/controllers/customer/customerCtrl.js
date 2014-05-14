@@ -308,7 +308,9 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', f
 
 
         customer.$save(function(response) {
-            $location.path('articles/' + response._id);
-        });
+            $location.path('customers/' + response._id);
+        },function(data){
+		console.log(data);
+		});
     }
 }]);
