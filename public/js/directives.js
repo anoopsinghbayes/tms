@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
         angular.module('mean').directive('places', function() {
  
     return {
@@ -23,3 +23,18 @@ $scope.$apply(function(){
     };*/
   }}
 		 });
+
+/*angular.module('mean').directive('lblReq',function(){
+	return{
+		restrict:'A',
+		link:function($scope,elm,attr){
+			 var _lblText=elm.html();
+			 var _title=_lblText+" cannot be Empty.";
+			elm.attr('title',_title);
+			 var asterisk = angular.element('<span>&nbsp;<i class="fa fa-asterisk" style="color:#ca3219" ></i></span>');
+			var testspan= angular.element('<span style="color:#ca3219;font-size: 1.4em;line-height: 0px;">*</span>')
+			elm.prepend(testspan);
+		}
+	}
+	
+});*/

@@ -26,12 +26,17 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <label class="control-label">Website</label>
+                <label class="control-label" >Website</label>
                 <div class="controls">
-                    <input type="text" class="form-control">
+                    <input type="url" class="form-control" data-ng-model="customer.website" name="CustomerWebsite">
+				<div ng-messages="customerFrm.CustomerWebsite.$error" class="error-messages">
+					<i class="fa fa-warning"></i>
+					<div ng-message="url">Invalid WebSite</div>
+					
+				</div>
                 </div>
             </div>
-            <div class="form-group" >
+            <div class="form-group required" >
                 <label class="control-label">e-mail</label>
                 <div class="controls">
                     <input type="email" name="customerEmail" class="form-control" data-ng-model="customer.email" required>

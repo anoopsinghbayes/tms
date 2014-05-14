@@ -29,9 +29,11 @@ footer p {
 }
 
 /*to show ngMessages*/
+/*color for error*/
+
 .error-messages{
-    -webkit-transition:0.1s linear all;
-  transition:0.1s linear all;
+    -webkit-transition:60ms linear all;
+  transition:60ms linear all;
 
 }
 .error-messages.ng-active {
@@ -41,6 +43,7 @@ color: #ffffff;
   padding:5px;
   margin-top:5px;
   position:relative;
+
 	border-radius: 3px;
 	/* remember to add this */
   display:block!important;
@@ -49,7 +52,7 @@ color: #ffffff;
 }
 .error-messages.ng-inactive {
   opacity:0;
- 
+ height: 0px;
 }
 .error-messages.ng-active:after {
   position:absolute;
@@ -76,4 +79,9 @@ input.ng-invalid:focus {
 }
 div[ng-message]{
 display: inline;
+}
+ .form-group.required .control-label:after {
+   content:" *"; color: #ca3219;
+   font-size: 1.4em; 
+   line-height: 0px; 
 }
