@@ -7,14 +7,34 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Name</label>
+				 <div ng-messages="customerFrm.customerName.$error" class="error-messages1 pull-right clearfix">
+          <!-- the required message is displayed first... -->
+          <div ng-message="required">Lorem ipsum dolor sit adipiscing elit </div>
+          <!-- then, incase the message is too short, show the message right after -->
+          <div ng-message="minlength">Your email address is too short...</div>
+          <!-- of if is too long then let us know -->
+          <div ng-message="maxlength">Your email address is too long...</div>
+          <!-- otherwise let us know if the email itself is invalid -->
+          <div ng-message="email">You did not enter your email address correctly...</div>
+        </div>
                 <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.name">
+                    <input type="text" required name="customerName" class="form-control" data-ng-model="customer.name">
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label">ID</label>
+					 <div ng-messages="customerFrm.customerID.$error" class="error-messages1 pull-right clearfix">
+          <!-- the required message is displayed first... -->
+          <div ng-message="required">Please specify Customer ID .</div>
+          <!-- then, incase the message is too short, show the message right after -->
+          <div ng-message="minlength">Your email address is too short...</div>
+          <!-- of if is too long then let us know -->
+          <div ng-message="maxlength">Your email address is too long...</div>
+          <!-- otherwise let us know if the email itself is invalid -->
+          <div ng-message="email">You did not enter your email address correctly...</div>
+        </div>
                 <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.id">
+                    <input type="text" name="customerID" required class="form-control" data-ng-model="customer.id">
                 </div>
             </div>
             <div class="form-group">

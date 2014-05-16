@@ -85,3 +85,30 @@ display: inline;
    font-size: 1.4em; 
    line-height: 0px; 
 }
+/*another example of showing error message */
+.error-messages1{
+    -webkit-transition:60ms linear all;
+  transition:60ms linear all;
+}
+.error-messages1.ng-active {
+  background:#E74C3C;
+  color:white;
+  padding:0 5px 5px 5px;
+  /*border-radius:5px;
+  margin-top:15px;*/
+  position:relative;
+  display:inline-block;
+  opacity:1;
+}
+.error-messages1.ng-active:after {
+position: absolute;
+bottom: -8px;
+content: "";
+right: 0;
+border-style: solid;
+border-color: #E74C3C #E74C3C transparent transparent;
+border-width: 7px;
+}
+.error-messages1.ng-inactive {
+  opacity:0;
+}
