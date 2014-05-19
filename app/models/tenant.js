@@ -22,7 +22,7 @@ var TenantSchema = new Schema({
         trim: true
     },
     _id:{
-        type:Number,
+        type:String,
         required:true
     }
 });

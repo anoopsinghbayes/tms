@@ -16,7 +16,7 @@ var UserSchema = new Schema({
     name: String,
     email: String,
 	tenant: {
-        type: Number,
+        type: String,
         ref: 'Tenant'
     },
     username: {

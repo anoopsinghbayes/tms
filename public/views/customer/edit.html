@@ -5,17 +5,13 @@
         <h4>Details</h4>
         <hr>
         <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group required">
                 <label class="control-label">Name</label>
 				 <div ng-messages="customerFrm.customerName.$error" class="error-messages1 pull-right clearfix">
           <!-- the required message is displayed first... -->
-          <div ng-message="required">Lorem ipsum dolor sit adipiscing elit </div>
-          <!-- then, incase the message is too short, show the message right after -->
-          <div ng-message="minlength">Your email address is too short...</div>
-          <!-- of if is too long then let us know -->
-          <div ng-message="maxlength">Your email address is too long...</div>
-          <!-- otherwise let us know if the email itself is invalid -->
-          <div ng-message="email">You did not enter your email address correctly...</div>
+          <div ng-message="required">Customer Name is required.</div>
+
+
         </div>
                 <div class="controls">
                     <input type="text" required name="customerName" class="form-control" data-ng-model="customer.name">
@@ -23,18 +19,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label">ID</label>
-					 <div ng-messages="customerFrm.customerID.$error" class="error-messages1 pull-right clearfix">
-          <!-- the required message is displayed first... -->
-          <div ng-message="required">Please specify Customer ID .</div>
-          <!-- then, incase the message is too short, show the message right after -->
-          <div ng-message="minlength">Your email address is too short...</div>
-          <!-- of if is too long then let us know -->
-          <div ng-message="maxlength">Your email address is too long...</div>
-          <!-- otherwise let us know if the email itself is invalid -->
-          <div ng-message="email">You did not enter your email address correctly...</div>
-        </div>
-                <div class="controls">
-                    <input type="text" name="customerID" required class="form-control" data-ng-model="customer.id">
+				<div class="controls">
+                    <input type="text" disabled name="customerID" class="form-control" data-ng-model="customer.id">
                 </div>
             </div>
             <div class="form-group">
@@ -47,13 +33,12 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label" >Website</label>
+                <div ng-messages="customerFrm.CustomerWebsite.$error" class="error-messages1 pull-right clearfix">
+                    <div ng-message="pattern">Invalid WebSite</div>
+                </div>
                 <div class="controls">
-                    <input type="url" class="form-control" data-ng-model="customer.website" name="CustomerWebsite">
-				<div ng-messages="customerFrm.CustomerWebsite.$error" class="error-messages">
-					<i class="fa fa-warning"></i>
-					<div ng-message="url">Invalid WebSite</div>
-					
-				</div>
+                    <input type="text" ng-pattern="/^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/" class="form-control" data-ng-model="customer.website" name="CustomerWebsite">
+
                 </div>
             </div>
             <div class="form-group required" >
@@ -70,7 +55,7 @@
 			 
         </div>
         <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-group required">
                 <label class="control-label">Address</label>
                 <div class="controls">
                     <textarea class="form-control" rows="4" data-ng-model="customer.address"></textarea>
@@ -115,7 +100,7 @@
                     <input type="text" class="form-control" data-ng-model="customer.salesrep.name">
                 </div>
             </div>
-            <button class="btn btn-primary" data-ng-click="create()">Save</button>
+            <button class="btn btn-primary" data-ng-disabled="customerFrm.$invalid" data-ng-click="create()">Save</button>
             <button class="btn btn-danger">Cancel</button>
         </div>
         <div class="col-md-4">
@@ -129,8 +114,18 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label class="control-label">Mobile Number</label>
+                <div ng-messages="customerFrm.salesrepMobile.$error" class="error-messages1 pull-right clearfix">
+                    <!-- the required message is displayed first... -->
+                    <div ng-message="required">Lorem ipsum dolor sit adipiscing elit </div>
+                    <!-- then, incase the message is too short, show the message right after -->
+                    <div ng-message="minlength">Your email address is too short...</div>
+                    <!-- of if is too long then let us know -->
+                    <div ng-message="maxlength">Your email address is too long...</div>
+                    <!-- otherwise let us know if the email itself is invalid -->
+                    <div ng-message="pattern">Invalid Mobile Number</div>
+                </div>
                 <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.salesrep.phoneno">
+                    <input type="text" class="form-control" name="salesrepMobile" data-ng-model="customer.salesrep.phoneno" data-ng-pattern="/^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}9[0-9](\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$/">
                 </div>
             </div>
         </div>
