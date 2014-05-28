@@ -42,7 +42,8 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/:customerId',
                 views: {
                     "@" : {
-		                    templateUrl:'views/customer/edit.html'
+		                    templateUrl:'views/customer/edit.html',
+                            controller:"editCustomerCtrl"
 		                  }
                         }
             }

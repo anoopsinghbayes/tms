@@ -9,10 +9,10 @@ var mongoose = require('mongoose'),
 /**
  * Find Customer by id
  */
-exports.customer = function(req, res, next, id) {
-	console.log(req.user.tenant);
-	Customer =mongoose.mtModel(req.user.tenant+'.Customer');
-    Customer.load(id, function(err, customer) {
+exports.show = function(req, res, next) {
+	console.log(req.params.CustomerId);
+	//Customer = mongoose.mtModel(req.user.tenant+'.Customer');
+    Customer.load(req.params.CustomerId, function(err, customer) {
         if (err) return next(err);
         if (!article) return next(new Error('Failed to load customer ' + id));
         req.customer = customer;
@@ -58,9 +58,9 @@ exports.update = function(req, res) {
         }
     });
 };
-exports.show = function(req, res) {
+/*exports.show = function(req, res) {
     res.jsonp(req.bp);
-};
+};*/
 
 exports.all = function(req, res) {
 	Customer =mongoose.mtModel(req.user.tenant+'.Customer');

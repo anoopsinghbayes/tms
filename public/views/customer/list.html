@@ -4,11 +4,11 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
 
-                <th>Id</th>
+
                 <th>Name</th>
                 <th>Sales Representative</th>
                 <th>Email</th>
@@ -20,13 +20,13 @@
             </thead>
             <tbody>
 <tr data-ng-repeat="customer in customers">
-    <td > <a ui-sref="customers.edit({ customerId: customer.id })"> {{customer.id}}</a></td>
-    <td>{{customer.companyName}}</td>
-    <td>{{customer.salesRep}}</td>
+
+    <td><a ui-sref="customers.edit({ customerId: customer._id })"> {{customer.name}}</a></td>
+    <td>{{customer.salesrep.name}}</td>
     <td>{{customer.email}}</td>
-    <td>{{customer.phone}}</td>
+    <td>{{customer.contact}}</td>
     <td>{{customer.address}}</td>
-    <td>{{customer.creditLimit}}</td>
+    <td>{{customer.credit.limit}}</td>
 </tr>
             </tbody>
         </table>

@@ -79,7 +79,7 @@ module.exports = function (app, passport, auth) {
 	app.get('/customers/:CustomerId', customer.show);
 	app.get('/customers', customer.all);
 	app.put('/customers/:CustomerId', auth.requiresLogin, auth.article.hasAuthorization, customer.update);
-	
+
 	
 	//Tenant routes
 	var tenant=require('../app/controllers/tenant');
