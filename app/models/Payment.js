@@ -5,6 +5,8 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+require('mongoose-multitenant')('_');
+
 
 
 /**
@@ -36,7 +38,7 @@ var PaymentSchema = new Schema({
     }
     ,
     PaymentMode: {
-        type: String,
+        type: String
 
     }
 });
