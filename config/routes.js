@@ -93,6 +93,6 @@ module.exports = function (app, passport, auth) {
 
     //Order Routes
     var Order = require('../app/controllers/order');
-    app.post('/order', auth.requiresLogin, order.create);
+    app.post('/order', auth.requiresLogin, Order.create);
 
 };
