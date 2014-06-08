@@ -101,7 +101,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/tenants/create',
 			controller:'TenantCtrl',
             templateUrl: 'views/tenants/tenant.html'
-        })
+        }).state('Payment',
+            {url:'/Payment',
+                templateUrl:'views/Payments/PaymentEntry.html'
+
+            })
 		.state('otherwise',
             {url:'/',
                 templateUrl: 'views/index.html'
