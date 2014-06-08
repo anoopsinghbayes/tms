@@ -11,7 +11,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     OrderStatus=["open","confirmed","closed","cancelled"];
-    require('mongoose-multitenant')('_');
+
 /**
  * Order Schema
  */
