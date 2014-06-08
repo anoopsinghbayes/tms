@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
+require('mongoose-multitenant')('_');
 
 
 /**
@@ -64,4 +65,4 @@ var CustomerSchema = new Schema({
     }
 });
 
-mongoose.model('Customer', CustomerSchema);
+mongoose.mtModel('Customer', CustomerSchema);
