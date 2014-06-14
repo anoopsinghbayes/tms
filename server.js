@@ -5,6 +5,7 @@
  */
 var express = require('express'),
     fs = require('fs'),
+    autoIncrement=require('mongoose-auto-increment'),
     passport = require('passport'),
     logger = require('mean-logger');
 
@@ -20,10 +21,13 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 //Initializing system variables 
 var config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
+
     mongoose = require('mongoose');
 
 //Bootstrap db connection
 var db = mongoose.connect(config.db);
+autoIncrement.initialize(db);
+
 console.log("connectred to dataBASE")
 
 //Bootstrap models

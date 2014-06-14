@@ -37,7 +37,10 @@
     "grunt": "latest",
     "grunt-cli": "latest",
     "grunt-env": "latest",
-    "mongoose-multitenant": "~0.8.0"
+    "mongoose-multitenant": "~0.8.0",
+    "requirejs": "^2.1.14",
+    "karma-requirejs": "^0.2.2",
+    "mongoose-auto-increment": "^3.0.3"
   },
   "devDependencies": {
     "supertest": "latest",

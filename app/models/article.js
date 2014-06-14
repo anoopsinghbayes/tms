@@ -47,4 +47,5 @@ ArticleSchema.statics.load = function(id, cb) {
     }).populate('user', 'name username').exec(cb);
 };
 
+
 mongoose.mtModel('Article', ArticleSchema);

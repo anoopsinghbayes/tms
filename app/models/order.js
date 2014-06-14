@@ -9,7 +9,9 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    autoIncrement=require('mongoose-auto-increment'),
     Schema = mongoose.Schema,
+
     OrderStatus=["open","confirmed","closed","cancelled"];
 
 /**
@@ -138,5 +140,5 @@ var OrderSchema = new Schema({
 
     }
 );
-
 mongoose.mtModel('Order', OrderSchema);
+OrderSchema.plugin(autoIncrement.plugin, 'Order');

@@ -30,7 +30,7 @@ exports.show = function(req, res, next) {
  */
 exports.create = function(req, res) {
     Order =mongoose.mtModel(req.user.tenant+'.Order');
-    console.log(req.body);
+    console.log(Order);
     var order = new Order(req.body);
 
 
@@ -70,13 +70,13 @@ exports.update = function(req, res) {
 
 exports.all = function(req, res) {
     Order =mongoose.mtModel(req.user.tenant+'.Order');
-    Order.find().sort('-created').exec(function(err, orders) {
+    Order.find().select({no : 1, date : 1, status: 1,customer:1}).exec(function(err, orders) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(bps);
+            res.jsonp(orders);
         }
     });
 };

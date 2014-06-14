@@ -309,3 +309,11 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order',function ($scop
       Order.post($scope.data);
     }
 }]);
+
+angular.module('mean').controller('orderListCtrl',['$scope','Order',function($scope,Order){
+   Order.getList().then(function(orders){
+       $scope.Orders=orders;
+   },function(err){
+       console.log(err);
+   })
+}]);
