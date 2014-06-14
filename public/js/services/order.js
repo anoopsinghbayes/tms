@@ -3,5 +3,5 @@
  */
 
 angular.module('mean').factory('Order', ['Restangular', function(Restangular) {
-    return Restangular.service('payment');
+    return Restangular.service('orders');
 }]);

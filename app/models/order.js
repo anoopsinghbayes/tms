@@ -13,17 +13,115 @@ var mongoose = require('mongoose'),
     OrderStatus=["open","confirmed","closed","cancelled"];
 
 /**
+ * Vehicle Weight Details
+ */
+
+var VehicleWeightSchema = new Schema({
+
+        tyreweight:{
+        type:String
+        
+        },
+        netweight:{
+        type:String
+        
+        },
+        grossweight:{
+        type:String
+        
+        }
+    }
+
+);
+
+
+/**
+ * Trip Details
+ */
+
+
+var TripSchema = new Schema({
+
+        pickupLocation:{
+        type:String
+        
+        },
+        dropOfflocation:{
+        type:String
+        
+        },
+        pickUpdate:{
+        type:Date
+        
+        },
+        dropOffdate:{
+        type:Date
+        
+        },
+        distance:{
+        type:String
+        
+        },
+        vehicleno:{
+        type:String
+        
+        },
+        capacity:{
+        type:String
+        
+        },
+        dieselUsed:{
+        type:String
+        
+        },
+        product:{
+        type:String
+        
+        },
+        pickupWeight :{
+            tyreweight:{
+                        type:String
+                        },
+            netweight:{
+                type:String
+
+                      },
+            grossweight:{
+                type:String
+
+            }
+        },
+        dropOffWeight:{
+            tyreweight:{
+                type:String
+            },
+            netweight:{
+                type:String
+
+            },
+            grossweight:{
+                type:String
+
+            }
+        }
+    }
+);
+
+
+
+
+/**
  * Order Schema
  */
 var OrderSchema = new Schema({
         no: {
-            type:String,
-            required:true
+            type:String
+            
 
         },
         date:{
-            type:Date,
-            required:true
+            type:Date
+            
         },
         status:{
             type:String,
@@ -31,9 +129,11 @@ var OrderSchema = new Schema({
 
         },
         customer:{
-            type: Schema.ObjectId,
-            ref: 'Customer'
-        }
+            type: String
+        },
+
+       trips :[TripSchema]
+
 
 
     }
