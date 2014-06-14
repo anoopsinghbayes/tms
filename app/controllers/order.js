@@ -30,17 +30,18 @@ exports.show = function(req, res, next) {
  */
 exports.create = function(req, res) {
     Order =mongoose.mtModel(req.user.tenant+'.Order');
+    console.log(req.body);
     var order = new Order(req.body);
 
 
     order.save(function(err) {
+        console.log(err)
         if (err) {
             return res.send('500', {
-                errors: err.errors,
-                bp: bp
+                errors: err.errors
             });
         } else {
-            res.jsonp(bp);
+            res.jsonp(order);
         }
     });
 };

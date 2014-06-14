@@ -1,6 +1,51 @@
 'strict'
 angular.module('mean').controller('orderCtrl', ['$scope','Order',function ($scope,Order) {
-    $scope.data={};
+    $scope.data={
+        date:2014-01-01,
+        status:'open',
+        customer:'sameer',
+
+
+
+
+        trips:[{
+
+            pickupLocation:
+                "Thane",
+            dropOfflocation:
+                "Dadar",
+            pickUpdate:"2014-01-01"
+            ,
+            dropOffdate:
+                "2014-01-01"
+
+            ,
+            distance:
+                200,
+            vehicleno:
+                "RGNNO"
+            ,
+            capacity:100
+            ,
+            dieselUsed:100
+            ,
+            product:"sulpher",
+            pickupWeight :{
+                tyreweight:200,
+                netweight:200,
+                grossweight:100
+
+            }
+            ,
+            dropOffWeight:{
+                tyreweight:200,
+                netweight:200,
+                grossweight:100
+
+            }
+
+        }]
+    };
     $scope.tabs = [
         { title:"Dynamic Title 1", content:"Dynamic content 1" },
         { title:"Dynamic Title 2", content:"Dynamic content 2", disabled: true }
@@ -261,6 +306,6 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order',function ($scop
 
     $scope.save=function(){
       console.log(JSON.stringify($scope.data));
-      //$scope.data.save();
+      Order.post($scope.data);
     }
 }]);
