@@ -11,12 +11,12 @@
 					<div class="form-group">
 						<label for="txtorderNo" data-lblreq="">Order Number</label>
 						<input type="text" class="form-control" id="txtorderNo" name="txtorderNo" placeholder="Order NUmber"
-							   data-ng-model="Customer.CutomerID" readonly="true" />
+							   data-ng-model="data.orderno" readonly="true" />
 
 					</div>
 					<div class="form-group">
 						<label for="txtorderDate" data-lblreq="">Order Date</label>
-						<input id="txtorderDate" name="txtorderDate" class="form-control" type="text" datepicker-popup="" data-ng-model="orderdate" />
+						<input id="txtorderDate" name="txtorderDate" class="form-control" type="text" datepicker-popup="" data-ng-model="data.orderdate" />
 
 					</div>
 					<div class="form-group">
@@ -28,7 +28,7 @@
 				<div class="col-sm-4">
 					<div class="form-group">
 						<label for="txtcustomerNo" data-lblreq="">Customer No.</label>
-						<ui-select ng-model="person.selected" theme="bootstrap">
+						<ui-select ng-model="data.customer" theme="bootstrap">
 							<match placeholder="Select or search a person in the list...">{{$select.selected.name}}</match>
 							<choices repeat="item in people | filter: $select.search">
 								<span ng-bind-html="item.name | highlight: $select.search"></span>
@@ -123,6 +123,7 @@
                             </tr>
                             </tbody>
                         </table>
+                        <button data-ng-click="save()">save</button>
 					</div>
 				</tab>
 				<tab heading="Pricing">
@@ -132,7 +133,7 @@
 							<div class="form-group">
 								<label for="txtpicupLocation" data-lblreq="">Pickup Location</label>
 								<input type="text" class="form-control" id="txtpicupLocation" name="txtpicupLocation"
-									   placeholder="Product" data-ng-model="Customer.CutomerID" />
+									   placeholder="Product" data-ng-model="data.customer.CutomerID" />
 
 							</div>
 						</div>
@@ -140,7 +141,7 @@
 							<div class="form-group">
 								<label for="txtdropoffLocation" data-lblreq="">Drop-off Location</label>
 								<input type="text" class="form-control" id="txtdropoffLocation" name="txtdropoffLocation"
-									   placeholder="Drop-off Location" data-ng-model="Customer.CutomerID" />
+									   placeholder="Drop-off Location" data-ng-model="data.customer.CutomerID" />
 
 							</div>
 						</div>
@@ -150,7 +151,7 @@
 							<div class="form-group">
 								<label for="txtdistance" data-lblreq="">Distance(In Kms.)</label>
 								<input type="text" class="form-control" id="txtdistance" name="txtdistance"
-									   placeholder="Distance" data-ng-model="Customer.CutomerID" />
+									   placeholder="Distance" data-ng-model="data.customer.CutomerID" />
 
 							</div>
 						</div>
@@ -158,7 +159,7 @@
 							<div class="form-group">
 								<label for="txttripdays" data-lblreq="">Estimated Trip days</label>
 								<input type="number" min="1" class="form-control" id="txttripdays" name="txttripdays"
-									   placeholder="Distance" data-ng-model="Customer.CutomerID" />
+									   placeholder="Distance" data-ng-model="data.customer.CutomerID" />
 
 							</div>
 						</div>

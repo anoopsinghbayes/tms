@@ -1,6 +1,6 @@
 'strict'
-angular.module('mean').controller('orderCtrl', ['$scope',function ($scope) {
-
+angular.module('mean').controller('orderCtrl', ['$scope','Order',function ($scope,Order) {
+    $scope.data={};
     $scope.tabs = [
         { title:"Dynamic Title 1", content:"Dynamic content 1" },
         { title:"Dynamic Title 2", content:"Dynamic content 2", disabled: true }
@@ -23,4 +23,9 @@ angular.module('mean').controller('orderCtrl', ['$scope',function ($scope) {
     { name: 'Nicole',    email: 'nicole@email.com',    age: 43 },
     { name: 'Adrian',    email: 'adrian@gmail.com',    age: 21 }
   ];
+
+    $scope.save=function(){
+      console.log(JSON.stringify($scope.data));
+      //$scope.data.save();
+    }
 }]);
