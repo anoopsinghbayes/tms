@@ -17,6 +17,7 @@ angular.module('mean').controller('PaymentEntryCtrl', ['$scope', 'Payment', func
             PaymentTo:$scope.Payment.PaymentTo,
             PaymentMode:$scope.Payment.PaymentMode
 
+
         });
     }
 }]);
