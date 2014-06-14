@@ -95,4 +95,10 @@ module.exports = function (app, passport, auth) {
     var Order = require('../app/controllers/order');
     app.post('/order', auth.requiresLogin, Order.create);
 
+
+    //Payment Routes
+    var Payment = require('../app/controllers/Payment');
+    app.post('/payment', auth.requiresLogin, Payment.create);
+
+
 };

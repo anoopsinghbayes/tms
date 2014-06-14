@@ -14,22 +14,19 @@ require('mongoose-multitenant')('_');
  */
 var PaymentSchema = new Schema({
     created: {
-        type: String,
+        type: Date,
         default: Date.now
     },
     PaymentDate: {
-        type: Date,
-        required:true,
-        default: Date.now
+        type: Date
+
     },
     PaymentFrom: {
         type: String,
-        required:true,
         trim: true
     },
     PaymentTo: {
         type: String,
-        required:true,
         trim: true
     },
     PaymentRelDate: {
