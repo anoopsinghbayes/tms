@@ -1,5 +1,7 @@
 /**
  * Created by anoop on 8/6/14.
+ * //this is to allow reference type under multi tenancy using mongoose multi tenant plugin
+ //which needs
  */
 
 
@@ -130,8 +132,11 @@ var OrderSchema = new Schema({
             enum:OrderStatus
 
         },
+
         customer:{
-            type: String
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Customer',
+            $tenant:true
         },
 
        trips :[TripSchema]

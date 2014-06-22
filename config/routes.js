@@ -76,7 +76,10 @@ module.exports = function (app, passport, auth) {
 	//Customer routes
 	var customer = require('../app/controllers/customer.js');
 	app.post('/customers', auth.requiresLogin, customer.create);
+    //search for customer by name
+
 	app.get('/customers/:CustomerId', customer.show);
+
 
 	app.get('/customers', customer.all);
 	app.put('/customers/:CustomerId', auth.requiresLogin, auth.article.hasAuthorization, customer.update);

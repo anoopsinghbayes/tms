@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
    	Customer = mongoose.model('Customer'),
+    qs=require('qs'),
     _ = require('lodash');
 /**
  * Find Customer by id
@@ -63,8 +64,29 @@ exports.update = function(req, res) {
 };*/
 
 exports.all = function(req, res) {
-	Customer =mongoose.mtModel(req.user.tenant+'.Customer');
-    Customer.find().sort('-created').exec(function(err, bps) {
+    //check for search query string
+    //and parse the query string to json to use further
+   var searchQuery=qs.parse(req.query);
+    console.log(searchQuery);
+    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+    if (searchQuery.name) {
+
+        //for like query on name
+        var regex = new RegExp(searchQuery.name, 'i');
+        Customer.find({name: regex})
+            .select('name _id').exec(function(err, bps) {
+                if (err) {
+                    res.render('error', {
+                        status: 500
+                    });
+                } else {
+                    res.jsonp(bps);
+                }
+            });
+    }
+    else
+    {
+        Customer.find().sort('-created').exec(function(err, bps) {
         if (err) {
             res.render('error', {
                 status: 500
@@ -73,4 +95,5 @@ exports.all = function(req, res) {
             res.jsonp(bps);
         }
     });
+    }
 };

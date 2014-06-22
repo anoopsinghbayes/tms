@@ -4,10 +4,10 @@
 angular.module('mean').controller('listCustomer', ['$scope','Customers', function ($scope,Customers) {
 
     //$scope.customers=
-      var promise=Customers.query().$promise;
-        promise.then(function(data){
-            $scope.customers=data;
-           console.log($scope.customers);
+      Customers.getList().then(function(customers){
+
+            $scope.customers=customers;
+
         });
 
 
@@ -39,5 +39,9 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', f
     }
 }]);
 angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams', function ($scope,Customers,$stateParams) {
-   $scope.customer=Customers.get($stateParams.customerId);
+   Customers.one($stateParams.customerId).get().then(function(data){
+       console.log(data);
+       $scope.customer=data;
+
+   });
 }]);

@@ -40,7 +40,8 @@
     "mongoose-multitenant": "~0.8.0",
     "requirejs": "^2.1.14",
     "karma-requirejs": "^0.2.2",
-    "mongoose-auto-increment": "^3.0.3"
+    "mongoose-auto-increment": "^3.0.3",
+    "qs": "^0.6.6"
   },
   "devDependencies": {
     "supertest": "latest",
