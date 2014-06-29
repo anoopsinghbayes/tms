@@ -29,8 +29,8 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 		
     },			  {
         'title': "Order",
-        'link': 'businessPartners',
-            'state':'order'
+        'link': '',
+            'state':'Orders'
 
 		
     },			 

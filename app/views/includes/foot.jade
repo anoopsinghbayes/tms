@@ -8,6 +8,9 @@
  script(type='text/javascript', src='/lib/angular-i18n/angular-locale_en-in.js')
  script(type='text/javascript', src='/lib/angular-sanitize/angular-sanitize.js')
 
+//google map related files
+//script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&sensor=false&callback=onGoogleReady')
+script(type='text/javascript', src='//maps.googleapis.com/maps/api/js?sensor=false')
 //adding the following lines to test CND files for upgrade 12th may 2014-anoop
 //script(type='text/javascript',src='http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.js')
 script(type='text/javascript',src='http://code.angularjs.org/snapshot/angular.js')
@@ -18,6 +21,7 @@ script(type='text/javascript', src='http://code.angularjs.org/snapshot/angular-s
 script(type='text/javascript', src='http://code.angularjs.org/snapshot/angular-messages.js')
 script(type='text/javascript', src='/lib/lodash/dist/lodash.js')
 script(type='text/javascript', src='/lib/restangular/dist/restangular.js')
+script(type='text/javascript', src='/lib/angular-google-maps/dist/angular-google-maps.js')
 
 //Angular UI
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
@@ -53,8 +57,7 @@ script(type='text/javascript', src='/js/controllers/customer/customerCtrl.js')
 script(type='text/javascript', src='/js/controllers/tenantCtrl.js')
 script(type='text/javascript', src='/js/controllers/Payment.js')
 script(type='text/javascript', src='/js/init.js')
-//google map related files
-script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&sensor=false&callback=onGoogleReady')
+
 //script(type='text/javascript', src='https://maps.google.com/maps/api/js?sensor=false')
 
 if (process.env.NODE_ENV == 'development')

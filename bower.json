@@ -16,6 +16,7 @@
     "angular-ui-select": "~0.1.0",
     "angular-sanitize": "~1.2.15",
     "font-awesome": "~4.0.3",
-    "restangular": "~1.4.0"
+    "restangular": "~1.4.0",
+    "angular-google-maps": "~1.1.6"
   }
 }

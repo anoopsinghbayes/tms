@@ -1,9 +1,32 @@
 'strict'
-angular.module('mean').controller('orderCtrl', ['$scope','Order','$http',function ($scope,Order,$http) {
+angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal',function ($scope,Order,$http,$modal) {
+    $scope.openTrip = function (trip) {
+
+        var modalInstance = $modal.open({
+            templateUrl: '/views/Trip/EditTrip.html',
+            controller: 'EditTripCtrl',
+            size: 'lg',
+            //windowClass:'tripModal',
+            resolve: {
+                items: function () {
+                    return trip;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+           trip = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+
+
     $scope.data={
         date:2014-01-01,
         status:'open',
-        customer:{name:'manish'},
+        customer:{name:'manish',address:'',contact:'',_id:''},
 
 
 
@@ -64,21 +87,22 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http',functio
                 name: val
             }
         }).then(function(res){
-
+                console.log(res.data);
                 return res.data;
             });
     };
 
 
     $scope.save=function(){
-      console.log(JSON.stringify($scope.data));
+        $scope.data.customer=$scope.data.customer._id;
+      console.log($scope.data);
       Order.post($scope.data);
     }
 }]);
 
 angular.module('mean').controller('orderListCtrl',['$scope','Order',function($scope,Order){
    Order.getList().then(function(orders){
-
+        console.log(orders.plain())
        $scope.Orders=orders;
    },function(err){
        console.log(err);

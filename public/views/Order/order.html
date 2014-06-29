@@ -1,5 +1,5 @@
 <div class="row ">
-	<form role="form" name="myForm">
+	<form role="form" name="orderFrm">
 		<fieldset>
 			<legend>Order</legend>
 			<div class="row">
@@ -27,16 +27,62 @@
 				</div>
 				<div class="col-sm-4">
 					<div class="form-group">
-						<label for="txtcustomerNo" data-lblreq="">Customer No.</label>
-                        <input type="text" id="txtcustomerNo" ng-model="data.customer" placeholder="Customer" typeahead-wait-ms="500" typeahead="customer as customer.name  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html" class="form-control">
+						<label for="txtcustomerName" data-lblreq="">Customer Name.</label>
+                        <input type="text" id="txtcustomerName" ng-model="data.customer" placeholder="Customer" typeahead-wait-ms="500" typeahead="customer as customer.name  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html" class="form-control">
 
 
 					</div>
-
+                  <!--<div class="form-group">
+                        <label class="control-label">Contact No</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>-->
+                    <div>
+                        <address>  <strong>{{data.customer.name}}</strong><br>{{data.customer.address}}<br> <abbr title="Phone">P:</abbr> {{data.customer.contact}}</address>
+                    </div>
 
 				</div>
 				<div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Product Name</label>
+                        <div class="controls">
+                            <select class="form-control">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Type</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Unit</label>
+                        <div class="controls">
+                            <select class="form-control">
+                                <option>Kg(s)</option>
+                                <option>Tonne(s)</option>
+                                <option>Litre(s)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Total Quantity</label>
+                        <div ng-messages="orderFrm.quantity.$error" class="error-messages1 pull-right clearfix">
 
+                            <div ng-message="number">Invaild Quantity</div>
+                            <div ng-message="min">Quantity should be greater than 0.</div>
+
+
+                        </div>
+                        <div class="controls">
+                            <input type="number" name="quantity" min="1" data-ng-model="data.quantity" class="form-control">
+                        </div>
+                    </div>
 				</div>
 			</div>
 			<tabset>
@@ -64,7 +110,7 @@
 								</tr>
 							</tbody>
 						</table>-->
-                        <table class="table table-condensed table-bordered" width="100%">
+                        <table class="table table-condensed table-bordered" width="100%" ng-repeat="trip in data.trips">
                             <thead>
                             <tr>
                                 <th ></th>
@@ -111,14 +157,14 @@
                                 <td></td>
                                 <td>
                                     <div class="input-group">
-                                        <a class="btn btn-danger" ui-sref="order.editTrip"><i class="fa fa-edit"></i></a>
+                                        <button class="btn btn-danger" data-ng-click="openTrip(trip)"><i class="fa fa-edit"></i></button>
                                         <a class="btn btn-info"><i class="fa fa-eye"></i></a>
                                     </div>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <button data-ng-click="save()">save</button>
+                        <button data-ng-click="save()" class="btn btn-info">save</button>
 					</div>
 				</tab>
 				<tab heading="Pricing">

@@ -83,7 +83,16 @@ angular.module('mean').controller('EditTripCtrl', ['$scope','$window','$timeout'
 
 ]);
 
-    
+angular.module('mean').controller('googleMapCtrl',['$scope',function($scope){
+
+    $scope.map = {
+        center: {
+            latitude: 45,
+            longitude: -73
+        },
+        zoom: 8
+    };
+}]);
         /* Directives */
  
                  

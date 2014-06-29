@@ -30,9 +30,12 @@ exports.show = function(req, res, next) {
  */
 exports.create = function(req, res) {
     Order =mongoose.mtModel(req.user.tenant+'.Order');
-    console.log(Order);
+    //console.log(Order);
     var order = new Order(req.body);
-
+    console.log(req.body.customer);
+    order.customer=undefined;
+        order.customer=req.body.customer._id;
+    console.log(order);
 
     order.save(function(err) {
         console.log(err)

@@ -118,11 +118,7 @@ var TripSchema = new Schema({
  * Order Schema
  */
 var OrderSchema = new Schema({
-        no: {
-            type:String
-            
 
-        },
         date:{
             type:Date
             
@@ -134,7 +130,7 @@ var OrderSchema = new Schema({
         },
 
         customer:{
-            type:mongoose.Schema.Types.ObjectId,
+            type:Schema.ObjectId,
             ref:'Customer',
             $tenant:true
         },
@@ -146,4 +142,4 @@ var OrderSchema = new Schema({
     }
 );
 mongoose.mtModel('Order', OrderSchema);
-OrderSchema.plugin(autoIncrement.plugin, 'Order');
+//OrderSchema.plugin(autoIncrement.plugin, 'Order');
