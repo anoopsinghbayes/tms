@@ -18,5 +18,8 @@
     "font-awesome": "~4.0.3",
     "restangular": "~1.4.0",
     "angular-google-maps": "~1.1.6"
+  },
+  "resolutions": {
+    "angular": "1.2.6"
   }
 }
