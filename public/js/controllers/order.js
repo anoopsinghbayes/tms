@@ -1,23 +1,26 @@
 'strict'
 angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal',function ($scope,Order,$http,$modal) {
     $scope.openTrip = function (trip) {
-
+        //var tripPointer=trip;
         var modalInstance = $modal.open({
             templateUrl: '/views/Trip/EditTrip.html',
             controller: 'EditTripCtrl',
             size: 'lg',
+            backdrop:'static',
             //windowClass:'tripModal',
             resolve: {
-                items: function () {
-                    return trip;
+                Trip: function () {
+                    var newTrip={};
+                    angular.copy(trip,newTrip);
+                    return newTrip;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
-           trip = selectedItem;
+        trip=selectedItem;
         }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
+           
         });
     };
 

@@ -124,3 +124,7 @@ border-width: 7px;
 .tripModal .modal-dialog {
     width:100%;
 }
+/* setting z-idex of google places picker to work with modal*/
+.pac-container{
+z-index: 1500;
+}
