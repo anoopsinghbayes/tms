@@ -128,3 +128,14 @@ border-width: 7px;
 .pac-container{
 z-index: 1500;
 }
+/*display vehicle number in upper case always*/
+
+input[vehicleno]{
+text-transform: uppercase;
+}
+/*over ride modal-lg class of bootstrap*/
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 90%;
+  }
+}

@@ -88,28 +88,8 @@
 			<tabset>
 				<tab heading="Trip Details">
 					<div class="tab-content">
-						<!--<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>Product</th>
-									<th>Quantity(l/Kg)</th>
-									<th>Gross Weight</th>
-									<th>Tyre Weight</th>
-									<th>Net Weight</th>
-									<th>Tanker/Truck Reg.No.</th>
-									<th>LR.</th>
-									<th>Remarks</th>
-								</tr>
-
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-
-									</td>
-								</tr>
-							</tbody>
-						</table>-->
+						<br/>
+                        <div class="table-responsive">
                         <table class="table table-condensed table-bordered" width="100%" ng-repeat="trip in data.trips">
                             <thead>
                             <tr class="info">
@@ -145,11 +125,11 @@
                                 <td>{{trip.vehicleno}}</td>
                                 <td>{{trip.capacity}}</td>
                                 <td>{{trip.pickupLocation}}</td>
-                                <td>{{trip.pickUpdate}}</td>
+                                <td>{{trip.pickUpdate | date:'MM-dd-yyyy'}}</td>
                                 <td>{{trip.dropOfflocation}}</td>
-                                <td>{{trip.dropOffdate}}</td>
+                                <td>{{trip.dropOffdate | date:'MM-dd-yyyy'}}</td>
                                 <td></td>
-                                <td></td>
+                                <td>{{trip.distance}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -164,7 +144,9 @@
                             </tr>
                             </tbody>
                         </table>
+                        </div>    
                         <button data-ng-click="save()" class="btn btn-info">save</button>
+                          
 					</div>
 				</tab>
 				<tab heading="Pricing">

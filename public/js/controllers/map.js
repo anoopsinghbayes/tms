@@ -46,6 +46,7 @@ angular.module('mean').controller('MapCtrl', ['$scope','$window','$timeout' ,fun
 
 angular.module('mean').controller('EditTripCtrl', ['$scope','$modalInstance','$timeout','Trip' ,function ($scope, $modalInstance,$timeout,Trip) {
         $scope.trip={};
+    $scope.routes=[];
       angular.copy(Trip,$scope.trip);
     //modal events cancel and ok
     $scope.cancel = function () {
@@ -87,7 +88,9 @@ angular.module('mean').controller('EditTripCtrl', ['$scope','$modalInstance','$t
         $scope.directionsService.route(request, function(response, status) {
 
             if (status == google.maps.DirectionsStatus.OK) {
+                console.log(response);
                 directionsDisplay.setDirections(response);
+                console.log(response.routes.length);
                 $scope.trip.distance= response.routes[0].legs[0].distance.value / 1000;
 
             }

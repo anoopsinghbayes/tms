@@ -124,10 +124,15 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 ]);
 //setting application wide date format for UI datetimepicker from $locale
 //this sets dateformat to one which is defined in the locale.js included in foot.jade
-angular.module('mean').config(function ($localeProvider,datepickerPopupConfig) {
+angular.module('mean').config(function ($localeProvider,datepickerPopupConfig,datepickerConfig) {
 
-    datepickerPopupConfig.dateFormat=$localeProvider.$get().DATETIME_FORMATS.longDate;
-
+    //changed date format to be dd-MM-yyyy whcih is much popular in india
+    datepickerPopupConfig.dateFormat="dd-MM-yyyy";
+        //$localeProvider.$get().DATETIME_FORMATS.shortDate;
+    
+    console.log($localeProvider.$get().DATETIME_FORMATS);
+    //hide week by default
+    datepickerConfig.showWeeks=false;
 
 });
 

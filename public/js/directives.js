@@ -18,23 +18,34 @@ $scope.$apply(function(){
 });
       
  
-   /* return {
-      link: link
-    };*/
-  }}
+
+            }}
 		 });
 
-/*angular.module('mean').directive('lblReq',function(){
-	return{
-		restrict:'A',
-		link:function($scope,elm,attr){
-			 var _lblText=elm.html();
-			 var _title=_lblText+" cannot be Empty.";
-			elm.attr('title',_title);
-			 var asterisk = angular.element('<span>&nbsp;<i class="fa fa-asterisk" style="color:#ca3219" ></i></span>');
-			var testspan= angular.element('<span style="color:#ca3219;font-size: 1.4em;line-height: 0px;">*</span>')
-			elm.prepend(testspan);
-		}
-	}
-	
-});*/
+var VEHICLE_REGEXP = /^[A-Z]{2}\s[0-9]{1,2}\s[A-Z]{1,2}\s[0-9]{4}$/ig;
+ angular.module('mean').directive('vehicleno', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elm, attrs, ctrl) {
+      ctrl.$parsers.unshift(function(viewValue) {
+          
+          /*check if viewvalue is blank here it-self and  
+            if its blank set the validation to true,
+            let required be handeled by required validator
+          */
+            if (viewValue==='' || VEHICLE_REGEXP.test(viewValue)) {
+              // it is valid
+              ctrl.$setValidity('vehicleno', true);
+              return viewValue;
+            } else {
+              // it is invalid, return undefined (no model update)
+              ctrl.$setValidity('vehicleno', false);
+              return undefined;
+            }
+         
+         
+          
+      });
+    }
+  };
+});

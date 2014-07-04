@@ -18,7 +18,7 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal
         });
 
         modalInstance.result.then(function (selectedItem) {
-        trip=selectedItem;
+        _.assign(trip,selectedItem);
         }, function () {
            
         });
@@ -40,16 +40,16 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal
                 "Thane",
             dropOfflocation:
                 "Dadar",
-            pickUpdate:"2014-01-01"
+            pickUpdate: new Date()
             ,
             dropOffdate:
-                "2014-01-01"
+                new Date()
 
             ,
             distance:
                 200,
             vehicleno:
-                "RGNNO"
+                ""
             ,
             capacity:100
             ,
