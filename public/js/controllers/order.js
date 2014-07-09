@@ -1,7 +1,9 @@
 'strict'
 angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal',function ($scope,Order,$http,$modal) {
     $scope.openTrip = function (trip) {
-        //var tripPointer=trip;
+        var mode="edit";
+       if(!trip)
+           mode="new";
         var modalInstance = $modal.open({
             templateUrl: '/views/Trip/EditTrip.html',
             controller: 'EditTripCtrl',
@@ -10,20 +12,23 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal
             //windowClass:'tripModal',
             resolve: {
                 Trip: function () {
-                    var newTrip={};
-                    angular.copy(trip,newTrip);
-                    return newTrip;
+                   // var newTrip={};
+                    //angular.copy(trip,newTrip);
+                    return trip;
                 }
             }
         });
 
         modalInstance.result.then(function (selectedItem) {
-        _.assign(trip,selectedItem);
+            if(mode==="edit")
+                _.assign(trip,selectedItem);
+            else
+                $scope.data.trips.push(selectedItem)
         }, function () {
            
         });
     };
-
+   
 
 
     $scope.data={

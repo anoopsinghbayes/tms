@@ -90,7 +90,7 @@
 					<div class="tab-content">
 						<br/>
                         <div class="table-responsive">
-                        <table class="table table-condensed table-bordered" width="100%" ng-repeat="trip in data.trips">
+                        <table class="table table-condensed table-bordered" width="100%">
                             <thead>
                             <tr class="info">
                                 <th ></th>
@@ -144,7 +144,8 @@
                             </tr>
                             </tbody>
                         </table>
-                        </div>    
+                        </div>
+                        <button data-ng-click="openTrip()" class="btn btn-warning pull-right"><i class="fa fa-plus-circle"></i> Add New Trip</button>
                         <button data-ng-click="save()" class="btn btn-info">save</button>
                           
 					</div>

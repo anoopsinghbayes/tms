@@ -139,3 +139,8 @@ text-transform: uppercase;
     width: 90%;
   }
 }
+
+.scrollit {
+    overflow:scroll;
+    height:100px;
+}
