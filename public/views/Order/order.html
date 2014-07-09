@@ -116,7 +116,7 @@
                                 <th>Net</th>
                                 <th>Driver</th>
                                 <th>Diesel</th>
-                                <th>Actions</th>
+                                <th>Edit</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -137,7 +137,7 @@
                                 <td>{{trip.dieselUsed}}</td>
                                 <td>
                                     <div class="input-group">
-                                        <button class="btn btn-danger" data-ng-click="openTrip(trip)"><i class="fa fa-edit"></i></button>
+                                        <button class="btn btn-danger" title="Edit Trip" data-ng-click="openTrip(trip)"><i class="fa fa-edit"></i></button>
                                         <!--<a class="btn btn-info"><i class="fa fa-eye"></i></a>-->
                                     </div>
                                 </td>
@@ -146,7 +146,7 @@
                         </table>
                         </div>
                         <button data-ng-click="openTrip()" class="btn btn-warning pull-right"><i class="fa fa-plus-circle"></i> Add New Trip</button>
-                        <button data-ng-click="save()" class="btn btn-info">save</button>
+                        <button data-ng-click="save()" class="btn btn-info"><i class="fa fa-save"></i> Save</button>
                           
 					</div>
 				</tab>
