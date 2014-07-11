@@ -127,7 +127,8 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 angular.module('mean').config(function ($localeProvider,datepickerPopupConfig,datepickerConfig) {
 
     //changed date format to be dd-MM-yyyy whcih is much popular in india
-    datepickerPopupConfig.dateFormat="dd-MM-yyyy";
+    datepickerPopupConfig.datepickerPopup="dd-MM-yyyy";
+   // datepickerPopupConfig.dateFormat="dd-MM-yyyy";//changed beacuse of changes in the api
         //$localeProvider.$get().DATETIME_FORMATS.shortDate;
     
     console.log($localeProvider.$get().DATETIME_FORMATS);

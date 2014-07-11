@@ -54,7 +54,7 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal
             distance:
                 200,
             vehicleno:
-                ""
+                "mh 45 w 3453"
             ,
             capacity:100
             ,

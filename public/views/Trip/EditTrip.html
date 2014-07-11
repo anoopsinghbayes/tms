@@ -24,7 +24,7 @@
                     <div class="form-group">
                         <label class="control-label">Pick-up Date</label>
                         <div class="controls">
-                            <input type="text" class="form-control" datepicker-popup="" ng-model="trip.pickUpdate">
+                            <input type="text" class="form-control" datepicker-popup="" is-open="trip.pickUpdate.open" ng-model="trip.pickUpdate" ng-click = "trip.pickUpdate.open = true">
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label class="control-label">Drop-off Date</label>
                         <div class="controls">
-                            <input type="text" class="form-control" ng-model="trip.dropOffdate" datepicker-popup="">
+                            <input type="text" class="form-control" is-open="trip.dropOffdate.open" ng-model="trip.dropOffdate" datepicker-popup="" ng-click = "trip.dropOffdate.open = true">
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             <div class="form-group">
                 <label class="control-label">Diesel Used</label>
                 <div class="controls">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" data-ng-model="trip.dieselUsed">
                 </div>
             </div>
         </div>
@@ -105,10 +105,12 @@
         </div>
         <div class="col-md-4"></div>
     </div>
+       
     <div class="row">
-        <h4>Weight details (At Pick-up)</h4>
+        
         <hr>
         <div class="col-md-4">
+            <h4>Weight details (At Pick-up)</h4>
             <div class="form-group">
                 <label class="control-label">Tyre Weight</label>
                 <div class="controls">
@@ -129,6 +131,7 @@
             </div>
         </div>
         <div class="col-md-4">
+               <h4>Weight details (At Drop-off)</h4>
             <div class="form-group">
                 <label class="control-label">Tyre Weight</label>
                 <div class="controls">

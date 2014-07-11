@@ -16,7 +16,7 @@
 					</div>
 					<div class="form-group">
 						<label for="txtorderDate" data-lblreq="">Order Date</label>
-						<input id="txtorderDate" name="txtorderDate" class="form-control" type="text" datepicker-popup="" data-ng-model="data.date" />
+						<input id="txtorderDate" name="txtorderDate" class="form-control" type="text" datepicker-popup="" is-open="date.open" data-ng-model="data.date"  ng-click = "date.open = true" />
 
 					</div>
 					<div class="form-group">
@@ -98,7 +98,7 @@
                                 <th colspan="2">Pick-up </th>
                                 <th colspan="2">Drop-off</th>
                                 <th colspan="2"></th>
-                                <th colspan="3">Weight</th>
+                              <!--  <th colspan="3">Weight</th>-->
                                 <th colspan="3"></th>
                             </tr>
                             <tr class="info">
@@ -111,9 +111,9 @@
                                 <th>Date</th>
                                 <th>Qty.</th>
                                 <th>Km(s)</th>
-                                <th>Tyre</th>
+                              <!--  <th>Tyre</th>
                                 <th>Gross</th>
-                                <th>Net</th>
+                                <th>Net</th>-->
                                 <th>Driver</th>
                                 <th>Diesel</th>
                                 <th>Edit</th>
@@ -121,18 +121,18 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="trip in data.trips">
-                                <td></td>
-                                <td>{{trip.vehicleno}}</td>
+                                <td>{{$index+1}}</td>
+                                <td>{{trip.vehicleno | uppercase}}</td>
                                 <td>{{trip.capacity}}</td>
                                 <td>{{trip.pickupLocation}}</td>
-                                <td>{{trip.pickUpdate | date:'MM-dd-yyyy'}}</td>
+                                <td>{{trip.pickUpdate | date:'dd-MM-yyyy'}}</td>
                                 <td>{{trip.dropOfflocation}}</td>
-                                <td>{{trip.dropOffdate | date:'MM-dd-yyyy'}}</td>
+                                <td>{{trip.dropOffdate | date:'dd-MM-yyyy'}}</td>
                                 <td></td>
                                 <td>{{trip.distance}}</td>
+                                <!--<td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
+                                <td></td>-->
                                 <td></td>
                                 <td>{{trip.dieselUsed}}</td>
                                 <td>
