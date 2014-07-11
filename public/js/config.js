@@ -117,7 +117,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             }
             )
 		.state('otherwise',
-            {url:'/',
+            {url:'*path',
                 templateUrl: 'views/index.html'
             });
     }
