@@ -144,3 +144,7 @@ text-transform: uppercase;
     overflow:scroll;
     height:100px;
 }
+
+th{
+font-weight: 500;
+}
