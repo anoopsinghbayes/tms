@@ -52,7 +52,13 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         'title':"Customers",
         'link':'Customers',
         'state':'customers'
-    }
+    },
+        {
+            'title':"Vehicles",
+            'link':'Vehicles',
+            'state':'addVehicle'
+
+        }
     ];
     
     $scope.isCollapsed = false;

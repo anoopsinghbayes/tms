@@ -88,7 +88,13 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                         controller: 'EditTripCtrl'
 
 
-            }).
+            })
+            .state('addVehicle',{
+                url:'/vehicles/add',
+                templateUrl:'views/vehicle/vehicle.html',
+                controller:''
+            })
+            .
 		state('test',
             {url:'/test',
              
