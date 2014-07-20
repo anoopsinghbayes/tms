@@ -1,0 +1,45 @@
+<div class="row ">
+    <form role="form" name="myForm">
+        <fieldset>
+            <legend>Payment Entry</legend>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="PaymentID" data-lblreq="">Payment ID</label>
+                        <input type="text" class="form-control" id="PaymentID" name="PaymentID" placeholder="Payment ID" readonly="true" data-ng-model="Payment.PaymentID"/>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="PaymentDate" data-lblreq="">Payment Date</label>
+                        <input id="PaymentDate" name="PaymentDate" class="form-control" type="text" datepicker-popup=""  data-ng-model="Payment.PaymentDate"/>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="PaymentRelDate" data-lblreq="">Cheque Realization Date</label>
+                        <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup=""  data-ng-model="Payment.PaymentRelDate"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="PaymentFrom" data-lblreq="">Payment From</label>
+                        <input type="text" class="form-control" id="PaymentFrom" name="PaymentFrom" placeholder="Payment From"  data-ng-model="Payment.PaymentFrom"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaymentTo" data-lblreq="">Payment To</label>
+                        <input type="text" class="form-control" id="PaymentTo" name="PaymentTo" placeholder="Payment To"  data-ng-model="Payment.PaymentTo"/>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="PaymentMode" data-lblreq="">Payment Mode</label>
+                            <input type="text" class="form-control" id="PaymentMode" name="PaymentMode" placeholder="Payment Mode"  data-ng-model="Payment.PaymentMode"/>
+                        </div>
+
+                    </div>
+                 </div>
+                <button class="btn btn-primary" data-ng-click="save()">Save</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
