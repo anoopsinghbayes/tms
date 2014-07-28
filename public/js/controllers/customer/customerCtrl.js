@@ -15,7 +15,7 @@ angular.module('mean').controller('listCustomer', ['$scope','Customers', functio
 
 angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', function ($scope,Customers) {
     $scope.save = function() {
-        customer = new Customers({
+        customer = {
             name: $scope.customer.name,
             contact: $scope.customer.contact,
             email: $scope.customer.email,
@@ -28,10 +28,10 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', f
                 phoneno:$scope.customer.salesrep.phoneno
             }
 
-        });
+        };
 
 
-        customer.$save(function(response) {
+        Customers.post(customer).then(function(response) {
             $location.path('customers/' + response._id);
         },function(data){
 		console.log(data);
