@@ -12,12 +12,12 @@
                     </div>
                     <div class="form-group">
                         <label for="PaymentDate" data-lblreq="">Payment Date</label>
-                        <input id="PaymentDate" name="PaymentDate" class="form-control" type="text" datepicker-popup=""  data-ng-model="Payment.PaymentDate"/>
+                        <input id="PaymentDate" name="PaymentDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Payment.PaymentDate" ng-click = "date.open = true"/>
 
                     </div>
                     <div class="form-group">
                         <label for="PaymentRelDate" data-lblreq="">Cheque Realization Date</label>
-                        <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup=""  data-ng-model="Payment.PaymentRelDate"/>
+                        <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Payment.PaymentRelDate" ng-click = "date.open = true"/>
                     </div>
                     <div class="form-group">
                         <label for="PaymentFrom" data-lblreq="">Payment From</label>
