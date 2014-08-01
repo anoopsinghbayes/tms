@@ -1,3 +1,12 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: Padmaraj
+ * Date: 29/07/14
+ * Time: 17:54
+ * To change this template use File | Settings | File Templates.
+ */
+
+
 'use strict';
 
 /**
@@ -9,41 +18,31 @@ require('mongoose-multitenant')('_');
 
 
 
+
+
 /**
  * Payment Schema
  */
-var PaymentSchema = new Schema({
+var PaymentLinkSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
     },
-    PaymentDate: {
-        type: Date
-
-    },
-    PaymentFrom: {
-        type: String,
-        trim: true
-    },
-    PaymentTo: {
-        type: String,
-        trim: true
-    },
-    PaymentRelDate: {
-        type: Date
-
-    }
-    ,
-    PaymentMode: {
+    PaymentID: {
         type: String
 
     },
-    UnAllocatedAmount: {
-
-        type : String
-
+    TransactionID: {
+        type: String,
+        trim: true
+    },
+    TransactionType: {
+        type: String,
+        trim: true
+    },
+    AllocatedAmount: {
+        type: String,
+        trim: true
     }
-
 });
 
-mongoose.model('Payment', PaymentSchema);
