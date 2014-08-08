@@ -1,6 +1,6 @@
 <li >
       <a  ui-sref="{{sublink.state}}" ng-click="sublink.isCollapsed = !sublink.isCollapsed">{{sublink.title}}
-    <i ng-if="sublink.links.length>0" class="fa fa-play" ng-class="{'fa-rotate-90': !sublink.isCollapsed, '': sublink.isCollapsed}"></i>
+    <i ng-if="sublink.links.length>0" class="fa" ng-class="{'fa-chevron-down': !sublink.isCollapsed, 'fa-chevron-right': sublink.isCollapsed}"></i>
     </a>
 
 </li>
