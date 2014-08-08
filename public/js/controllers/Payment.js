@@ -15,9 +15,10 @@ angular.module('mean').controller('PaymentEntryCtrl', ['$scope', 'Payment', func
             PaymentRelDate:$scope.Payment.PaymentRelDate,
             PaymentFrom:$scope.Payment.PaymentFrom,
             PaymentTo:$scope.Payment.PaymentTo,
-            PaymentMode:$scope.Payment.PaymentMode
-
+            PaymentMode:$scope.Payment.PaymentMode,
+            UnAllocatedAmount:$scope.Payment.UnAllocatedAmount
 
         });
+        console.log($scope);
     }
 }]);
