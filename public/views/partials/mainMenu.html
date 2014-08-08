@@ -1,0 +1,14 @@
+
+    <ul>
+    <li ng-repeat="link in links">
+        <a ui-sref="{{link.state}}"  ng-click="link.isCollapsed = !link.isCollapsed">{{link.title}}
+ <i ng-if="link.links.length>0"  class="fa fa-play" ng-class="{'fa-rotate-90': !link.isCollapsed, '': link.isCollapsed}"></i>
+           
+        </a>
+        <ul ng-if="link.links.length>0" collapse="link.isCollapsed">
+            <sub-menu ng-repeat="sublink in link.links" sublink="sublink"></sub-menu>
+        </ul>
+
+    </li>
+
+    </ul>

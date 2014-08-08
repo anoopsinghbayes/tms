@@ -1,12 +1,66 @@
 'use strict';
 
-angular.module('mean.system').controller('HeaderController', ['$scope', 'Global', function ($scope, Global) {
+angular.module('mean.system').controller('HeaderController', ['$scope', 'Global','SlideMenu', function ($scope, Global,SlideMenu) {
     $scope.global = Global;
-
+     $scope.open=false;
+  $scope.openMenu=function(){
+    SlideMenu.toggleClass();
+    $scope.open=!$scope.open;
+    //console.log(SlideMenu);
+  }
     $scope.menu = [{
         'title': 'Articles',
         'link': 'articles',
-        'state':'edit'
+        'state':'',
+        isCollapsed:true,
+        links:[
+        {
+        'title': "Create Article",
+            isCollapsed:true,
+        'link': '#',
+            'state':'',
+            links:[
+        {
+        'title': "Sub Article 1",
+        'link': '#',
+        isCollapsed:true,
+                
+            'state':'map',
+               links:[
+        {
+        'title': "Sub Article 3",
+        'link': 'map',
+            'state':'map'
+
+
+    }, {
+        'title': "Sub Article 4",
+        'link': 'map',
+            'state':'map'
+
+
+    }
+       ]
+
+
+    }, {
+        'title': "Sub Article 2",
+        'link': 'map',
+            'state':'map'
+
+
+    }
+       ]
+
+
+    }, {
+        'title': "Update Article",
+        'link': 'map',
+            'state':'map'
+
+
+    }
+       ]
 
     }, {
         'title': 'Create New Article',

@@ -49,3 +49,35 @@ var VEHICLE_REGEXP = /^[A-Z]{2}\s[0-9]{1,2}\s[A-Z]{1,2}\s[0-9]{4}$/ig;
     }
   };
 });
+
+angular.module('mean').directive('mainMenu', function () {
+    return {
+        restrict: 'E',
+        templateUrl:'views/partials/mainMenu.html',
+        replace: true,
+        transclude: true,
+        scope: {
+          links:'='
+        },
+        link: function (scope, element, attrs) {
+            console.log("treeview directive loaded");
+        }
+    };
+});
+angular.module('mean').directive('subMenu', function ($compile) {
+    return {
+        restrict: 'E',
+        templateUrl:'views/partials/subMenu.html',
+        replace: true,
+        transclude: true,
+        scope: {
+          sublink:'=',
+        },
+        link: function (scope, element, attrs) {
+             scope.$watch('sublink.links', function() {
+               console.log("watching")
+                element.append($compile('<ul collapse="sublink.isCollapsed"><sub-menu ng-repeat="sublink in sublink.links" sublink="sublink"></sub-menu></ul>')(scope));
+            });
+        }
+    };
+})
