@@ -25,7 +25,7 @@ angular.module('mean').controller('orderCtrl', ['$scope','Order','$http','$modal
             else
                 $scope.data.trips.push(selectedItem)
         }, function () {
-           
+           console.log('Modal dismissed at: ' + new Date());
         });
     };
    
