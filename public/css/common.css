@@ -148,3 +148,31 @@ text-transform: uppercase;
 th{
 font-weight: 500;
 }
+
+/*css for login page*/
+/*-----------------------------------*/
+html.bgImg {
+    background-image: url(/img/truck.jpeg);
+    /*url("http://placekitten.com/1920/1120");*/
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+    font-size: 100%;
+
+}
+
+.loginbody{
+    background-color: transparent;
+}
+.formholder{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.white{
+    /*top:200px;*/
+    padding: 20px;
+    background-color: #fff;
+    opacity: 0.9;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}

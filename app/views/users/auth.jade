@@ -1,8 +1,9 @@
 extends ../layouts/default
-
+block vars
+    isSingnupage = 'bgImg';
 block content
   .row
-    .offset1.span5
+    //.offset1.span5
       a(href="/auth/facebook")
         img(src="/img/icons/facebook.png")
       a(href="/auth/github")
@@ -11,7 +12,7 @@ block content
         img(src="/img/icons/twitter.png")
       a(href="/auth/google")
         img(src="/img/icons/google.png")
-    .span6
+    .col-md-4.col-md-offset-4.white
       if message && message.length
         .fade.in.alert.alert-error
           button.close(type="button", data-dismiss="alert") &times;
