@@ -1,9 +1,10 @@
 extends auth
 
 block auth
-    div
-    h3 Aarmour
+   
     form.form.signin(action="/users/session", method="post")
+       fieldset
+        legend Signin
         .form-group
             input#email.form-control(type='text', name="email", placeholder='Email')
 
@@ -11,7 +12,7 @@ block auth
             input#password.form-control(type='password', name="password", placeholder='Password')
 
         .form-actions
-            button.btn.btn-info.btn-block(type='submit') Sign in
+            button.btn.btn-info.btn-block.btn-lg(type='submit') Sign in
             &nbsp;
             | or&nbsp;
             a.show-signup(href="/signup") Sign up
