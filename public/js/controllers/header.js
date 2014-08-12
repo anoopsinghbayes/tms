@@ -11,7 +11,8 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     $scope.menu = [{
         'title': 'Articles',
         'link': 'articles',
-        'state':'',
+        
+        iconClass:'fa fa-life-ring',
         isCollapsed:true,
         links:[
         {
@@ -109,6 +110,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     },
         {
             'title':"Vehicles",
+            iconClass:"fa fa-automobile",
             'link':'Vehicles',
             'state':'addVehicle'
 

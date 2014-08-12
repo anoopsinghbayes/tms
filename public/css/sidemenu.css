@@ -42,9 +42,8 @@
  
 .cbp-spmenu-vertical a {
     border-bottom: 1px solid #258ecd;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    padding-left:0.5em;
+    padding: 1em;
+    
 }
  
 .cbp-spmenu-horizontal {
@@ -173,7 +172,8 @@
     padding-left:0px;
 }
 .cbp-spmenu li{
-    padding-left:1em
+    /* padding-left:1em; */
+    padding: 0.1em;
 }
 .cbp-spmenu li a{
     /* border-bottom: none; */
