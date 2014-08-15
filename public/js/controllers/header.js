@@ -112,7 +112,16 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             'title':"Vehicles",
             iconClass:"fa fa-automobile",
             'link':'Vehicles',
-            'state':'addVehicle'
+            'state':'addVehicle',
+            isCollapsed:true,
+            links:[
+                {
+                    'title': "Vehicle  Details",
+                    'link': 'vehicleMaintainceDetails',
+                    'state':'vehicleMaintainceDetails'
+
+
+                }]
 
         }
     ];

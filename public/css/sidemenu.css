@@ -114,6 +114,10 @@
 .cbp-spmenu-push-toright {
     padding-left: 190px;
 }
+
+.cbp-spmenu-margin-toright{
+    margin-left:190px;
+}
  
 .cbp-spmenu-push-toleft {
     left: -240px;
@@ -127,7 +131,12 @@
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
- 
+
+.mainNavTran{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 /* Example media queries */
  
 @media screen and (max-width: 55.1875em){
