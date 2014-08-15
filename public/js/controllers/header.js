@@ -8,74 +8,14 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     $scope.open=!$scope.open;
     //console.log(SlideMenu);
   }
-    $scope.menu = [{
-        'title': 'Articles',
-        'link': 'articles',
-        
-        iconClass:'fa fa-life-ring',
-        isCollapsed:true,
-        links:[
-        {
-        'title': "Create Article",
-            isCollapsed:true,
-        'link': '#',
-            'state':'',
-            links:[
-        {
-        'title': "Sub Article 1",
-        'link': '#',
-        isCollapsed:true,
-                
-            'state':'map',
-               links:[
-        {
-        'title': "Sub Article 3",
-        'link': 'map',
-            'state':'map'
-
-
-    }, {
-        'title': "Sub Article 4",
-        'link': 'map',
-            'state':'map'
-
-
-    }
-       ]
-
-
-    }, {
-        'title': "Sub Article 2",
-        'link': 'map',
-            'state':'map'
-
-
-    }
-       ]
-
-
-    }, {
-        'title': "Update Article",
-        'link': 'map',
-            'state':'map'
-
-
-    }
-       ]
-
-    }, {
-        'title': 'Create New Article',
-        'link': 'articles/create',
-        'state':'edit'
-		
-    }
+    $scope.menu = [
         //, {
         //'title': 'Edit Customer',
         //'link': 'customers/edit',
         //'state':'customers.edit'
 		
     //}
-    ,
+
 				  {
         'title': 'Create BP',
        // 'link': 'businessPartners/create',
