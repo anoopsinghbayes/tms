@@ -1,0 +1,96 @@
+/**
+ * Created with JetBrains WebStorm.
+ * User: Padmaraj
+ * Date: 16/08/14
+ * Time: 01:49
+ * To change this template use File | Settings | File Templates.
+ */
+
+'use strict';
+
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+
+
+
+/**
+ * Maintenance Details Schema
+ */
+var MaintenanceDetails=new Schema({
+    description: {
+        type: Date,
+        trim: true
+    },
+    date:{
+        type:Date,
+        trim:true
+    },
+    presentKms:{
+        type:Date,
+        trim:true
+    },
+    warrantyKms:{
+        type:Number,
+        trim:true
+    },
+    warrantyDate:{
+        type:Number,
+        trim:true
+    }
+});
+
+
+
+
+
+
+/**
+ * Vehicle Maintenance Schema
+ */
+var VehicleMaintenance = new Schema({
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    garageName: {
+        type: String,
+        trim: true
+    },
+    vehicleNo:{
+        type:String,
+        trim:true
+    },
+    contactNo:{
+        type:String,
+        trim:true
+
+    },
+    serviceType:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:String,
+        trim:true
+    },
+    labourCharges: {
+        type:Number,
+        trim:true
+    },
+    address: {
+        type:Date,
+        trim:true
+    },
+    garageCharges: {
+        type:Date,
+        trim:true
+    },
+    details: {
+        type:[MaintenanceDetails],
+        trim:true
+    }
+});
