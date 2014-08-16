@@ -141,11 +141,42 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
 
 
             })
-
-        .state('addVehicle',{
-                url:'/vehicles/add',
-                templateUrl:'views/vehicle/vehicle.html',
+            .state('employees',{
+                url:'/employees',
+                templateUrl:'/views/Employee/list.html',
                 controller:''
+
+            })
+            .state('employees.create',{
+                url:'/create',
+                views: {
+                    "@" : {
+                        templateUrl: 'views/Employee/edit.html',
+                        controller:""
+                    }
+                }
+                })
+            .state('vehicles',{
+                url:'/vehicles',
+                templateUrl:'/views/vehicle/list.html',
+                controller:''
+
+            })
+        .state('vehicles.create',{
+                url:'/create',
+                views: {
+                    "@": {templateUrl: 'views/vehicle/vehicle.html',
+                        controller: ''
+                    }
+                }
+            })
+            .state('vehicles.finance',{
+                url:'/finance',
+                views: {
+                    "@": {templateUrl: 'views/vehicle/finance.html',
+                        controller: ''
+                    }
+                }
             })
             .state('vehicleMaintainceDetails',{
                 url:'/vehicleMaintainceDetails',

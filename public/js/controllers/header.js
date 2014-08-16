@@ -25,7 +25,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 //    },
 		  {
         'title': "Order",
-            iconClass:'fa fa-truck',
+            iconClass:'fa fa-tasks',
             'link': '',
             'state':'',
             isCollapsed:'true',
@@ -69,17 +69,24 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     },
         {
             'title':"Vehicles",
-            iconClass:"fa fa-automobile",
+            iconClass:"fa fa-truck",
             'link':'Vehicles',
-            'state':'addVehicle',
+            'state':'',
             isCollapsed:true,
             links:[
                 {
-                    'title': "Vehicle  Details",
+                  title:'List',
+                    state:'vehicles'
+                },
+                {
+                    'title': "Maintenance",
                     'link': 'vehicleMaintainceDetails',
                     'state':'vehicleMaintainceDetails'
 
 
+                },{
+                    title:'Finance',
+                    state:'vehicles.finance'
                 }]
 
         },{
@@ -96,7 +103,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             title:'Employee',
             iconClass:'fa fa-male',
             link:'',
-            state:''
+            state:'employees'
         },
         {
             title:'Reports',
