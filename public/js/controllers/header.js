@@ -63,6 +63,10 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
                 }]
 
+        },{
+           'title':'Tyre',
+            link:'TyreDetails',
+            state:'TyreDetails'
         }
     ];
     
