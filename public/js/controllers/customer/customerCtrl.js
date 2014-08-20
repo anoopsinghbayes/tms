@@ -32,7 +32,7 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$
 
 
         Customers.post(customer).then(function(response) {
-            $state.go('customers.edit' , response._id);
+            $state.go('customers.edit' ,{'customerId': response._id});
         },function(data){
 		console.log(data);
 		});
