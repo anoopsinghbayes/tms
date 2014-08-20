@@ -9,25 +9,12 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
     //console.log(SlideMenu);
   }
     $scope.menu = [
-        //, {
-        //'title': 'Edit Customer',
-        //'link': 'customers/edit',
-        //'state':'customers.edit'
-		
-    //}
-
-//				  {
-//        'title': 'Create BP',
-//       // 'link': 'businessPartners/create',
-//                      'state':'contacts'
-//
-//
-//    },
+  
 		  {
-        'title': "Order",
+        title: "Order",
             iconClass:'fa fa-tasks',
-            'link': '',
-            'state':'',
+            link: '',
+            state:'',
             isCollapsed:'true',
             links:[
                 {
@@ -46,32 +33,18 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
 
 		
-    },			 
-//				   {
-//        'title': "Map",
-//        'link': 'map',
-//            'state':'map'
-//
-//
-//    },
-//				   {
-//        'title': "Map2",
-//        'link': 'map2',
-//            'state':'map2'
-//
-//
-//    },
+    },
     {
-        'title':"Customers",
-        'link':'Customers',
+        title:"Customers",
+        link:'Customers',
         iconClass:'fa fa-users',
-        'state':'customers'
+        state:'customers'
     },
         {
-            'title':"Vehicles",
+            title:"Vehicles",
             iconClass:"fa fa-truck",
-            'link':'Vehicles',
-            'state':'',
+            link:'Vehicles',
+            state:'',
             isCollapsed:true,
             links:[
                 {
@@ -79,9 +52,9 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                     state:'vehicles'
                 },
                 {
-                    'title': "Maintenance",
-                    'link': 'vehicleMaintainceDetails',
-                    'state':'vehicleMaintainceDetails'
+                    title: "Maintenance",
+                    link: 'vehicleMaintainceDetails',
+                    state:'vehicleMaintainceDetails'
 
 
                 },{
@@ -90,7 +63,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 }]
 
         },{
-           'title':'Tyre',
+           title:'Tyre',
             iconClass:'fa fa-life-ring',
             link:'TyreDetails',
             state:'TyreDetails'
