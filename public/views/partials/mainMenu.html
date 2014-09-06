@@ -1,11 +1,9 @@
 <ul>
     <li ng-repeat="link in links"><a ui-sref="{{link.state}}" ng-click="link.isCollapsed = !link.isCollapsed">
-<span class="fa-stack fa-lg pull-right">
-  <i class="fa fa-square-o fa-stack-2x"></i>
-  <i ng-class="link.iconClass" class="fa-stack-1x"></i>
-          </span>
-           <!--            <i ng-class="link.iconClass" class="pull-right fa-lg"></i>-->
-            {{link.title}} <i ng-if="link.links.length>0" class="fa" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
+
+  <i ng-class="link.iconClass" class="pull-right fa-2x"></i>
+
+            {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-angle-double-down': !link.isCollapsed, 'fa-angle-double-right': link.isCollapsed}"></i>
         </a>
         <ul ng-if="link.links.length>0" collapse="link.isCollapsed">
             <sub-menu ng-repeat="sublink in link.links" sublink="sublink"></sub-menu>

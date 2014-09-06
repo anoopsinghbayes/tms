@@ -12,12 +12,19 @@ var mongoose = require('mongoose'),
  */
 exports.show = function(req, res, next) {
 	console.log(req.params.CustomerId);
-	//Customer = mongoose.mtModel(req.user.tenant+'.Customer');
-    Customer.load(req.params.CustomerId, function(err, customer) {
-        if (err) return next(err);
-        if (!article) return next(new Error('Failed to load customer ' + id));
-        req.customer = customer;
-        next();
+	Customer = mongoose.mtModel(req.user.tenant+'.Customer');
+    console.log('tenantid:',req.user.tenant);
+    Customer.findOne(req.params.CustomerId, function(err, customer) {
+        console.log('error:',err);
+        console.log('customer:',customer);
+        if (err){ 
+            return next(err);
+        }
+//        if (!customer) return next(new Error('Failed to load customer ' + id));
+        else{
+            res.json(customer);
+        }
+       
     });
 };
 
