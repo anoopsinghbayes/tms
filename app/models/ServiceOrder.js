@@ -61,12 +61,12 @@ var ServiceOrderSchema = new Schema({
         default: Date.now
     },
     transporterName: {
-        type: String,
-        trim: true
+        type: Schema.Types.ObjectId,
+        ref: 'Customer'
     },
     vehicleNo:{
-        type:String,
-        trim:true
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicle'
     },
     contactNo:{
         type:String,
