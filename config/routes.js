@@ -104,4 +104,18 @@ module.exports = function (app, passport, auth) {
     app.post('/payment', auth.requiresLogin, Payment.create);
 
 
+    //Book Routes
+    var Book = require('../app/controllers/AutoInc');
+    app.post('/Book', auth.requiresLogin, Book.create);
+
+
+    //Service Order Routes
+    var ServiceOrder = require('../app/controllers/ServiceOrder');
+    app.post('/ServiceOrder', auth.requiresLogin, ServiceOrder.create);
+
+
+    //Invoice Routes
+    var Invoice = require('../app/controllers/Invoice');
+    app.post('/Invoice', auth.requiresLogin, Invoice.create);
+
 };
