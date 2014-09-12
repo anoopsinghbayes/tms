@@ -13,7 +13,7 @@ angular.module('mean').controller('listCustomer', ['$scope','Customers', functio
 
 }]);
 
-angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', function ($scope,Customers) {
+angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$state', function ($scope,Customers,$state) {
     $scope.save = function() {
         customer = {
             name: $scope.customer.name,
@@ -32,7 +32,7 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers', f
 
 
         Customers.post(customer).then(function(response) {
-            $location.path('customers/' + response._id);
+            $state.go('customers.edit' ,{'customerId': response._id});
         },function(data){
 		console.log(data);
 		});

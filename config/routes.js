@@ -103,6 +103,7 @@ module.exports = function (app, passport, auth) {
     var Payment = require('../app/controllers/Payment');
     app.post('/payment', auth.requiresLogin, Payment.create);
 
+<<<<<<< HEAD
 
     //Book Routes
     var Book = require('../app/controllers/AutoInc');
@@ -118,4 +119,26 @@ module.exports = function (app, passport, auth) {
     var Invoice = require('../app/controllers/Invoice');
     app.post('/Invoice', auth.requiresLogin, Invoice.create);
 
+=======
+    //Tyre Routes
+    var Tyre = require('../app/controllers/tyreDetails');
+    app.post('/tyres', auth.requiresLogin, Tyre.create);
+
+   //Vehicle Routes
+    var Vehicle = require('../app/controllers/Vehicle');
+    app.post('/vehicles', auth.requiresLogin, Vehicle.create);
+
+    //VehicleFinance Routes
+    var VehicleFinance = require('../app/controllers/VehicleFinance');
+    app.post('/vehiclefin', auth.requiresLogin, VehicleFinance.create);
+
+    //VehicleMaintenance
+    var VehicleMaintenance = require('../app/controllers/vehicleMaintanence');
+    app.post('/vehiclemaint', auth.requiresLogin, VehicleMaintenance.create);
+    app.put('/vehiclemaint/:VehicleId', auth.requiresLogin, auth.article.hasAuthorization, VehicleMaintenance.update);
+
+    //Service Order Routes
+    var ServiceOrder = require('../app/controllers/ServiceOrder');
+    app.post('/service', auth.requiresLogin, ServiceOrder.create);
+>>>>>>> origin/master
 };

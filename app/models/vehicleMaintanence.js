@@ -14,8 +14,14 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+/**
+ * Enums
+ */
 
-
+var service_type =
+{
+    values: ['Service1', 'Service2', 'Service3']
+}
 
 /**
  * Maintenance Details Schema
@@ -61,8 +67,8 @@ var VehicleMaintenance = new Schema({
         trim: true
     },
     vehicleNo:{
-        type:String,
-        trim:true
+        type: Schema.Types.ObjectId,
+        ref: 'Vehicle'
     },
     contactNo:{
         type:String,
@@ -70,12 +76,11 @@ var VehicleMaintenance = new Schema({
 
     },
     serviceType:{
-        type:String,
-        required:true
+        enum: service_type
     },
     date:{
-        type:String,
-        trim:true
+        type:Date,
+        default: Date.now
     },
     labourCharges: {
         type:Number,
@@ -86,7 +91,7 @@ var VehicleMaintenance = new Schema({
         trim:true
     },
     garageCharges: {
-        type:Date,
+        type:Number,
         trim:true
     },
     details: {
@@ -94,3 +99,5 @@ var VehicleMaintenance = new Schema({
         trim:true
     }
 });
+
+mongoose.mtModel('VehicleMaintenance', VehicleMaintenance);

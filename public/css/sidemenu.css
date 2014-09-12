@@ -1,7 +1,8 @@
 /* Styles go here */
 
 .cbp-spmenu {
-    background: #47a3da;
+  /*  background: #47a3da;*/
+    background: #0C304A;
     position: fixed;
 }
  
@@ -16,13 +17,14 @@
  
 .cbp-spmenu a {
     display: block;
-    color: #fff;
+ /*   color: #fff;*/
+    color:#777;
     font-size: 1.1em;
     font-weight: 300;
 }
  
 .cbp-spmenu a:hover {
-    color: #000;
+    color: #fff;
     text-decoration:none;
 }
 
@@ -38,14 +40,18 @@
     height: 100%;
     top: 0;
     z-index: 1000;
+
 }
  
 .cbp-spmenu-vertical a {
     border-bottom: 1px solid #258ecd;
-    padding: 1em;
+    padding: 10px;
     
 }
- 
+
+.cbp-spmenu-vertical li>ul{
+background-color:  rgb(8, 34, 53)
+}
 .cbp-spmenu-horizontal {
     width: 100%;
     height: 150px;
