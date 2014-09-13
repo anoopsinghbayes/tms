@@ -25,6 +25,7 @@
  
 .cbp-spmenu a:hover {
     color: #fff;
+    border-left: 3px solid #e99d1a;
     text-decoration:none;
 }
 
@@ -44,7 +45,7 @@
 }
  
 .cbp-spmenu-vertical a {
-    border-bottom: 1px solid #258ecd;
+    /*border-bottom: 1px solid #258ecd;*/
     padding: 10px;
     
 }

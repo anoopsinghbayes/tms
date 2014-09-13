@@ -1,7 +1,7 @@
 <ul>
     <li ng-repeat="link in links"><a ui-sref="{{link.state}}" ng-click="link.isCollapsed = !link.isCollapsed">
 
-  <i ng-class="link.iconClass" class="pull-right fa-2x"></i>
+  <i ng-class="link.iconClass" class="fa-2x"></i>
 
             {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-angle-double-down': !link.isCollapsed, 'fa-angle-double-right': link.isCollapsed}"></i>
         </a>
