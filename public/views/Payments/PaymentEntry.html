@@ -16,7 +16,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="PaymentRelDate" data-lblreq="">Cheque Realization Date</label>
+                        <label for="PaymentRelDate" data-lblreq="">Payment Confirmation Date</label>
                         <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Payment.PaymentRelDate" ng-click = "date.open = true"/>
                     </div>
                     <div class="form-group">
@@ -38,12 +38,60 @@
                     </div>
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="UnAllocatedAmount" data-lblreq="">Amount</label>
-                            <input type="text" class="form-control" id="UnAllocatedAmount" name="UnAllocatedAmount" placeholder="Amount"  data-ng-model="Payment.UnAllocatedAmount"/>
+                            <label for="PaymentAmount" data-lblreq="">Amount</label>
+                            <input type="text" class="form-control" id="PaymentAmount" name="PaymentAmount" placeholder="Payment Amount"  data-ng-model="Payment.PaymentAmount"/>
                         </div>
 
                     </div>
-                 </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="BalanceAmount" data-lblreq="">Balance Amount</label>
+                            <input type="text" class="form-control" id="BalanceAmount" name="BalanceAmount" placeholder=""  data-ng-model="Payment.BalanceAmount"/>
+                        </div>
+
+                    </div>
+
+                    <div>
+                    <legend>Bank Details</legend>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="BankName" data-lblreq="">Bank Name</label>
+                                <input type="text" class="form-control" id="BankName" name="BankName" placeholder="Bank Name"  data-ng-model="Payment.BankDetails.BankName"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="BranchName" data-lblreq="">Branch Name</label>
+                                <input type="text" class="form-control" id="BranchName" name="BranchName" placeholder="Branch Name"  data-ng-model="Payment.BankDetails.BranchName"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="BranchAddress" data-lblreq="">Branch Address</label>
+                                <input type="text" class="form-control" id="BranchAddress" name="BranchAddress" placeholder="Branch Address"  data-ng-model="Payment.BankDetails.BranchAddress"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="IFSCCode" data-lblreq="">IFSC Code</label>
+                                <input type="text" class="form-control" id="IFSCCode" name="IFSCCode" placeholder="IFSC Code"  data-ng-model="Payment.BankDetails.IFSCCode"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="BranchCode" data-lblreq="">Branch Code</label>
+                                <input type="text" class="form-control" id="BranchCode" name="BranchCode" placeholder="Branch Code"  data-ng-model="Payment.BankDetails.BranchCode"/>
+                            </div>
+
+                        </div>
+
+                        <div>
+
                 <button class="btn btn-primary" data-ng-click="save()">Save</button>
             </div>
         </fieldset>

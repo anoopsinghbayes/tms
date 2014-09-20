@@ -74,8 +74,26 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         },{
             title:'Accounts',
             iconClass:'fa fa-table',
-            link:'',
-            state:''
+            link:'Payment',
+            state:'',
+            isCollapsed:true,
+            links:[
+                {
+                    title:'Payment Entry',
+                    state:'Payment'
+                },
+                {
+                    title: 'Invoice',
+                    link: 'InvoiceDetails',
+                    state:'InvoiceDetails'
+
+
+                },{
+                    title:'Payment Tag',
+                    link: 'PaymentInvoiceLink',
+                    state:'PaymentInvoiceLink'
+                }]
+
         },{
             title:'Employee',
             iconClass:'fa fa-male',

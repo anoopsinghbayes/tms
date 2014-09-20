@@ -70,3 +70,4 @@ var PaymentLinkSchema = new Schema({
 
 });
 
+mongoose.mtModel('PaymentLink', PaymentLinkSchema);
