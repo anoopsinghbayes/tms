@@ -28,10 +28,46 @@ var InvoiceSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    invoiceOrders:  [{OrderId:{type: mongoose.Schema.Types.ObjectId,ref:'Order'}}],
 
-    totalAmount : Number
+    CustomerID :
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Customer'
 
+    },
+
+
+    Orders:  [
+        {       OrderId:    {
+                                type: mongoose.Schema.Types.ObjectId,
+                                ref:'Order'
+                            },
+                OrderAmount:{
+                                type:Number
+                            },
+
+                Remarks:{
+                                type:String
+                        }
+
+        }   ],
+
+    InvoiceDate :
+    {
+            type:Date
+    },
+    TaxPercentage:
+    {
+            type: Number
+    },
+    TaxAmount:
+    {
+            type: Number
+    },
+    TotalAmount :
+    {
+            type :Number
+    }
 
 
 });

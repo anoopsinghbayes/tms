@@ -28,21 +28,45 @@ var PaymentLinkSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    PaymentID: {
-        type: String
+    TagDate:{
+        type: Date
 
     },
-    TransactionID: {
-        type: String,
-        trim: true
-    },
-    TransactionType: {
-        type: String,
-        trim: true
-    },
-    AllocatedAmount: {
-        type: String,
-        trim: true
+    tagDetails: {
+        payments : [
+                    {
+                    PaymentID:  {   type: Schema.Types.ObjectId,
+                                    ref: 'Payment'
+                                },
+                    TagAmount:
+                                {
+                                    type: Number
+
+                                },
+                    BalanceAmount:
+                                {
+                                    type: Number
+                                }
+                    }
+                    ],
+        invoices : [
+                    {
+                    InvoiceNo:{
+                                    type: Schema.Types.ObjectId,
+                                    ref: 'Invoice'
+                                },
+                    InvoiceDate:
+                                {
+                                    type: Date
+                                },
+                    InvoiceAmount:
+                                {
+                                    type: Number
+                                }
+            }
+                    ]
+
     }
+
 });
 

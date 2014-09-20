@@ -31,16 +31,32 @@ var PaymentSchema = new Schema({
     },
     PaymentRelDate: {
         type: Date
+    },
+    BankDetails :{
+                    BankName        : {type: String,trim: true},
+                    BranchName      : {type: String,trim: true},
+                    BranchAddress   : {type: String,trim: true},
+                    IFSCCode        : {type: String,trim: true},
+                    BranchCode      : {type: String,trim: true}
 
-    }
-    ,
+    },
+    PaymentStatus:
+    {
+        type: String,
+        trim: true
+    },
     PaymentMode: {
         type: String
 
     },
-    UnAllocatedAmount: {
+    PaymentAmount:
+    {
+        type:Number
+    },
 
-        type : String
+    BalanceAmount: {
+
+        type : Number
 
     }
 
