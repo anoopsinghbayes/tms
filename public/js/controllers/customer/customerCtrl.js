@@ -4,7 +4,7 @@
 angular.module('mean').controller('listCustomer', ['$scope','Customers', function ($scope,Customers) {
 
     //$scope.customers=
-      Customers.getList().then(function(customers){
+      Customers.getCustomers().then(function(customers){
 
             $scope.customers=customers;
 
@@ -32,16 +32,20 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$
 
 
         Customers.post(customer).then(function(response) {
-            $state.go('customers.edit' ,{'customerId': response._id});
+            $state.go('customers.edit'  ,{'customerId': response._id});
         },function(data){
 		console.log(data);
 		});
     }
 }]);
 angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams', function ($scope,Customers,$stateParams) {
-   Customers.one($stateParams.customerId).get().then(function(data){
+    console.log('state params customer id:',$stateParams.customerId);
+    Customers.getCustomer($stateParams.customerId).then(function(data){
        console.log(data);
        $scope.customer=data;
-
+        $scope.save=function(){
+            console.log($scope.customer);
+            $scope.customer.put();
+        }
    });
 }]);

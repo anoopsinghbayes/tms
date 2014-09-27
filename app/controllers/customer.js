@@ -11,12 +11,13 @@ var mongoose = require('mongoose'),
  * Find Customer by id
  */
 exports.show = function(req, res, next) {
-	console.log(req.params.CustomerId);
-	Customer = mongoose.mtModel(req.user.tenant+'.Customer');
-    console.log('tenantid:',req.user.tenant);
-    Customer.findOne(req.params.CustomerId, function(err, customer) {
-        console.log('error:',err);
-        console.log('customer:',customer);
+	//console.log("customer.id",req.params.CustomerId);
+    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+
+    //console.log('tenantid:',req.user.tenant);
+    Customer.findOne({_id: req.params.CustomerId}, function(err, customer) {
+       // console.log('error:',err);
+        //console.log('customer:',customer);
         if (err){ 
             return next(err);
         }
@@ -51,20 +52,28 @@ exports.create = function(req, res) {
  * Update a Customer
  */
 exports.update = function(req, res) {
-    var customer = req.customer;
+   // var customer = req.customer;
 
-    customer = _.extend(customer, req.body);
 
-    customer.save(function(err) {
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                customer: customer
-            });
+    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+
+    Customer.findOne({_id: req.params.CustomerId},function(err,customer){
+
+        customer=_.extend(customer, req.body);
+
+        customer.save(function(err) {
+            if (err) {
+
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    customer: customer
+                });
         } else {
+            console.log("customer after save",customer);
             res.jsonp(customer);
         }
     });
+    })
 };
 /*exports.show = function(req, res) {
     res.jsonp(req.bp);
