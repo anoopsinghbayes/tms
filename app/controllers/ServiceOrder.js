@@ -38,4 +38,26 @@ exports.create = function(req, res) {
     });
 };
 
+/**
+ * Update a Service Order
+ */
+exports.update = function(req, res) {
+    ServiceOrder =mongoose.mtModel(req.user.tenant+'.ServiceOrder');
+
+    ServiceOrder.findOne({_id: req.params.serviceOrderId},function(err,serviceOrder){
+
+        serviceOrder =_.extend(serviceOrder, req.body);
+
+        serviceOrder.save(function(err) {
+            if (err) {
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    serviceOrder: serviceOrder
+                });
+            } else {
+                res.jsonp(serviceOrder);
+            }
+        });
+    })
+};
 

@@ -27,3 +27,27 @@ exports.create = function(req, res) {
         }
     });
 };
+
+/**
+ * Update a VehicleFinance
+ */
+exports.update = function(req, res) {
+    VehicleFinance =mongoose.mtModel(req.user.tenant+'.VehicleFinance');
+
+    VehicleFinance.findOne({_id: req.params.vehicleId},function(err,vehiclefinance){
+
+        vehiclefinance =_.extend(vehiclefinance, req.body);
+
+        vehiclefinance.save(function(err) {
+            if (err) {
+
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    vehiclefinance: vehiclefinance
+                });
+            } else {
+                res.jsonp(vehiclefinance);
+            }
+        });
+    })
+};

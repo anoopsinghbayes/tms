@@ -114,31 +114,43 @@ module.exports = function (app, passport, auth) {
     var ServiceOrder = require('../app/controllers/ServiceOrder');
     app.post('/ServiceOrder', auth.requiresLogin, ServiceOrder.create);
 
-
     //Invoice Routes
     var Invoice = require('../app/controllers/Invoice');
     app.post('/Invoice', auth.requiresLogin, Invoice.create);
-
+    app.put('/Invoice/:invoiceId', auth.requiresLogin, Invoice.update);
+    //var GenerateInvoice = require('../app/controllers/GenerateInvoice');
+    //app.get('/GenerateInvoice', auth.requiresLogin, GenerateInvoice.getInvDet);
 
     //Tyre Routes
     var Tyre = require('../app/controllers/tyreDetails');
     app.post('/tyres', auth.requiresLogin, Tyre.create);
+    app.put('/tyres/:tyreId', auth.requiresLogin, Tyre.update);
 
    //Vehicle Routes
     var Vehicle = require('../app/controllers/Vehicle');
     app.post('/vehicles', auth.requiresLogin, Vehicle.create);
+    app.put('/vehicles/:vehicleId', auth.requiresLogin, Vehicle.update);
 
     //VehicleFinance Routes
     var VehicleFinance = require('../app/controllers/VehicleFinance');
     app.post('/vehiclefin', auth.requiresLogin, VehicleFinance.create);
+    app.put('/vehiclefin/:vehicleId', auth.requiresLogin, VehicleFinance.update);
 
     //VehicleMaintenance
     var VehicleMaintenance = require('../app/controllers/vehicleMaintanence');
     app.post('/vehiclemaint', auth.requiresLogin, VehicleMaintenance.create);
-    app.put('/vehiclemaint/:VehicleId', auth.requiresLogin, auth.article.hasAuthorization, VehicleMaintenance.update);
+    app.put('/vehiclemaint/:vehicleId', auth.requiresLogin, VehicleMaintenance.update);
 
     //Service Order Routes
     var ServiceOrder = require('../app/controllers/ServiceOrder');
     app.post('/service', auth.requiresLogin, ServiceOrder.create);
+    app.put('/service/:serviceOrderId', auth.requiresLogin, ServiceOrder.update);
 
+    //Orders by Customer
+    var CustomerOrders = require('../app/controllers/OrdersByCustomer')
+    app.get('/OrdersByCustomer', auth.requiresLogin, CustomerOrders.ordersByCustomer);
+
+    //get orders by customer
+    //var OrdersByCustomer = require('../app/controllers/OrdersByCustomer')
+    //app.get('/OrdersByCustomer', auth.requiresLogin, OrdersByCustomer.ordersDetails);
 };

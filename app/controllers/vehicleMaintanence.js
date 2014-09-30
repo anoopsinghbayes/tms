@@ -37,24 +37,24 @@ exports.create = function(req, res) {
 };
 
 /**
- * Update a Vehicle
+ * Update a Vehicle Maintenance
  */
 exports.update = function(req, res) {
-    var vehicleMaintenance = req.vehicleMaintenance;
+    VehicleMaintenance =mongoose.mtModel(req.user.tenant+'.VehicleMaintenance');
 
-    vehicleMaintenance = _.extend(vehicleMaintenance, req.body);
+    VehicleMaintenance.findOne({_id: req.params.vehicleId},function(err, vehicleMaintenance){
 
-    vehicleMaintenance.save(function(err) {
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                vehicleMaintenance: vehicleMaintenance
-            });
-        } else {
-            res.jsonp(vehicleMaintenance);
-        }
-    });
+        vehicleMaintenance =_.extend(vehicleMaintenance, req.body);
+
+        vehicleMaintenance.save(function(err) {
+            if (err) {
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    vehicleMaintenance: vehicleMaintenance
+                });
+            } else {
+                res.jsonp(vehicleMaintenance);
+            }
+        });
+    })
 };
-
-
-

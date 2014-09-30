@@ -26,3 +26,27 @@ exports.create = function(req, res) {
         }
     });
 };
+
+/**
+ * Update a Vehicle
+ */
+exports.update = function(req, res) {
+    Vehicle =mongoose.mtModel(req.user.tenant+'.Vehicle');
+
+    Vehicle.findOne({_id: req.params.vehicleId},function(err,vehicle){
+
+        vehicle =_.extend(vehicle, req.body);
+
+        vehicle.save(function(err) {
+            if (err) {
+
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    vehicle: vehicle
+                });
+            } else {
+                res.jsonp(vehicle);
+            }
+        });
+    })
+};

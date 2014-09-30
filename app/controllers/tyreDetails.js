@@ -26,3 +26,27 @@ exports.create = function(req, res) {
         }
     });
 };
+
+/**
+ * Update a Tyre Details
+ */
+exports.update = function(req, res) {
+    Tyre =mongoose.mtModel(req.user.tenant+'.Tyre');
+
+    Tyre.findOne({_id: req.params.tyreId},function(err, tyre){
+
+        tyre =_.extend(tyre, req.body);
+
+        tyre.save(function(err) {
+            if (err) {
+
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    tyre: tyre
+                });
+            } else {
+                res.jsonp(tyre);
+            }
+        });
+    })
+};
