@@ -1,6 +1,8 @@
 extends layouts/default
 
 block content
+  //container to show toster message from server
+  toaster-container toaster-options="{'time-out': 3000, 'close-button':true}"
   section(data-ui-view)
   script(type="text/javascript").
     window.user = !{user};

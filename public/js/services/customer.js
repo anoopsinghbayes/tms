@@ -11,6 +11,9 @@ angular.module('mean').factory('Customers', ['Restangular', function(Restangular
         getCustomer:function(id){
             return _customerService.one(id).get();
         },
+        saveCustomer:function(customer){
+          return _customerService.post(customer);
+        },
         editCustomer:function(data)
         {
 

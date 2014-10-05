@@ -4,6 +4,7 @@
 angular.module('mean').controller('listCustomer', ['$scope','Customers', function ($scope,Customers) {
 
     //$scope.customers=
+
       Customers.getCustomers().then(function(customers){
 
             $scope.customers=customers;
@@ -13,7 +14,7 @@ angular.module('mean').controller('listCustomer', ['$scope','Customers', functio
 
 }]);
 
-angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$state', function ($scope,Customers,$state) {
+angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$state','toaster', function ($scope,Customers,$state,toaster) {
     $scope.save = function() {
         customer = {
             name: $scope.customer.name,
@@ -31,14 +32,16 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$
         };
 
 
-        Customers.post(customer).then(function(response) {
+        Customers.saveCustomer(customer).then(function(response) {
+            console.log(response);
+            toaster.pop('success', "Customer Created", response._id);
             $state.go('customers.edit'  ,{'customerId': response._id});
         },function(data){
 		console.log(data);
 		});
     }
 }]);
-angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams', function ($scope,Customers,$stateParams) {
+angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams','toaster', function ($scope,Customers,$stateParams,toaster) {
     console.log('state params customer id:',$stateParams.customerId);
     Customers.getCustomer($stateParams.customerId).then(function(data){
        console.log(data);
@@ -46,6 +49,7 @@ angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$st
         $scope.save=function(){
             console.log($scope.customer);
             $scope.customer.put();
+            toaster.pop('success','Customer Updated',data._id);
         }
    });
 }]);

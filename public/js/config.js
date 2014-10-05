@@ -241,9 +241,11 @@ angular.module('mean').config(function ($localeProvider,datepickerPopupConfig,da
 
 });
 angular.module('mean').config(function(RestangularProvider){
+
 RestangularProvider.setRestangularFields({
     id: "_id"
-});
+}
+);
 });
 //config for setting ui-select theme to bootstrap
 /*angular.module('mean').config(function(uiSelectConfig) {

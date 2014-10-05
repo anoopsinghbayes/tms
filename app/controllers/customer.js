@@ -82,6 +82,7 @@ exports.update = function(req, res) {
 exports.all = function(req, res) {
     //check for search query string
     //and parse the query string to json to use further
+
    var searchQuery=qs.parse(req.query);
     console.log(searchQuery);
     Customer =mongoose.mtModel(req.user.tenant+'.Customer');
@@ -112,4 +113,5 @@ exports.all = function(req, res) {
         }
     });
     }
+
 };
