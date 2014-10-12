@@ -51,3 +51,34 @@ exports.update = function(req, res) {
         });
     })
 };
+
+/**
+ * Find VehicleFinance by id
+ */
+exports.show = function(req, res, next) {
+    VehicleFinance =mongoose.mtModel(req.user.tenant+'.VehicleFinance');
+    VehicleFinance.findOne({_id: req.params.vehicleId}, function(err, vehiclefinance) {
+        if (err){
+            return next(err);
+        }
+        else{
+            res.json(vehiclefinance);
+        }
+
+    });
+};
+/*
+ Find all VehicleFinance
+ */
+exports.all = function(req, res) {
+    VehicleFinance = mongoose.mtModel(req.user.tenant+'.VehicleFinance');
+    VehicleFinance.find().sort('-created').exec(function(err, vehiclefinance) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(vehiclefinance);
+            }
+        });
+};

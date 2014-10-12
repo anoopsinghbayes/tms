@@ -50,3 +50,55 @@ exports.update = function(req, res) {
         });
     })
 };
+
+/**
+ * Find Vehicle by id
+ */
+exports.show = function(req, res, next) {
+    Vehicle =mongoose.mtModel(req.user.tenant+'.Vehicle');
+    Vehicle.findOne({_id: req.params.VehicleId}, function(err, vehicle) {
+        if (err){
+            return next(err);
+        }
+        else{
+            res.json(vehicle);
+        }
+
+    });
+};
+/*
+ Find all Vehicle
+ */
+exports.all = function(req, res) {
+    //check for search query string
+    //and parse the query string to json to use further
+    var searchQuery=qs.parse(req.query);
+    Vehicle =mongoose.mtModel(req.user.tenant+'.Vehicle');
+    if (searchQuery.vehicleNumber) {
+        //for like query on name
+        var regex = new RegExp(searchQuery.vehicleNumber, 'i');
+        Vehicle.find({vehicleNumber: regex})
+            .select('vehicleNumber purchaseDate registrationDate garageName').exec(function(err, vehicle) {
+                if (err) {
+                    res.render('error', {
+                        status: 500
+                    });
+                } else {
+                    res.jsonp(vehicle);
+                }
+            });
+    }
+    else
+    {
+        Vehicle.find().sort('-created').exec(function(err, vehicle) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(vehicle);
+            }
+        });
+    }
+
+};

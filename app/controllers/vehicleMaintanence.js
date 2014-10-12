@@ -58,3 +58,34 @@ exports.update = function(req, res) {
         });
     })
 };
+
+/**
+ * Find Vehicle Maintenance by id
+ */
+exports.show = function(req, res, next) {
+    VehicleMaintenance =mongoose.mtModel(req.user.tenant+'.VehicleMaintenance');
+    VehicleMaintenance.findOne({_id: req.params.vehicleId}, function(err, vehiclemaintenance) {
+        if (err){
+            return next(err);
+        }
+        else{
+            res.json(vehiclemaintenance);
+        }
+
+    });
+};
+/*
+ Find all Vehicle Maintenance
+ */
+exports.all = function(req, res) {
+    VehicleMaintenance = mongoose.mtModel(req.user.tenant+'.VehicleMaintenance');
+    VehicleMaintenance.find().sort('-created').exec(function(err, vehiclemaintenance) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            res.jsonp(vehiclemaintenance);
+        }
+    });
+};

@@ -61,3 +61,35 @@ exports.update = function(req, res) {
     })
 };
 
+/**
+ * Find Service Orders
+ */
+exports.show = function(req, res, next) {
+    ServiceOrder =mongoose.mtModel(req.user.tenant+'.ServiceOrder');
+    ServiceOrder.findOne({_id: req.params.serviceOrderId}, function(err, serviceorder) {
+        if (err){
+            return next(err);
+        }
+        else{
+            res.json(serviceorder);
+        }
+
+    });
+};
+
+/*
+ Find all Service Orders
+ */
+exports.all = function(req, res) {
+    ServiceOrder =mongoose.mtModel(req.user.tenant+'.ServiceOrder');
+    ServiceOrder.find().sort('-created').exec(function(err, serviceorder) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(serviceorder);
+            }
+        });
+};
+

@@ -125,30 +125,48 @@ module.exports = function (app, passport, auth) {
     var Tyre = require('../app/controllers/tyreDetails');
     app.post('/tyres', auth.requiresLogin, Tyre.create);
     app.put('/tyres/:tyreId', auth.requiresLogin, Tyre.update);
+    app.get('/tyres/:tyreId', auth.requiresLogin, Tyre.show);
+    app.get('/tyres', auth.requiresLogin, Tyre.all);
+
 
    //Vehicle Routes
     var Vehicle = require('../app/controllers/Vehicle');
     app.post('/vehicles', auth.requiresLogin, Vehicle.create);
     app.put('/vehicles/:vehicleId', auth.requiresLogin, Vehicle.update);
+    app.get('/vehicles/:vehicleId', auth.requiresLogin, Vehicle.show);
+    app.get('/vehicle', auth.requiresLogin, Vehicle.all);
 
     //VehicleFinance Routes
     var VehicleFinance = require('../app/controllers/VehicleFinance');
     app.post('/vehiclefin', auth.requiresLogin, VehicleFinance.create);
     app.put('/vehiclefin/:vehicleId', auth.requiresLogin, VehicleFinance.update);
+    app.get('/vehiclefin/:vehicleId', auth.requiresLogin, VehicleFinance.show);
+    app.get('/vehiclefin', auth.requiresLogin, VehicleFinance.all);
 
     //VehicleMaintenance
     var VehicleMaintenance = require('../app/controllers/vehicleMaintanence');
     app.post('/vehiclemaint', auth.requiresLogin, VehicleMaintenance.create);
     app.put('/vehiclemaint/:vehicleId', auth.requiresLogin, VehicleMaintenance.update);
+    app.get('/vehiclemaint/:vehicleId', auth.requiresLogin, VehicleMaintenance.show);
+    app.get('/vehiclemaint', auth.requiresLogin, VehicleMaintenance.all);
 
     //Service Order Routes
     var ServiceOrder = require('../app/controllers/ServiceOrder');
     app.post('/service', auth.requiresLogin, ServiceOrder.create);
     app.put('/service/:serviceOrderId', auth.requiresLogin, ServiceOrder.update);
+    app.get('/service/:serviceOrderId', auth.requiresLogin, ServiceOrder.show);
+    app.get('/service', auth.requiresLogin, ServiceOrder.all);
 
     //Orders by Customer
     var CustomerOrders = require('../app/controllers/OrdersByCustomer')
     app.get('/OrdersByCustomer', auth.requiresLogin, CustomerOrders.ordersByCustomer);
+
+    //Employee
+    var Employee = require('../app/controllers/Employee');
+    app.post('/Employee', auth.requiresLogin, Employee.create);
+    app.get('/Employee', auth.requiresLogin, Employee.all);
+    app.get('/Employee/:EmployeeId', auth.requiresLogin, Employee.show);
+    app.put('/Employee/:EmployeeId', auth.requiresLogin, Employee.update);
 
     //get orders by customer
     //var OrdersByCustomer = require('../app/controllers/OrdersByCustomer')
