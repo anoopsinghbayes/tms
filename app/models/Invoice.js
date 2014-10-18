@@ -60,6 +60,14 @@ var InvoiceSchema = new Schema({
     {
             type: Number
     },
+    DiscountAmount:
+    {
+        type : Number
+    },
+    LoadingAmount:
+    {
+        type:Number
+    },
     TaxAmount:
     {
             type: Number
@@ -67,7 +75,16 @@ var InvoiceSchema = new Schema({
     TotalAmount :
     {
             type :Number
+    },
+    Remarks:
+    {
+        type: String
+    },
+    DueAmount:
+    {
+        type: Number
     }
+
 
 
 });

@@ -21,16 +21,16 @@ var PaymentSchema = new Schema({
         type: Date
 
     },
-    PaymentFrom: {
+    FromAccount: {
         type: String,
         trim: true
     },
-    PaymentTo: {
+    ToAccount: {
         type: String,
         trim: true
     },
     PaymentRelDate: {
-        type: Date
+        type: Date                  //Payment Confirmation Date
     },
     BankDetails :{
                     BankName        : {type: String,trim: true},
@@ -42,11 +42,12 @@ var PaymentSchema = new Schema({
     },
     PaymentStatus:
     {
-        type: String,
+        type: String,               //Pending,Confirmed,Cancelled
         trim: true
     },
+
     PaymentMode: {
-        type: String
+        type: String                //Cash, Cheque, DD
 
     },
     PaymentAmount:
@@ -58,7 +59,32 @@ var PaymentSchema = new Schema({
 
         type : Number
 
-    }
+    },
+    EndDate :{
+
+        type: Date
+    },
+
+    Invoices : [
+        {
+            InvoiceNo:{
+                type: Schema.Types.ObjectId,
+                ref: 'Invoice'
+            },
+            Amount:
+            {
+                type: Number
+            },
+            ModifiedDate:
+            {
+                type: Date
+            }
+
+
+        }
+    ]
+
+
 
 });
 

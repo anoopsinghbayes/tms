@@ -32,7 +32,11 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label for="PaymentMode" data-lblreq="">Payment Mode</label>
-                            <input type="text" class="form-control" id="PaymentMode" name="PaymentMode" placeholder="Payment Mode"  data-ng-model="Payment.PaymentMode"/>
+                            <select class="form-control" id="PaymentMode" name="PaymentMode" placeholder="Payment Mode"  data-ng-model="Payment.PaymentMode">
+                                <option>Cheque</option>
+                                <option>DD</option>
+                                <option>Cash</option>
+                            </select>
                         </div>
 
                     </div>

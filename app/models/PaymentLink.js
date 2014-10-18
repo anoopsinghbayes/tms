@@ -32,6 +32,10 @@ var PaymentLinkSchema = new Schema({
         type: Date
 
     },
+    PaymentID:  {   type: Schema.Types.ObjectId,
+        ref: 'Payment'
+    },
+
     tagDetails: {
         payments : [
                     {
