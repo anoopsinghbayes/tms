@@ -171,4 +171,9 @@ module.exports = function (app, passport, auth) {
     //get orders by customer
     //var OrdersByCustomer = require('../app/controllers/OrdersByCustomer')
     //app.get('/OrdersByCustomer', auth.requiresLogin, OrdersByCustomer.ordersDetails);
+
+    //Test Route to test new models or methods
+    var test = require('../app/controllers/TestController');
+    app.get('/test', auth.requiresLogin, test.create);
+
 };
