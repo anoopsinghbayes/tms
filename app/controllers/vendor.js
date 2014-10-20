@@ -8,17 +8,17 @@
  */
 var mongoose = require('mongoose'),
     BusinessPartner = mongoose.model('BusinessPartner'),
-    Customer = mongoose.model('Customer'),
+    Vendor = mongoose.model('Vendor'),
     qs=require('qs'),
     _ = require('lodash');
 
 /**
- * Create a Customer
+ * Create Vendor
  */
 exports.create = function(req, res, next) {
-    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+    Vendor =mongoose.mtModel(req.user.tenant+'.Vendor');
 
-    var bp = new Customer(req.body);
+    var bp = new Vendor(req.body);
     bp.user = req.user;
 
     bp.save(function(err) {
@@ -34,79 +34,78 @@ exports.create = function(req, res, next) {
 };
 
 /**
- * Update a Customer
+ * Update a Vendor
  */
 exports.update = function(req, res) {
-    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+    Vendor =mongoose.mtModel(req.user.tenant+'.Vendor');
 
-    Customer.findOne({_id: req.params.CustomerId},function(err,customer){
+    Vendor.findOne({_id: req.params.VendorId},function(err,vendor){
 
-        customer=_.extend(customer, req.body);
+        vendor=_.extend(vendor, req.body);
 
-        customer.save(function(err) {
+        vendor.save(function(err) {
             if (err) {
-
                 return res.send('users/signup', {
                     errors: err.errors,
-                    customer: customer
+                    vendor: vendor
                 });
             } else {
-                res.jsonp(customer);
+                res.jsonp(vendor);
             }
         });
     })
 };
 
 /**
- * Find Customer by id
+ * Find Vendor by id
  */
 exports.show = function(req, res, next) {
-    Customer = mongoose.mtModel(req.user.tenant+'.Customer');
-    Customer.findOne({_id: req.params.CustomerId}, function(err, customer) {
+    Vendor = mongoose.mtModel(req.user.tenant+'.Vendor');
+    Vendor.findOne({_id: req.params.VendorId}, function(err, vendor) {
         if (err){
             return next(err);
         }
         else{
-            res.json(customer);
+            res.json(vendor);
         }
-       
+
     });
 };
 
 /**
-* Find All Customer
-* */
+ * Find All Customer
+ * */
 
 exports.all = function(req, res) {
     //check for search query string
     //and parse the query string to json to use further
     var searchQuery = qs.parse(req.query);
-    Customer =mongoose.mtModel(req.user.tenant+'.Customer');
+    Vendor =mongoose.mtModel(req.user.tenant+'.Vendor');
     if (searchQuery.name) {
         //for like query on name
         var regex = new RegExp(searchQuery.name, 'i');
-        Customer.find({firstName: regex})
-            .select('firstName _id addressDetails').exec(function(err, bps) {
+        Vendor.find({firstName: regex})
+            .select('firstName _id addressDetails').exec(function(err, vendor) {
                 if (err) {
                     res.render('error', {
                         status: 500
                     });
                 } else {
-                    res.jsonp(bps);
+                    res.jsonp(vendor);
                 }
             });
     }
     else
     {
-        Customer.find().sort('-created').exec(function(err, bps) {
-        if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(bps);
-        }
-    });
+        Vendor.find().sort('-created').exec(function(err, vendor) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(vendor);
+            }
+        });
     }
 
 };

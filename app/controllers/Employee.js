@@ -7,9 +7,11 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+    BusinessPartner = mongoose.model('BusinessPartner'),
     Employee = mongoose.model('Employee'),
     qs=require('qs'),
     _ = require('lodash');
+
 /**
  * Find Employee by id
  */
@@ -60,7 +62,7 @@ exports.all = function(req, res) {
         //for like query on name
         var regex = new RegExp(searchQuery.firstName, 'i');
         Employee.find({firstName: regex})
-            .select('employeeId firstName lastName address').exec(function(err, employee) {
+            .select('firstName _id addressDetails').exec(function(err, employee) {
                 if (err) {
                     res.render('error', {
                         status: 500
@@ -97,7 +99,6 @@ exports.update = function(req, res) {
 
         employee.save(function(err) {
             if (err) {
-
                 return res.send('users/signup', {
                     errors: err.errors,
                     employee: employee
