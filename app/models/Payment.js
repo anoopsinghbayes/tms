@@ -24,6 +24,7 @@ var PaymentSchema = new Schema({
     FromAccount: {
         type: String,
         trim: true
+
     },
     ToAccount: {
         type: String,
