@@ -6,13 +6,18 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
-
+var util = require('util');
 
 
 /**
  * Payment Schema
  */
-var PaymentSchema = new Schema({
+function AbstractPaymentSchema() {
+    Schema.apply(this, arguments);
+
+    this.add({
+
+
     created: {
         type: Date,
         default: Date.now
@@ -22,12 +27,12 @@ var PaymentSchema = new Schema({
 
     },
     FromAccount: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
         trim: true
 
     },
     ToAccount: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
         trim: true
     },
     PaymentRelDate: {
@@ -69,8 +74,8 @@ var PaymentSchema = new Schema({
     Invoices : [
         {
             InvoiceNo:{
-                type: Schema.Types.ObjectId,
-                ref: 'Invoice'
+                type: Schema.Types.ObjectId  //Rererence not given since multiple models are saved in Invoice collection
+
             },
             Amount:
             {
@@ -85,8 +90,28 @@ var PaymentSchema = new Schema({
         }
     ]
 
+        });
 
+};
+
+
+
+
+util.inherits(AbstractPaymentSchema, Schema);
+
+var PaymentSchema = new AbstractPaymentSchema({});
+
+
+var IncomeSchema = new AbstractPaymentSchema({
 
 });
 
-mongoose.model('Payment', PaymentSchema);
+var ExpenseSchema = new AbstractPaymentSchema({
+
+});
+
+
+
+var Payment = mongoose.mtModel('Payment', PaymentSchema); // base model
+var Income = Payment.discriminator('Income', IncomeSchema); // derived model
+var Expense = Payment.discriminator('Expense', ExpenseSchema); // derived model

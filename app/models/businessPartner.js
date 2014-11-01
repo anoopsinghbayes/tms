@@ -42,37 +42,37 @@ function AbstractBusinessPartnerSchema() {
             type: Date,
             default: Date.now
         },
-        firstName: {
+        fName: {
             type: String,
-            required:true,
+
             trim: true
         },
-        middleName: {
+        mName: {
             type: String,
-            required:true,
+
             trim: true
         },
-        lastName: {
+        lName: {
             type: String,
-            required:true,
+
             trim: true
         },
         email:{
             type:String,
-            required:true,
+
             trim:true
         },
-        addressDetails:{
+        address:{
             created: {
                 type: Date,
                 default: Date.now
             },
-            addressLine1:{
+            adL1:{
                 type: String,
-                required:true,
+
                 trim: true
             },
-            addressLine2:{
+            adL2:{
                 type: String,
                 trim: true
             },
@@ -82,25 +82,29 @@ function AbstractBusinessPartnerSchema() {
             },
             city:{
                 type: String,
-                trim: true,
-                required:true
+                trim: true
+
             },
             state:{
                 type: String,
-                trim: true,
-                required:true
+                trim: true
+
             },
-            pinCode:{
-                type: Number,
-                required:true
+            zip:{
+                type: Number
+
             },
-            telephoneResidence:{
-                type: Number,
-                required:true
+            phM1:{
+                type: Number
+
             },
-            mobile:{
-                type: Number,
-                required:true
+            phM2:{
+                type: Number
+
+            },
+            phL:{
+                type: Number
+
             },
             user: {
                 type: String
@@ -118,6 +122,10 @@ util.inherits(AbstractBusinessPartnerSchema, Schema);
 var BusinessPartnerSchema = new AbstractBusinessPartnerSchema({});
 
 var CustomerSchema = new AbstractBusinessPartnerSchema({
+    companyName:{
+        type:String,
+        required:true
+    },
     credit:{
         limit:{type:Number,min:0,required:false},
         period:{type:Number,min:0,required:false}
@@ -131,6 +139,10 @@ var CustomerSchema = new AbstractBusinessPartnerSchema({
 });
 
 var VendorSchema = new AbstractBusinessPartnerSchema({
+    companyName:{
+        type:String,
+        required:true
+    },
     representative: {
         name: {
             type: String,
@@ -139,6 +151,10 @@ var VendorSchema = new AbstractBusinessPartnerSchema({
     }});
 
 var EmployeeSchema = new AbstractBusinessPartnerSchema({
+    companyName:{
+    type:String,
+    required:true
+    },
     employeeId: {
         type: String,
         required: true
