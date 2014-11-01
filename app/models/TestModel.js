@@ -38,5 +38,5 @@ var DogSchema = new AbstractAnimalSchema({
 
 var Animal = mongoose.mtModel('Animal', AnimalSchema); // our base model
 var Dog = Animal.discriminator('Dog', DogSchema); // our derived model (see discriminator)
-var Kitten = Animal.discriminator('Kitten', KittySchema); // our derived model (see discriminator)
+var Kitten = Animal.discriminator('Ki', KittySchema); // our derived model (see discriminator)
 

@@ -212,8 +212,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/Payment',
                 templateUrl:'views/Payments/PaymentEntry.html',
                 controller:'PaymentEntryCtrl'
-            })
-            .state('googleMap',
+            }).state('PaymentInvoice',
+            {url:'/PaymentInvoice',
+                templateUrl:'views/Payments/PaymentInvoice.html',
+                controller:'PaymentInvoiceCtrl'
+            }).state('googleMap',
             {
                 url:'googlemap',
             templateUrl:'views/maps/googleMap.html',

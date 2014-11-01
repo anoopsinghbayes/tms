@@ -22,7 +22,7 @@ require('mongoose-multitenant')('_');
 
 
 /**
- * Invoice Schema
+ * Base Invoice Schema
  */
 var InvoiceSchema = new Schema({
     created: {
@@ -30,10 +30,12 @@ var InvoiceSchema = new Schema({
         default: Date.now
     },
 
+
+
     CustomerID :
     {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Customer'
+        type: mongoose.Schema.Types.ObjectId  //since multiple models in BusinessPartner collection reference not given for CustomerID
+
 
     },
 

@@ -176,4 +176,8 @@ module.exports = function (app, passport, auth) {
     var test = require('../app/controllers/TestController');
     app.get('/test', auth.requiresLogin, test.create);
 
+    var paymentInvoice = require('../app/controllers/PaymentInvoice');
+    app.get('/customers/:CustomerId/openpayments', auth.requiresLogin, paymentInvoice.openPaymentsByCustomer);
+
+
 };

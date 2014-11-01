@@ -93,4 +93,4 @@ var EmployeeSchema = new Schema({
     }
 );
 
-mongoose.mtModel('Employee', EmployeeSchema);
+//mongoose.mtModel('Employee', EmployeeSchema);   Employee model already created under business partner schema

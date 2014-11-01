@@ -10,7 +10,7 @@
 var mongoose = require('mongoose'),
     Animal = mongoose.model('Animal'),
     Dog = mongoose.model('Dog'),
-    Kitten = mongoose.model('Kitten'),
+    Kitten = mongoose.model('Ki'),
     qs=require('qs'),
     _ = require('lodash');
 
@@ -19,24 +19,24 @@ var mongoose = require('mongoose'),
 
 exports.create = function(req, res) {
     Kitten =mongoose.mtModel('t2.Kitten');
-   // Animal=mongoose.mtModel('t2'+'.Animal');
+   Animal=mongoose.mtModel('t2'+'.Animal');
    // Dog=mongoose.mtModel('t2'+'.Dog');
-   var bp = new Kitten({name:'Kitten'});
-   // var bp = new Kitten();
+   var bp = new Kitten({name:'jittu',tail_type:'single'});
+   // var bp = new Kitten({name:});
     //var bp = new Dog({name:'Dog'});
     //bp.user = req.user;
 
-    /*bp.save(function(err) {
-        if (err) {
-            return res.send('500', {
-                errors: err.errors,
-                bp: bp
-            });
-        } else {
-            res.jsonp(bp);
-        }
-    });
-    */
+//   bp.save(function(err) {
+//        if (err) {
+//            return res.send('500', {
+//                errors: err.errors,
+//                bp: bp
+//            });
+//        } else {
+//            res.jsonp(bp);
+//        }
+//    });
+
     Kitten.find().exec(function(err, bps) {
         if (err) {
             res.render('error', {
