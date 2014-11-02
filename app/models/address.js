@@ -44,7 +44,7 @@ var AddressSchema=new Schema({
         state:{
             type: String
         },
-        zip:{
+        pin:{
             type: Number
 
         },
