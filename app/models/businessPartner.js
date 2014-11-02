@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
 var util = require('util');
-
+var AddressSchema = mongoose.model('Address');
 
 /**
  * Employee Enum
@@ -57,59 +57,9 @@ function AbstractBusinessPartnerSchema() {
 
             trim: true
         },
-        email:{
-            type:String,
-
-            trim:true
-        },
-        address:{
-            created: {
-                type: Date,
-                default: Date.now
-            },
-            adL1:{
-                type: String,
-
-                trim: true
-            },
-            adL2:{
-                type: String,
-                trim: true
-            },
-            street:{
-                type: String,
-                trim: true
-            },
-            city:{
-                type: String,
-                trim: true
-
-            },
-            state:{
-                type: String,
-                trim: true
-
-            },
-            zip:{
-                type: Number
-
-            },
-            phM1:{
-                type: Number
-
-            },
-            phM2:{
-                type: Number
-
-            },
-            phL:{
-                type: Number
-
-            },
-            user: {
-                type: String
-            }
-        },
+        address:
+             [AddressSchema]
+        ,
         user: {
             type: String
         }
@@ -130,7 +80,7 @@ var CustomerSchema = new AbstractBusinessPartnerSchema({
         limit:{type:Number,min:0,required:false},
         period:{type:Number,min:0,required:false}
     },
-    salesrep: {
+    salesRep: {
         name: {
             type: String,
             trim: true
@@ -143,7 +93,7 @@ var VendorSchema = new AbstractBusinessPartnerSchema({
         type:String,
         required:true
     },
-    representative: {
+    vendorRep: {
         name: {
             type: String,
             trim: true
@@ -151,11 +101,12 @@ var VendorSchema = new AbstractBusinessPartnerSchema({
     }});
 
 var EmployeeSchema = new AbstractBusinessPartnerSchema({
+
     companyName:{
     type:String,
     required:true
     },
-    employeeId: {
+    empId: {
         type: String,
         required: true
     },
