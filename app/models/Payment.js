@@ -6,18 +6,13 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
-var util = require('util');
+
 
 
 /**
  * Payment Schema
  */
-function AbstractPaymentSchema() {
-    Schema.apply(this, arguments);
-
-    this.add({
-
-
+var PaymentSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -26,17 +21,16 @@ function AbstractPaymentSchema() {
         type: Date
 
     },
-    FromAccount: {
-        type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
+    PaymentFrom: {
+        type: String,
         trim: true
-
     },
-    ToAccount: {
-        type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
+    PaymentTo: {
+        type: String,
         trim: true
     },
     PaymentRelDate: {
-        type: Date                  //Payment Confirmation Date
+        type: Date
     },
     BankDetails :{
                     BankName        : {type: String,trim: true},
@@ -48,12 +42,11 @@ function AbstractPaymentSchema() {
     },
     PaymentStatus:
     {
-        type: String,               //Pending,Confirmed,Cancelled
+        type: String,
         trim: true
     },
-
     PaymentMode: {
-        type: String                //Cash, Cheque, DD
+        type: String
 
     },
     PaymentAmount:
@@ -65,53 +58,8 @@ function AbstractPaymentSchema() {
 
         type : Number
 
-    },
-    EndDate :{
-
-        type: Date
-    },
-
-    Invoices : [
-        {
-            InvoiceNo:{
-                type: Schema.Types.ObjectId  //Rererence not given since multiple models are saved in Invoice collection
-
-            },
-            Amount:
-            {
-                type: Number
-            },
-            ModifiedDate:
-            {
-                type: Date
-            }
-
-
-        }
-    ]
-
-        });
-
-};
-
-
-
-
-util.inherits(AbstractPaymentSchema, Schema);
-
-var PaymentSchema = new AbstractPaymentSchema({});
-
-
-var IncomeSchema = new AbstractPaymentSchema({
+    }
 
 });
 
-var ExpenseSchema = new AbstractPaymentSchema({
-
-});
-
-
-
-var Payment = mongoose.mtModel('Payment', PaymentSchema); // base model
-var Income = Payment.discriminator('Income', IncomeSchema); // derived model
-var Expense = Payment.discriminator('Expense', ExpenseSchema); // derived model
+mongoose.model('Payment', PaymentSchema);

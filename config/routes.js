@@ -176,6 +176,13 @@ module.exports = function (app, passport, auth) {
     var test = require('../app/controllers/TestController');
     app.get('/test', auth.requiresLogin, test.create);
 
+    //return all the mongoose enums to be used for UI
+    var enums=require('../app/models/enums.js');
+    app.get('/enums',auth.requiresLogin,function(req, res){
+        res.jsonp(enums);
+    });
+
+
     var paymentInvoice = require('../app/controllers/PaymentInvoice');
     app.get('/customers/:CustomerId/openpayments', auth.requiresLogin, paymentInvoice.openPaymentsByCustomer);
 

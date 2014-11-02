@@ -12,31 +12,11 @@
  */
 var mongoose = require('mongoose'),
     autoIncrement=require('mongoose-auto-increment'),
-    Schema = mongoose.Schema,
-
-    OrderStatus=["open","confirmed","closed","cancelled"];
-
-/**
- * Vehicle Weight Details
- */
-
-var VehicleWeightSchema = new Schema({
-
-        tyreweight:{
-        type:String
-        
-        },
-        netweight:{
-        type:String
-        
-        },
-        grossweight:{
-        type:String
-        
-        }
-    }
-
-);
+    Schema = mongoose.Schema;
+    //enums=require('./app/models/enums'),
+require('mongoose-multitenant')('_');
+var util = require('util');
+var OrderStatus=["open","confirmed","closed","cancelled"];
 
 
 /**
@@ -44,102 +24,247 @@ var VehicleWeightSchema = new Schema({
  */
 
 
-var TripSchema = new Schema({
+var SalesTripSchema = new Schema({
 
-        pickupLocation:{
+        pickUpLocation:{
         type:String
-        
+
         },
-        dropOfflocation:{
+        dropOffLocation:{
         type:String
-        
+
         },
-        pickUpdate:{
+        pickUpDate:{
         type:Date
-        
+
         },
-        dropOffdate:{
+        dropOffDate:{
         type:Date
-        
+
         },
         distance:{
-        type:String
-        
+        type:Number
+
         },
-        vehicleno:{
+        vehicleNo:{
         type:String
-        
+
         },
         capacity:{
-        type:String
-        
+        type:Number
+
         },
         dieselUsed:{
         type:String
-        
+
         },
         product:{
         type:String
-        
+
         },
-        pickupWeight :{
-            tyreweight:{
-                        type:String
+        pickUpWeight :{
+            tyreWeight:{
+                        type:Number
                         },
-            netweight:{
-                type:String
+            netWeight:{
+                type:Number
 
                       },
-            grossweight:{
-                type:String
+            grossWeight:{
+                type:Number
 
             }
         },
         dropOffWeight:{
-            tyreweight:{
-                type:String
+            tyreWeight:{
+                type:Number
             },
-            netweight:{
-                type:String
+            netWeight:{
+                type:Number
 
             },
-            grossweight:{
-                type:String
+            grossWeight:{
+                type:Number
 
             }
         }
     }
 );
 
+var SubcontractTripSchema = new Schema({
 
+        pickUpLocation:{
+            type:String
 
+        },
+        dropOffLocation:{
+            type:String
 
-/**
- * Order Schema
- */
-var OrderSchema = new Schema({
-
-        date:{
+        },
+        pickUpDate:{
             type:Date
-            
-        },
-        status:{
-            type:String,
-            enum:OrderStatus
 
         },
+        dropOffDate:{
+            type:Date
 
-        customer:{
-            type:Schema.ObjectId,
-            ref:'Customer',
-            $tenant:true
         },
+        distance:{
+            type:Number
 
-       trips :[TripSchema]
+        },
+        vehicleNo:{
+            type:String
 
+        },
+        capacity:{
+            type:Number
 
+        },
+        dieselUsed:{
+            type:String
 
+        },
+        product:{
+            type:String
+
+        },
+        pickUpWeight :{
+            tyreWeight:{
+                type:Number
+            },
+            netWeight:{
+                type:Number
+
+            },
+            grossWeight:{
+                type:Number
+
+            }
+        },
+        dropOffWeight:{
+            tyreWeight:{
+                type:Number
+            },
+            netWeight:{
+                type:Number
+
+            },
+            grossWeight:{
+                type:Number
+
+            }
+        }
     }
 );
-mongoose.mtModel('Order', OrderSchema);
+
+var ServiceTripSchema = new Schema({
+        emiStartDate:{
+            type:Date
+
+        },
+        emiEndDate:{
+            type:Date
+
+        },
+        vehicleNo:{
+            type:String
+
+        },
+        daysPerMonth:{
+            type:Date,
+            trim:true
+        },
+        amount:{
+            type:Number,
+            trim:true
+        },
+        invoiceId:{
+            type:mongoose.Schema.Types.ObjectId,        //refer to Invoice collection
+            trim:true
+        }
+    }
+);
+
+
+function AbstractOrdersSchema() {
+    Schema.apply(this, arguments);
+    this.add({
+        created: {
+            type: Date,
+            default: Date.now
+        },
+        orderStatus:{
+            type:String,
+            enum:OrderStatus
+        },
+        bpId:{
+            type:Schema.ObjectId,
+            ref:'BusinessPartner',
+            $tenant:true
+        },
+        orderStartDate: {
+            type:Date,
+            trim:true
+        },
+        orderEndDate: {
+            type:Date,
+            trim:true
+        }
+    })
+};
+
+util.inherits(AbstractOrdersSchema, Schema);
+var OrdersSchema = new AbstractOrdersSchema({});
+
+
+
+var ServiceOrderSchema = new AbstractOrdersSchema({
+
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    serviceCharges: {
+        type:Number,
+        trim:true
+    },
+
+    totalDays: {
+        type:Number,
+        trim:true
+    },
+    emiDetails: {
+        type: [ServiceTripSchema]
+    }
+});
+
+
+
+var SalesOrderSchema = new AbstractOrdersSchema({
+    tripDetails: {
+        type: [SalesTripSchema]
+    }
+});
+
+
+var SubcontractOrderSchema = new AbstractOrdersSchema({
+    tripDetails: {
+        type: [SubcontractTripSchema]
+    }
+});
+
+
+
+
+
+
+var Order = mongoose.mtModel('Order', AbstractOrderSchema); // our base model
+var SalesOrder = Order.discriminator('SalesOrder', SalesOrderSchema); // our derived model (see discriminator)
+var SubcontractOrder = Order.discriminator('SubcontractOrder', SubcontractOrderSchema); // our derived model (see discriminator)
+var ServiceOrder = Order.discriminator('ServiceOrder', ServiceOrderSchema); // our derived model (see discriminator)
+
+
+
+mongoose.mtModel('Order', OrdersSchema);
 //OrderSchema.plugin(autoIncrement.plugin, 'Order');

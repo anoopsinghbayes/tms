@@ -1,18 +1,18 @@
 'use strict';
 /**
- * Created with JetBrains WebStorm.
- * User: Padmaraj
- * Date: 09/06/14
- * Time: 22:29
- * To change this template use File | Settings | File Templates.
- */
+* Created with JetBrains WebStorm.
+* User: Padmaraj
+* Date: 09/06/14
+* Time: 22:29
+* To change this template use File | Settings | File Templates.
+*/
 
 
 
 
 /**
- * Module dependencies.
- */
+* Module dependencies.
+*/
 var mongoose = require('mongoose'),
     Payment = mongoose.model('Payment'),
     _ = require('lodash');
@@ -22,8 +22,8 @@ var util = require('util');
 
 
 /**
- * Save Payment
- */
+* Save Payment
+*/
 exports.create = function(req, res) {
     console.log(req);
     Payment =mongoose.mtModel(req.user.tenant+'.Payment');

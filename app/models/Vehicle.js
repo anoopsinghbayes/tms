@@ -24,6 +24,8 @@ var suspension_type =
 };
 
 
+
+
 /**
  * Vehicle Schema
  */
