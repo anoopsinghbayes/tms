@@ -259,7 +259,7 @@ var SubcontractOrderSchema = new AbstractOrdersSchema({
 
 
 
-var Order = mongoose.mtModel('Order', AbstractOrderSchema); // our base model
+var Order = mongoose.mtModel('Order', OrdersSchema); // our base model
 var SalesOrder = Order.discriminator('SalesOrder', SalesOrderSchema); // our derived model (see discriminator)
 var SubcontractOrder = Order.discriminator('SubcontractOrder', SubcontractOrderSchema); // our derived model (see discriminator)
 var ServiceOrder = Order.discriminator('ServiceOrder', ServiceOrderSchema); // our derived model (see discriminator)
