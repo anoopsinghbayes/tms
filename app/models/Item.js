@@ -14,6 +14,14 @@ for Office use which can't categorized under vehicle related item.All orders wil
 Item master for order pricing calculation.Here we will also include cost items like Diesel,Labour charges etc.
 Cost Items will have only one entry in master and other attributes of cost item will be captured and saved at order level.
 
+Item Type               Item Title
+----------              --------------
+1.Vehicle           ---Vehicle
+2.Vehicle Parts     ---Engine ,Chasses etc.
+3.Miscellaneous     ---Fan,Bulb,Table etc
+4.Service           ---Salary,Labour
+
+
     */
 
 
@@ -51,8 +59,8 @@ function AbstractItemsSchema() {
         specification:{type:String},
         mfgCost:{type:Number},             //Manufacturing Cost
         salesCost:{type:Number},            //Sales Cost
-        itemCategory:{type:String}          //Category : ''Standard item' like ant manufactured item and 'Service Item'
-
+        itemType:{type:String},          //Item Type
+        itemTitle:{type:String}         //Item Name
 
     });
 
