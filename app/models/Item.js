@@ -14,15 +14,15 @@ for Office use which can't categorized under vehicle related item.All orders wil
 Item master for order pricing calculation.Here we will also include cost items like Diesel,Labour charges etc.
 Cost Items will have only one entry in master and other attributes of cost item will be captured and saved at order level.
 
-Item Type               Item Title
+Item Category           Item Title
 ----------              --------------
 1.Vehicle           ---Vehicle
 2.Vehicle Parts     ---Engine ,Chasses,Tyre etc.
-3.Miscellaneous     ---Fan,Bulb,Table etc
-4.Service           ---Salary,Labour
-5.Vehicle Docs      ---PUC,State Permit,National Permit
-6.Vehicle Tax       ---Toll,Octroi
-7.Product           ---All products transported by vehicle
+3.Miscellaneous     ---Fan,Bulb,Table,printer,Office Stationary etc   --Common Office Items
+4.Service           ---Salary,Labour,Electricity,Rent,Telephone
+5.Vehicle Docs      ---PUC,State Permit,National Permit,Safety Certificate,Insurance,Explosive License
+6.Tax               ---Toll,Octroi
+7.Product           ---Diesel,Petrol,Oil, and All products transported by vehicle
 
 
 */
@@ -42,7 +42,7 @@ var util = require('util');
 /**
  * Abstract Item Schema
  */
-function AbstractItemsSchema() {
+function AbstractItemSchema() {
     Schema.apply(this, arguments);
 
     this.add({
@@ -54,16 +54,18 @@ function AbstractItemsSchema() {
         description:{type:String},
         mfgDate:{type:Date},            //Manufacturing Date
         expDate:{type:Date},            //Expiry Date
-        purchaseDate:{type:Date},
         make:{type:String},             //Manufacturer
         model:{type:String},
         serialNo:{type:String},
         size:{type:String},
+        color:{type:String},
         specification:{type:String},
+        itemType:{type:String},
         mfgCost:{type:Number},             //Manufacturing Cost
         salesCost:{type:Number},            //Sales Cost
-        itemType:{type:String},          //Item Type
-        itemTitle:{type:String}         //Item Name
+        itemCategory:{type:String},          //Item Type
+        itemTitle:{type:String},         //Item Name
+        capacity:{type:String}
 
     });
 
@@ -71,79 +73,94 @@ function AbstractItemsSchema() {
 
 
 
+util.inherits(AbstractItemSchema, Schema);
+
+var ItemSchema = new AbstractItemSchema({});
+
+
+
+
 /**
  * Vehicle Schema
  */
 
-var VehicleSchema = new Schema({
-        vehicleNumber: {
+var VehicleSchema = new AbstractItemSchema({
+
+        vehicleNo: {
             type: String,
             required: true
         },
-        chassisNumber:{
+        chassisNo:{
             type: Number,
             required:true
         },
-        size: {
-            type: Number,
-            default: 0
-        },
-        capacity:{
-            type: Number,
-            default: 0
-        },
-        purchaseDate:{
+        regDate:{
             type: Date,
             default: Date.now
-        },
-        manufacturingDate:{
-            type: Date,
-            default: Date.now
-        },
-        expirationDate:{
-            type: Date,
-            default: Date.now
-        },
-        registrationDate:{
-            type: Date,
-            default: Date.now
-        },
-        color: String,
-        make: String,
-        model: String,
-        vehicleType: {
-            type: String,
-            enum: vehicle_type
         },
         suspensionType: {
             type: String,
             enum: suspension_type
         },
-        engineNumber:{
+        engineNo:{
             type: String,
-            default: 0
-        },
-        chassisCost: {
-            type: Number,
-            default: 0
-        },
-        makingCost: {
-            type: Number,
             default: 0
         },
         garageName: {
             type: String,
             trim: true
-        },
-        address: {
-            type: String,
-            trim: true
-        },
-        contactNumber: {
-            type: Number
-        },
-        tyreDetails: {
-            tyre: [{type: Schema.Types.ObjectId, ref: 'Tyre'}]
         }
     }
 );
+
+/*
+
+Vehicle Parts Schema
+
+*/
+
+
+var VehiclePartsSchema = new AbstractItemSchema({
+
+    vehicleNo:{
+        type:String
+    }
+});
+
+
+var MiscellaneousSchema = new AbstractItemSchema({
+
+});
+
+
+var ServiceSchema = new AbstractItemSchema({
+
+
+
+});
+
+var VehicleDocsSchema = new AbstractItemSchema({
+
+        premium:{
+            type:Number
+        },
+        coverage:{
+            type:Number
+        },
+        vehicleNo:{
+            type:String
+        }
+
+});
+
+
+var TaxSchema = new AbstractItemSchema({
+
+
+});
+
+var ProductSchema = new AbstractItemSchema({
+
+
+});
+
