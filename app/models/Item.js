@@ -17,12 +17,15 @@ Cost Items will have only one entry in master and other attributes of cost item 
 Item Type               Item Title
 ----------              --------------
 1.Vehicle           ---Vehicle
-2.Vehicle Parts     ---Engine ,Chasses etc.
+2.Vehicle Parts     ---Engine ,Chasses,Tyre etc.
 3.Miscellaneous     ---Fan,Bulb,Table etc
 4.Service           ---Salary,Labour
+5.Vehicle Docs      ---PUC,State Permit,National Permit
+6.Vehicle Tax       ---Toll,Octroi
+7.Product           ---All products transported by vehicle
 
 
-    */
+*/
 
 
 'use strict';
@@ -68,3 +71,79 @@ function AbstractItemsSchema() {
 
 
 
+/**
+ * Vehicle Schema
+ */
+
+var VehicleSchema = new Schema({
+        vehicleNumber: {
+            type: String,
+            required: true
+        },
+        chassisNumber:{
+            type: Number,
+            required:true
+        },
+        size: {
+            type: Number,
+            default: 0
+        },
+        capacity:{
+            type: Number,
+            default: 0
+        },
+        purchaseDate:{
+            type: Date,
+            default: Date.now
+        },
+        manufacturingDate:{
+            type: Date,
+            default: Date.now
+        },
+        expirationDate:{
+            type: Date,
+            default: Date.now
+        },
+        registrationDate:{
+            type: Date,
+            default: Date.now
+        },
+        color: String,
+        make: String,
+        model: String,
+        vehicleType: {
+            type: String,
+            enum: vehicle_type
+        },
+        suspensionType: {
+            type: String,
+            enum: suspension_type
+        },
+        engineNumber:{
+            type: String,
+            default: 0
+        },
+        chassisCost: {
+            type: Number,
+            default: 0
+        },
+        makingCost: {
+            type: Number,
+            default: 0
+        },
+        garageName: {
+            type: String,
+            trim: true
+        },
+        address: {
+            type: String,
+            trim: true
+        },
+        contactNumber: {
+            type: Number
+        },
+        tyreDetails: {
+            tyre: [{type: Schema.Types.ObjectId, ref: 'Tyre'}]
+        }
+    }
+);
