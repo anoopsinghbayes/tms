@@ -52,19 +52,19 @@ function AbstractItemSchema() {
             default: Date.now
         },
         description:{type:String},
-        mfgDate:{type:Date},            //Manufacturing Date
-        expDate:{type:Date},            //Expiry Date
-        make:{type:String},             //Manufacturer
+        mfgDate:{type:Date},
+        expDate:{type:Date},
+        make:{type:String},
         model:{type:String},
         serialNo:{type:String},
         size:{type:String},
         color:{type:String},
         specification:{type:String},
         itemType:{type:String},
-        mfgCost:{type:Number},             //Manufacturing Cost
-        salesCost:{type:Number},            //Sales Cost
-        itemCategory:{type:String},          //Item Type
-        itemTitle:{type:String},         //Item Name
+        mfgCost:{type:Number},
+        salesCost:{type:Number},
+        itemCategory:{type:String},
+        itemTitle:{type:String},
         capacity:{type:String}
 
     });
@@ -87,20 +87,18 @@ var ItemSchema = new AbstractItemSchema({});
 var VehicleSchema = new AbstractItemSchema({
 
         vehicleNo: {
-            type: String,
-            required: true
+            type: String
+
         },
         chassisNo:{
-            type: Number,
-            required:true
+            type: String
         },
         regDate:{
             type: Date,
             default: Date.now
         },
         suspensionType: {
-            type: String,
-            enum: suspension_type
+            type: String
         },
         engineNo:{
             type: String,
@@ -120,7 +118,7 @@ Vehicle Parts Schema
 */
 
 
-var VehiclePartsSchema = new AbstractItemSchema({
+var VehiclePartSchema = new AbstractItemSchema({
 
     vehicleNo:{
         type:String
@@ -164,3 +162,13 @@ var ProductSchema = new AbstractItemSchema({
 
 });
 
+
+
+var Item = mongoose.mtModel('Item', ItemSchema); // our base model
+var Vehicle = Item.discriminator('Vehicle', VehicleSchema);
+var VehiclePart = Item.discriminator('VehiclePart', VehiclePartSchema);
+var Miscellaneous = Item.discriminator('Miscellaneous', MiscellaneousSchema);
+var Service = Item.discriminator('Service', ServiceSchema);
+var VehicleDocs = Item.discriminator('VehicleDocs', VehicleDocsSchema);
+var Tax = Item.discriminator('Tax', TaxSchema);
+var Product = Item.discriminator('Product', ProductSchema);

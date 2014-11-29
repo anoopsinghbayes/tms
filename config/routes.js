@@ -187,4 +187,10 @@ module.exports = function (app, passport, auth) {
     app.get('/customers/:CustomerId/openpayments', auth.requiresLogin, paymentInvoice.openPaymentsByCustomer);
 
 
+    var ItemController = require('../app/controllers/Item');
+    app.post('/Item/:itemCategory', ItemController.create);
+    app.get('/Item/:itemCategory', auth.requiresLogin, ItemController.show);
+
+
+
 };
