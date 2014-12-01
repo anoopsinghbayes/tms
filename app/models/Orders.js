@@ -97,7 +97,7 @@ var TripOrderFinance=new Schema({
         type:String                //will come from Item master
     },
     itemId:{
-        type:Schema.ObjectId,
+        type:Schema.ObjectId,       //Item which is added from item master based on itemCategory and item title
         ref:'Item',
         $tenant:true
     },
@@ -129,8 +129,9 @@ var OrdersSchema = new AbstractOrdersSchema({});
 var TripOrderSchema = new AbstractOrdersSchema({
 
     vehicleNo:{
-    type:String
-
+        type:Schema.ObjectId,
+        ref:'Item',
+        $tenant:true
     },
     tripDetails: {
         type: [TripSchema]
