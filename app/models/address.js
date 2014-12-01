@@ -14,6 +14,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 
+//Address will have collection and  all businesspartners will refer address from this collection
+
+
 
 /**
  * Address Schema
@@ -69,5 +72,4 @@ var AddressSchema=new Schema({
         }
 });
 
-module.exports =mongoose.model('Address',AddressSchema);
-//mongoose.model('Address', AddressSchema);
+mongoose.mtModel('Address',AddressSchema);
