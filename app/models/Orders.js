@@ -16,8 +16,10 @@ var mongoose = require('mongoose'),
 //enums=require('./app/models/enums'),
 require('mongoose-multitenant')('_');
 var util = require('util');
-var OrderStatus=["open","confirmed","closed","cancelled"];
-
+var orderStatusEnum=["open","confirmed","closed","cancelled"];
+var cargoUnitEnum=["l","kl","t"];
+var paymentStatusEnum=["pending","confirmed","cancelled"];
+var locationTypeEnum =[]
 
 function AbstractOrdersSchema() {
     Schema.apply(this, arguments);
@@ -28,7 +30,7 @@ function AbstractOrdersSchema() {
         },
         orderStatus:{
             type:String,
-            enum:OrderStatus
+            enum:orderStatusEnum
         },
         itemId:{
             type:Schema.ObjectId,
@@ -64,14 +66,17 @@ minimum and maximum one Utlimate Pickup and Ultimate Dropoff .
 
  locationType will be Enum  -->
   1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff 5. Dead Weight
-
+ cargoUnit will be Enum  -->
+ kl,l,kg,t
+ distance   == distance from last location
  */
 
 
 var TripSchema = new Schema({
 
         locationType:{
-            type:String
+            type:String,
+            enum:locationTypeEnum
         },
         address:{
          type:String
@@ -79,21 +84,11 @@ var TripSchema = new Schema({
         challanNo:{
             type:String
         },
-        challanDate:{
+        date:{
             type:Date
         },
-        distanceLastLocation:{
+        distance:{
             type:Number
-
-        },
-        capacity:{
-            type:Number
-
-        },
-        product:{
-            type:Schema.ObjectId,
-            ref:'Item',
-            $tenant:true
 
         },
         cargoWeight :{
@@ -106,6 +101,16 @@ var TripSchema = new Schema({
             },
             grossWeight:{
                 type:Number
+
+            },
+            shortage:{
+              type:Number
+            },
+
+            cargoUnit:{
+                type:String,
+                enum:cargoUnitEnum
+
 
             }
         }
@@ -158,6 +163,8 @@ var OrdersSchema = new AbstractOrdersSchema({});
 
  SubcontractorId will be mandatory if isSubcontracted is true
 
+ doNo == Delivery Order Number of client
+
  */
 
 var TripOrderSchema = new AbstractOrdersSchema({
@@ -166,6 +173,15 @@ var TripOrderSchema = new AbstractOrdersSchema({
         type:Schema.ObjectId,
         ref:'Item',
         $tenant:true
+    },
+    product:{
+    type:Schema.ObjectId,
+        ref:'Item',
+        $tenant:true
+
+    },
+    doNo:{
+      type:String
     },
     isSubContracted:{
       type:Boolean
@@ -211,6 +227,92 @@ var RentalOrderSchema = new AbstractOrdersSchema({
 In purchase order
  Chargeable =true by default and need not to show in UI because all lines will be chargeable
  */
+
+
+var EMISchema=new Schema({
+
+    paymentStatus:{
+        type:String,
+        enum:paymentStatusEnum
+    },
+    amount:{
+        type:Number
+    },
+    chequeNo:{
+        type:Number
+    },
+    bankName:{
+        type:String
+    },
+    payeeName:{
+        type:String
+    },
+    chequeDate:{
+        type:Date
+    },
+    emiDueDate:{
+        type:Date
+    }
+});
+
+
+
+var LoanSchema=new Schema({
+
+    customerName:{
+        type:String
+    },
+    agreementNo:{
+        type:String
+    },
+    assetCost:{
+        type:Number
+    },
+    amountFinanced:{
+        type:Number
+    },
+    downPayment:{
+        type:Number
+    },
+    tenureInMonths:{
+        type:Number
+    },
+    totalInstallments:{
+        type:Number
+    },
+    bankName:{
+        type:String
+    },
+    loanType:{
+
+        type:String,
+        default:"Hire Purchase"
+    },
+    agreementDate:{
+        type:Date
+    },
+    repayFrequency:{                    //Loan Re Payment frequency in Months
+        type:Number
+    },
+    residualValue:{
+        type:Number
+    },
+    agreementMode:{
+        type:String,
+        default:"Arrier"
+    },
+    advanceEMI:{
+        type:Number
+    },
+    vehicleNo:{
+        type:String
+    },
+    emiDetails:{
+        type:[EMISchema]
+    }
+
+});
+
 
 
 
@@ -259,7 +361,12 @@ var PurchaseOrderSchema = new AbstractOrdersSchema({
     },
     finance:{
         type:[PurchaseOrderFinance]
+    },
+    loanDetails:{
+
+        type:[LoanSchema]
     }
+
 });
 
 
@@ -267,6 +374,3 @@ var SalesOrderSchema = new AbstractOrdersSchema({
 
 });
 
-var RentalOrderSchema = new AbstractOrdersSchema({
-
-});
