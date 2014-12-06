@@ -19,7 +19,7 @@ var util = require('util');
 var orderStatusEnum=["open","confirmed","closed","cancelled"];
 var cargoUnitEnum=["l","kl","t"];
 var paymentStatusEnum=["pending","confirmed","cancelled"];
-var locationTypeEnum =[]
+var locationTypeEnum =["Ultimate Pickup","Ultimate Drop-off","Intermediate Pickup","Intermediate Drop-off","Dead Weight"];
 
 function AbstractOrdersSchema() {
     Schema.apply(this, arguments);
@@ -59,6 +59,12 @@ function AbstractOrdersSchema() {
 };
 
 
+util.inherits(AbstractOrdersSchema, Schema);
+
+var OrderSchema = new AbstractOrdersSchema({});
+
+
+
 /*
 
 Trip will have validations like
@@ -68,7 +74,8 @@ minimum and maximum one Utlimate Pickup and Ultimate Dropoff .
   1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff 5. Dead Weight
  cargoUnit will be Enum  -->
  kl,l,kg,t
- distance   == distance from last location
+ distance   == distance from last pickup or dropoff location
+ date == Date on which cargo is loaded or unloaded
  */
 
 
@@ -173,12 +180,6 @@ var TripOrderSchema = new AbstractOrdersSchema({
         type:Schema.ObjectId,
         ref:'Item',
         $tenant:true
-    },
-    product:{
-    type:Schema.ObjectId,
-        ref:'Item',
-        $tenant:true
-
     },
     doNo:{
       type:String
@@ -349,6 +350,7 @@ var PurchaseOrderFinance=new Schema({
 /*
         billNo: Bill Reference number is Invoice/Bill number of item purchased
         billDate: Date of Bill
+        loanDetails: Loan details is applicable in case of vehicle purchase
  */
 
 var PurchaseOrderSchema = new AbstractOrdersSchema({
@@ -369,8 +371,113 @@ var PurchaseOrderSchema = new AbstractOrdersSchema({
 
 });
 
+/*
+In sales order actual cost will be equal to sales cost in most senarios
+In sales order Chargeable=true in all cases .
+
+ */
+
+
+
+var SalesOrderFinance=new Schema({
+
+    itemCategory:{
+        type:String             // will come from Item master
+    },
+    itemTitle:{
+        type:String                //will come from Item master
+    },
+    itemId:{
+        type:Schema.ObjectId,       //Item which is added from item master based on itemCategory and item title
+        ref:'Item',
+        $tenant:true
+    },
+    description:{
+        type:String             //description will be same attribute of item master
+    },
+    actualCost:{
+        type:Number
+    },
+    salesCost:{
+        type:String
+    },
+    chargeable:{
+        type:Boolean,
+        default:true
+    }
+
+});
 
 var SalesOrderSchema = new AbstractOrdersSchema({
 
+    finance:{
+    type:[SalesOrderFinance]
+}
 });
+
+
+
+var ServiceOrderFinance=new Schema({
+
+    itemCategory:{
+        type:String             // will come from Item master
+    },
+    itemTitle:{
+        type:String                //will come from Item master
+    },
+    itemId:{
+        type:Schema.ObjectId,       //Item which is added from item master based on itemCategory and item title
+        ref:'Item',
+        $tenant:true
+    },
+    description:{
+        type:String             //description will be same attribute of item master
+    },
+    perDayCharge:{
+        type:Number               //e.g. per day charge of employee for salary calculation
+    },
+    totalDays:{
+        type:Number
+    },
+    actualCost:{
+        type:Number
+    },
+    salesCost:{
+        type:String
+    },
+    chargeable:{
+        type:Boolean                   //Chargeable =true if add to customer invoice else keep it as internal expense
+    }
+
+});
+
+
+
+
+
+var ServiceOrderSchema = new AbstractOrdersSchema({
+
+    billNo:{
+        type:String                 //Bill No in Case of electricity or telephone bill
+    },
+    billDate:{
+        type:Date
+    },
+
+    finance:{
+        type:[ServiceOrderFinance]
+    }
+});
+
+
+
+
+
+var Order = mongoose.mtModel('Order', AbstractOrdersSchema); // our base model
+var TripOrder = Order.discriminator('Trip', TripOrderSchema);
+var SalesOrder = Order.discriminator('Sales', SalesOrderSchema);
+var ServiceOrder = Order.discriminator('Service', ServiceOrderSchema);
+var RentalOrder = Order.discriminator('Rental', RentalOrderSchema);
+var PurchaseOrder = Order.discriminator('Purchase', PurchaseOrderSchema);
+
 
