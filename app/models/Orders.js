@@ -7,6 +7,17 @@
  */
 
 
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+    autoIncrement=require('mongoose-auto-increment'),
+    Schema = mongoose.Schema;
+//enums=require('./app/models/enums'),
+require('mongoose-multitenant')('_');
+var util = require('util');
+var OrderStatus=["open","confirmed","closed","cancelled"];
+
 
 function AbstractOrdersSchema() {
     Schema.apply(this, arguments);
@@ -45,11 +56,19 @@ function AbstractOrdersSchema() {
     })
 };
 
+/*
+Trip will have validations like
+minimum once Utlimate Pickup and Ultimate Dropoff is mandatory
+ */
+
+
 var TripSchema = new Schema({
 
         locationType:{
-            type:String           //Location Type = 1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff
-
+            type:String           //Location Type = 1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff 5. Dead Weight
+        },
+        address:{
+         type:String
         },
         challanNo:{
             type:String
@@ -142,3 +161,35 @@ var TripOrderSchema = new AbstractOrdersSchema({
 
 });
 
+var RentalOrderSchema = new AbstractOrdersSchema({
+
+    vehicleNo:{
+        type:Schema.ObjectId,
+        ref:'Item',
+        $tenant:true
+    },
+    orderType:{
+        type:String                     //1.Rental -- For truct given on rent by transporter  2.Subcontracted --For truck taken from other transporter for particular trip
+    },
+    tripDetails: {
+        type: [TripSchema]
+    },
+    finance:{
+        type:[TripOrderFinance]
+    }
+});
+
+
+var PurchaseOrderSchema = new AbstractOrdersSchema({
+
+
+});
+
+
+var SalesOrderSchema = new AbstractOrdersSchema({
+
+});
+
+var RentalOrderSchema = new AbstractOrdersSchema({
+
+});
