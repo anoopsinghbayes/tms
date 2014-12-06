@@ -56,16 +56,22 @@ function AbstractOrdersSchema() {
     })
 };
 
+
 /*
+
 Trip will have validations like
-minimum once Utlimate Pickup and Ultimate Dropoff is mandatory
+minimum and maximum one Utlimate Pickup and Ultimate Dropoff .
+
+ locationType will be Enum  -->
+  1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff 5. Dead Weight
+
  */
 
 
 var TripSchema = new Schema({
 
         locationType:{
-            type:String           //Location Type = 1.Utlimate Pickup 2.Intermediate Pickup 3.Intermediate Dropoff 4.Ultimate Dropoff 5. Dead Weight
+            type:String
         },
         address:{
          type:String
@@ -76,7 +82,7 @@ var TripSchema = new Schema({
         challanDate:{
             type:Date
         },
-        distanceFromLastPickup:{
+        distanceLastLocation:{
             type:Number
 
         },
@@ -136,7 +142,7 @@ var TripOrderFinance=new Schema({
         type:String
     },
     chargeable:{
-        type:Boolean                   //add to customer invoice or keep it as internal expense
+        type:Boolean                   //Chargeable =true if add to customer invoice else keep it as internal expense
     }
 
 });
@@ -144,6 +150,15 @@ var TripOrderFinance=new Schema({
 util.inherits(AbstractOrdersSchema, Schema);
 var OrdersSchema = new AbstractOrdersSchema({});
 
+/*
+
+ orderType will be Boolean -->
+ Subcontracted =true For trip subcontracted to other transporter.
+ By Default It will be set to false in UI
+
+ SubcontractorId will be mandatory if isSubcontracted is true
+
+ */
 
 var TripOrderSchema = new AbstractOrdersSchema({
 
@@ -152,6 +167,14 @@ var TripOrderSchema = new AbstractOrdersSchema({
         ref:'Item',
         $tenant:true
     },
+    isSubContracted:{
+      type:Boolean
+    },
+    subcontractorId:{
+        type:Schema.ObjectId,
+        ref:'BusinessPartner',
+        $tenant:true
+    },
     tripDetails: {
         type: [TripSchema]
     },
@@ -160,6 +183,15 @@ var TripOrderSchema = new AbstractOrdersSchema({
     }
 
 });
+
+
+
+/*
+
+
+  */
+
+
 
 var RentalOrderSchema = new AbstractOrdersSchema({
 
@@ -168,21 +200,66 @@ var RentalOrderSchema = new AbstractOrdersSchema({
         ref:'Item',
         $tenant:true
     },
-    orderType:{
-        type:String                     //1.Rental -- For truct given on rent by transporter  2.Subcontracted --For truck taken from other transporter for particular trip
-    },
-    tripDetails: {
-        type: [TripSchema]
-    },
     finance:{
         type:[TripOrderFinance]
     }
 });
 
 
+
+/*
+In purchase order
+ Chargeable =true by default and need not to show in UI because all lines will be chargeable
+ */
+
+
+
+var PurchaseOrderFinance=new Schema({
+
+    itemCategory:{
+        type:String             // will come from Item master
+    },
+    itemTitle:{
+        type:String                //will come from Item master
+    },
+    itemId:{
+        type:Schema.ObjectId,       //Item which is added from item master based on itemCategory and item title
+        ref:'Item',
+        $tenant:true
+    },
+    description:{
+        type:String             //description will be same attribute of item master
+    },
+    actualCost:{
+        type:Number
+    },
+    salesCost:{
+        type:String
+    },
+    chargeable:{
+        type:Boolean,
+        default:true
+    }
+
+});
+
+
+/*
+        billNo: Bill Reference number is Invoice/Bill number of item purchased
+        billDate: Date of Bill
+ */
+
 var PurchaseOrderSchema = new AbstractOrdersSchema({
 
-
+    billNo:{
+        type:String
+    },
+    billDate:{
+        type:Date
+    },
+    finance:{
+        type:[PurchaseOrderFinance]
+    }
 });
 
 
