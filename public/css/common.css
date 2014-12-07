@@ -265,3 +265,11 @@ html.bgImg body{
     /* background-size: 450px 100px; */
     margin-bottom: 10px;
 }
+
+
+.tripmap-canvas { height: 550px; }
+
+
+/*.tripOrderPage{*/
+    /*min-height: 1200px;*/
+/*}*/
