@@ -191,6 +191,7 @@ module.exports = function (app, passport, auth) {
     app.post('/Item/:itemCategory', ItemController.create);
     app.get('/Item/:itemCategory', auth.requiresLogin, ItemController.show);
 
-
+    var businessPartner = require('../app/controllers/BusinessPartnerController.js');
+    app.post('/businesspartner/:businessPartnerType', auth.requiresLogin, businessPartner.create);
 
 };
