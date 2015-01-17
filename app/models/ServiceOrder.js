@@ -83,4 +83,4 @@ var ServiceOrderSchema = new Schema({
 });
 
 
-mongoose.mtModel('ServiceOrder', ServiceOrderSchema);
+//mongoose.mtModel('ServiceOrder', ServiceOrderSchema);

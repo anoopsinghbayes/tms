@@ -8,7 +8,6 @@ var mongoose = require('mongoose'),
  */
 
 exports.create = function(req, res) {
-    console.log("inside BP create");
     var businessPartnerType = req.params.businessPartnerType;
     var bpModel =getModel(businessPartnerType, req.user.tenant);
     var bp = new bpModel(req.body);
@@ -59,12 +58,12 @@ exports.show = function(req, res) {
  */
 exports.update = function(req, res) {
     var businessPartnerType = req.params.businessPartnerType;
-    var bpModel =getModel(businessPartnerType, req.user.tenant);
-    var bpId = req.params.bpId;
-    bpModel.findOne({_id: req.params.bpId}).exec(function(err, bp){
-        bp =_.extend(bp, req.body);
-        bp.save(function(err) {
-            if (err) {
+    var bpModel = getModel(businessPartnerType, req.user.tenant);
+    var query = {"_id": req.params.bpId};
+    var update = req.body;
+    var options = {new: true};
+    bpModel.findOneAndUpdate(query, update, options, function(err, bp){
+        if (err) {
                 return res.send('users/signup', {
                     errors: err.errors,
                     bp: bp
@@ -72,7 +71,6 @@ exports.update = function(req, res) {
             } else {
                 res.jsonp(bp);
             }
-        });
     });
 };
 
