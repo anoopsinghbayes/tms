@@ -145,10 +145,10 @@ var EmployeeSchema = new AbstractBusinessPartnerSchema({
     licenseNo:{                       // applicable for driver
         type: String
     },
-    licenseDOI:{                        // applicable for driver
+    licenseDOI:{                        // applicable for driver date of issue
         type:Date
     },
-    licenseDOE:{                        // applicable for driver
+    licenseDOE:{                        // applicable for driver date of expiry
         type:Date
     }
 });

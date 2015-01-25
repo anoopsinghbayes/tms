@@ -116,8 +116,10 @@ module.exports = function (app, passport, auth) {
 
     //Invoice Routes
     var Invoice = require('../app/controllers/Invoice');
-    app.post('/Invoice', auth.requiresLogin, Invoice.create);
-    app.put('/Invoice/:invoiceId', auth.requiresLogin, Invoice.update);
+    app.post('/Invoice/:invoiceType', auth.requiresLogin, Invoice.create);
+    app.put('/Invoice/:invoiceType/:invoiceId', auth.requiresLogin, Invoice.update);
+    app.get('/Invoice/:invoiceType/:invoiceId?', auth.requiresLogin, Invoice.show);
+
     //var GenerateInvoice = require('../app/controllers/GenerateInvoice');
     //app.get('/GenerateInvoice', auth.requiresLogin, GenerateInvoice.getInvDet);
 
