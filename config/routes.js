@@ -175,6 +175,7 @@ module.exports = function (app, passport, auth) {
     //Test Route to test new models or methods
     var test = require('../app/controllers/TestController');
     app.get('/test', auth.requiresLogin, test.create);
+    app.post('/test/:ID', auth.requiresLogin, test.update);
 
     //return all the mongoose enums to be used for UI
     var enums=require('../app/models/enums.js');
@@ -193,5 +194,16 @@ module.exports = function (app, passport, auth) {
 
     var businessPartner = require('../app/controllers/BusinessPartnerController.js');
     app.post('/businesspartner/:businessPartnerType', auth.requiresLogin, businessPartner.create);
+
+    var address = require('../app/controllers/AddressController.js');
+    app.post('/address', auth.requiresLogin,address.create);
+
+
+
+//New Order Routes
+    var Order = require('../app/controllers/OrderController');
+    app.post('/orders/:orderType', auth.requiresLogin, Order.create);
+
+
 
 };
