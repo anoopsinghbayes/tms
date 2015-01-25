@@ -1,10 +1,10 @@
 <ul class="sideMenu">
     <li ng-repeat="link in links">
         <a ng-if="link.state" ui-sref="{{link.state}}" ng-click="link.isCollapsed = !link.isCollapsed">
-            <i ng-class="link.iconClass" class="fa-2x"></i>  {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
+            <i ng-class="link.iconClass" class="fa-lg side-icon"></i>  {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
         </a>
         <a ng-if="!link.state" href="" ng-click="link.isCollapsed = !link.isCollapsed">
-            <i ng-class="link.iconClass" class="fa-2x"></i>  {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
+            <i ng-class="link.iconClass" class="fa-lg side-icon"></i>  {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
         </a>
         <ul ng-if="link.links.length>0" collapse="link.isCollapsed">
             <sub-menu ng-repeat="sublink in link.links" sublink="sublink"></sub-menu>
