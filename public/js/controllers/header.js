@@ -18,7 +18,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             links:[
                 {
                     title: 'Vehicle',
-                    state: ''
+                    state: 'vehicles'
                 },
                 {
                     title: 'Vehicle Parts',
@@ -83,7 +83,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 },
                 {
                     title:'Vendor',
-                    state:''
+                    state:'Vendors.create'
                 },
                 {
                     title:'Employee',

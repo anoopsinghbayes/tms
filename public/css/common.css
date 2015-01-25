@@ -8,7 +8,7 @@
     width:100%
 }
 
-footer {
+footer .footer{
     position:fixed;
     left:0px;
     bottom:0px;
@@ -321,10 +321,15 @@ html.bgImg body{
     border: 3px solid rgb(43, 45, 41);
 }
 
-form>legend:first-child{
+form >legend:first-child{
     font-size: 2em;
 }
 
 #mainView{
     margin-top: 65px;
+}
+
+
+.tab-content{
+    padding:10px;
 }
