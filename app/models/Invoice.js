@@ -7,12 +7,21 @@
  */
 
 
+/**
+ * Module dependencies.
+ */
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+require('mongoose-multitenant')('_');
+var util = require('util');
+
+
 'use strict';
 
 /*
 
                     Invoice Types
-   1.General Invoice                -- It will not be used it will act as base Invoice
+   1.Abstract/General Invoice       -- It will not be used it will act as base Invoice
    2.Trip Invoice                   -- For trip orders Trip Invoice will be generated
    3.Rental Invoice                 -- For Rental and Subcontracted Orders
    4.Purchase Invoice               -- Por Purchase of any transpoter related : Vehicle,Vehicle Parts or Any general Item
@@ -24,107 +33,94 @@
 
 */
 
-
-/**
- * Module dependencies.
- */
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
-require('mongoose-multitenant')('_');
-var util = require('util');
+var InvoiceStatusEnum=['open','closed'];
 
 
 /**
  * Base Invoice Schema
  */
-
 function AbstractInvoiceSchema() {
     Schema.apply(this, arguments);
 
-    this.add({
-
-        created: {
-            type: Date,
-            default: Date.now
-        },
-        invoiceDate:{
-            type:Date
-        },
-        totalAmt:{
-            type:Number
-        },
-        dueAmount:{
-            type:Number
-        },
-        discountAmt:{
-            type:Number
-        },
-        loadingAmt:{
-            type: Number
-        },
-
-        remarks:{
-            type:String
-        },
-        invoiceToBP:{
-
-            type:mongoose.Schema.Types.ObjectId   //this will refer to BusinessPartner collection
-
-        },
-        invoiceType:{
-
-        },
-        serviceTaxAmt:{
-            type: Number
-        },
-        vatAmt:{
-          type:Number
-        }
-        /*,
-        acType:{                //Account type (Income(I)/Expense(E))
-
-            type:String,
-            required:true
-        }
-*/
+this.add({
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    bpId :
+    {
+        type: mongoose.Schema.Types.ObjectId  //since multiple models in BusinessPartner collection reference not given for CustomerID
 
 
-    });
+    },
+    invoiceDate :
+    {
+        type:Date
+    },
+    status:{
 
-};
+        type:String,
+        enum:'InvoiceStatusEnum'
+    },
 
-util.inherits(AbstractInvoiceSchema, Schema);
-
-var InvoiceSchema = new AbstractInvoiceSchema({});
-
-
-var VoucherSchema = new AbstractInvoiceSchema({
-
-});
-
-
-var GeneralInvoiceSchema = new AbstractInvoiceSchema({
-
-    acSubType: {                //to bifurgate Income and Expense further to cover expenses like Electricity bill,Telephone bill,Employee Salary
-    type: String
+    taxPercentage:
+    {
+        type: Number
+    },
+    discountAmount:
+    {
+        type : Number
+    },
+    loadingAmount:
+    {
+        type:Number
+    },
+    vatAmt:{
+        type:Number
+    },
+    serviceTaxAmt:
+    {
+        type: Number
+    },
+    totalAmount :               ///==orderAmt+totalTax
+    {
+        type :Number
+    },
+    remarks:
+    {
+        type: String
+    },
+    dueAmount:
+    {
+        type: Number
     }
 
 
 });
 
 
-var SalesOrderInvoiceLinesSchema= new Schema({
+}
 
-        tripId:{
-            type:mongoose.Schema.Types.ObjectId            //will come from Orders Collection Order type = Trip
-            //ref:''
-        },
-        tripAmt:{
+
+
+
+util.inherits(AbstractInvoiceSchema, Schema);
+
+var InvoiceSchema = new AbstractInvoiceSchema({});
+
+
+ var TripOrderInvoiceLinesSchema= new Schema({
+
+        orderId:    {
+             type: mongoose.Schema.Types.ObjectId  // Will come from Orders Collection
+
+         },
+        orderAmt:{
             type:Number
 
         },
         lrNo:{
-          type:String
+            type:String
         },
         shortageAmt:{
             type:Number
@@ -133,106 +129,95 @@ var SalesOrderInvoiceLinesSchema= new Schema({
             type:String
         },
         pickUpDate:{
-        type:Date
+            type:Date
         },
         dropOffDate:{
-        type:Date
+            type:Date
         },
         product:{
-            type:String
+            type:String         //will come from Item Master
+        },
+        remarks:{
+
+         type:String
         }
 
 
 
 
 
+    });
+
+
+ var TripOrderInvoiceSchema = new AbstractInvoiceSchema({
+
+        invoiceLines:[TripOrderInvoiceLinesSchema]
+
+    });
+
+
+
+var RentalOrderInvoiceSchema = new AbstractInvoiceSchema({
+
+
+    invoiceLines:[TripOrderInvoiceLinesSchema]
+
 });
+
+
+
+
+var GenericOrderInvoiceLinesSchema= new Schema({
+
+    orderId:    {
+        type: mongoose.Schema.Types.ObjectId  // Will come from Orders Collection
+
+    },
+    orderAmt:{
+        type:Number
+
+    },
+    remarks:{
+
+        type:String
+    }
+
+});
+
+
+
+
+
+var PurchaseOrderInvoiceSchema = new AbstractInvoiceSchema({
+
+
+    invoiceLines:[GenericOrderInvoiceLinesSchema]
+
+});
+
+
+
+var ServiceOrderInvoiceSchema = new AbstractInvoiceSchema({
+
+
+    invoiceLines:[GenericOrderInvoiceLinesSchema]
+
+});
+
+
 
 
 var SalesOrderInvoiceSchema = new AbstractInvoiceSchema({
 
-         OrderId:    {
-            type: mongoose.Schema.Types.ObjectId
 
-        },
-        InvoiceLines:[SalesOrderInvoiceLinesSchema]
+    invoiceLines:[GenericOrderInvoiceLinesSchema]
 
 });
 
 
-
-
-
-
-/**
- * Base Invoice Schema
- */
-var InvoiceSchema = new Schema({
-    created: {
-        type: Date,
-        default: Date.now
-    },
-
-
-
-    CustomerID :
-    {
-        type: mongoose.Schema.Types.ObjectId  //since multiple models in BusinessPartner collection reference not given for CustomerID
-
-
-    },
-
-
-    Orders:  [
-        {       OrderId:    {
-                                type: mongoose.Schema.Types.ObjectId,
-                                ref:'Order'
-                            },
-                OrderAmount:{
-                                type:Number
-                            },
-
-                Remarks:{
-                                type:String
-                        }
-
-        }   ],
-
-    InvoiceDate :
-    {
-            type:Date
-    },
-    TaxPercentage:
-    {
-            type: Number
-    },
-    DiscountAmount:
-    {
-        type : Number
-    },
-    LoadingAmount:
-    {
-        type:Number
-    },
-    TaxAmount:
-    {
-            type: Number
-    },
-    TotalAmount :
-    {
-            type :Number
-    },
-    Remarks:
-    {
-        type: String
-    },
-    DueAmount:
-    {
-        type: Number
-    }
-
-
-
-});
-
-mongoose.mtModel('Invoice', InvoiceSchema);
+var Invoice = mongoose.mtModel('Invoice', InvoiceSchema); // our base model
+var TripInvoice = Invoice.discriminator('Trip', TripOrderInvoiceSchema);
+var RentalInvoice = Invoice.discriminator('Rental', RentalOrderInvoiceSchema);
+var PurchaseInvoice = Invoice.discriminator('Purchase', PurchaseOrderInvoiceSchema);
+var ServiceInvoice = Invoice.discriminator('Service', ServiceOrderInvoiceSchema);
+var SalesInvoice = Invoice.discriminator('Sales', SalesOrderInvoiceSchema);
