@@ -33,7 +33,8 @@ var util = require('util');
 
 */
 
-var InvoiceStatusEnum=['open','closed'];
+var InvoiceStatusEnum = ['open','closed'];
+
 
 
 /**
@@ -60,7 +61,7 @@ this.add({
     status:{
 
         type:String,
-        enum:'InvoiceStatusEnum'
+        enum:InvoiceStatusEnum
     },
 
     taxPercentage:
