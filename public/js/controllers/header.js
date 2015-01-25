@@ -9,7 +9,35 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         //console.log(SlideMenu);
     }
     $scope.menu = [
-
+        {
+            title:'Master',
+            iconClass:'fa fa-database',
+            link:'',
+            state:'',
+            isCollapsed:'true',
+            links:[
+                {
+                    title: 'Vehicle',
+                    state: ''
+                },
+                {
+                    title: 'Vehicle Parts',
+                    state: ''
+                },
+                {
+                    title: 'Vehicle Docs',
+                    state: ''
+                },
+                {
+                    title: 'Products',
+                    state: ''
+                },
+                {
+                    title: 'Miscellaneous',
+                    state: ''
+                },
+            ]
+        },
         {
             title: "Order",
             iconClass:'fa fa-tasks',
@@ -17,6 +45,14 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             state:'',
             isCollapsed:'true',
             links:[
+                {
+                    title: 'Trip Order',
+                    state: ''
+                },
+                {
+                    title: 'Rental Order',
+                    state: 'salesOrder'
+                },
                 {
                     title: 'Sales Order',
                     state: 'salesOrder'
@@ -35,10 +71,25 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
         },
         {
-            title:"Customers",
+            title:"Business Partner",
             link:'Customers',
             iconClass:'fa fa-users',
-            state:'customers'
+            isCollapsed:'true',
+            state:'',
+            links:[
+                {
+                    title:'Customer',
+                    state:'customers'
+                },
+                {
+                    title:'Vendor',
+                    state:''
+                },
+                {
+                    title:'Employee',
+                    state:'Employees.create'
+                }
+            ]
         },
         {
             title:"Vehicles",
@@ -63,14 +114,33 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 }]
 
         },{
-            title:'Tyre',
-            iconClass:'fa fa-life-ring',
-            link:'TyreDetails',
-            state:'TyreDetails'
-        },{
             'title':'Invoice',
+            iconClass:'fa fa-file-text',
+            isCollapsed:true,
             link:'InvoiceDetails',
-            state:'InvoiceDetails'
+            state:'InvoiceDetails',
+            links:[
+                {
+                    title:'Trip Invoice',
+                    state:''
+                },
+                {
+                    title:'Rental Invoice',
+                    state:''
+                },
+                {
+                    title:'Sales Invoice',
+                    state:''
+                },
+                {
+                    title:'Purchase Invoice',
+                    state:''
+                },
+                {
+                    title:'Service Invoice',
+                    state:''
+                }
+            ]
         },{
             title:'Accounts',
             iconClass:'fa fa-table',
@@ -94,11 +164,6 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                     state:'PaymentInvoiceLink'
                 }]
 
-        },{
-            title:'Employee',
-            iconClass:'fa fa-male',
-            link:'',
-            state:'employees'
         },
         {
             title:'Reports',

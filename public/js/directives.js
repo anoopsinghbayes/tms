@@ -50,7 +50,7 @@ var VEHICLE_REGEXP = /^[A-Z]{2}\s[0-9]{1,2}\s[A-Z]{1,2}\s[0-9]{4}$/ig;
   };
 });
 
-angular.module('mean').directive('mainMenu', function () {
+angular.module('mean').directive('mainMenu', function ($state) {
     return {
         restrict: 'E',
         templateUrl:'views/partials/mainMenu.html',
@@ -80,4 +80,9 @@ angular.module('mean').directive('subMenu', function ($compile) {
             });
         }
     };
+});
+angular.module('mean').directive('tmsAddress',function(){
+    return{
+        templateUrl: 'views/partials/address.html'
+    }
 })

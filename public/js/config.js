@@ -48,6 +48,34 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                         }
             }
             ).
+
+            state('Employees',
+            {
+                url:'/employees',
+                //controller:'listCustomer',
+                templateUrl:'views/customer/list.html'
+            }
+        ).
+            state('Employees.create',
+            {url:'/new',
+                views: {
+                    "@" : {
+                        templateUrl:'views/BP/employee/edit.html'
+                        //controller:"createCustomerCtrl"
+                    }
+                }
+            }
+        ).
+            state('Employees.edit',
+            {url:'/:customerId',
+                views: {
+                    "@" : {
+                        templateUrl:'views/customer/edit.html',
+                        //controller:"editCustomerCtrl"
+                    }
+                }
+            }
+        ).
 		state('edit.address',
             {url:'/address',
 		templateUrl:'views/customer/address.html'

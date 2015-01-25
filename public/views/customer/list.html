@@ -22,7 +22,7 @@
             <tbody>
 <tr data-ng-repeat="customer in customers">
 
-    <td><a ui-sref="customers.edit({ customerId: customer._id })"> {{customer.name}}</a></td>
+    <td><a ui-sref="customers.edit({ customerId: customer._id })"> {{customer.companyName}}</a></td>
     <td>{{customer.salesrep.name}}</td>
     <td>{{customer.email}}</td>
     <td>{{customer.contact}}</td>

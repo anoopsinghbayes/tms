@@ -193,7 +193,7 @@ module.exports = function (app, passport, auth) {
 
     var businessPartner = require('../app/controllers/BusinessPartnerController.js');
     app.post('/businesspartner/:businessPartnerType', businessPartner.create);
-    app.get('/businesspartner/:businessPartnerType/*', auth.requiresLogin, businessPartner.show);
+    app.get('/businesspartner/:businessPartnerType/:bpId?', auth.requiresLogin, businessPartner.show);
     app.put('/businesspartner/:businessPartnerType/:bpId', auth.requiresLogin, businessPartner.update);
 
     var address = require('../app/controllers/AddressController.js');
