@@ -35,24 +35,24 @@ function AbstractAccountsSchema() {
             type: Date
 
         },
-        FromAccount: {
+        fromAccount: {
             type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
 
         },
-        ToAccount: {
+        toAccount: {
             type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
         },
         paymentRelDate: {
             type: Date                  //Payment Confirmation Date
         },
-        BankDetails :{
-            BankName        : {type: String,trim: true},
-            BranchName      : {type: String,trim: true},
-            BranchAddress   : {type: String,trim: true},
-            IFSCCode        : {type: String,trim: true},
-            BranchCode      : {type: String,trim: true}
+        bankDetails :{
+            bankName        : {type: String,trim: true},
+            branchName      : {type: String,trim: true},
+            branchAddress   : {type: String,trim: true},
+            ifscCode        : {type: String,trim: true},
+            branchCode      : {type: String,trim: true}
 
         },
         paymentStatus:
@@ -70,27 +70,27 @@ function AbstractAccountsSchema() {
             type:Number
         },
 
-        BalanceAmount: {
+        balanceAmount: {
 
             type : Number
 
         },
-        EndDate :{
+        endDate :{
 
             type: Date
         },
 
-        Invoices : [
+        invoices : [
             {
-                InvoiceNo:{
+                invoiceId:{
                     type: Schema.Types.ObjectId  //Rererence not given since multiple models are saved in Invoice collection
 
                 },
-                Amount:
+                amount:                            //this amount linked to particular payment it may not match to total invoice amount
                 {
                     type: Number
                 },
-                ModifiedDate:
+                modifiedDate:
                 {
                     type: Date
                 }

@@ -21,7 +21,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
 
     var itemCategory =req.params.itemCategory;
-    console.log("tentant",req.user.tenant);
+    console.log("tenant",req.user.tenant);
     var itemModel =getModel(itemCategory,req.user.tenant);
     var vm= new itemModel(req.body);
     console.log("vehicle",req.body);

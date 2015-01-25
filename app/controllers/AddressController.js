@@ -6,18 +6,25 @@
  * To change this template use File | Settings | File Templates.
  */
 
+
 var mongoose = require('mongoose'),
-    Address = mongoose.model('Address'),
+//BusinessPartner = mongoose.model('BusinessPartner'),
     qs=require('qs'),
     _ = require('lodash');
 
+var getModel = function(modelname,tenant) {
+    return  mongoose.mtModel(tenant + '.' + modelname);
+}
+
+
 /**
- * Create a Address
+ * Create a BP
  */
 
 exports.create = function(req, res) {
-    Address =mongoose.mtModel(req.user.tenant+'.Address');
-    var addr = new Address(req.body);
+
+    var addressModel =getModel('Address', req.user.tenant);
+    var addr = new addressModel(req.body);
     addr.user = req.user;
     addr.save(function(err) {
         if (err) {
@@ -31,50 +38,11 @@ exports.create = function(req, res) {
     });
 };
 
-exports.show = function(req, res) {
-    Address =mongoose.mtModel(req.user.tenant+'.Address');
-    var addId = req.params.addId;
-    if (addId){
-        Address.findOne({_id: addId}).exec(function(err, addr) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                res.jsonp(addr);
-            }
-        });
-    }
-    else{
-        Address.find().exec(function(err, addr) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                res.jsonp(addr);
-            }
-        });
-    }
 
-};
 
-/**
- * Update a Address
- */
-exports.update = function(req, res) {
-    Address = mongoose.mtModel(req.user.tenant+'.Address');
-    Address.findOne({_id: req.params.addId}).exec(function(err, addr){
-        addr =_.extend(addr, req.body);
-        addr.save(function(err) {
-            if (err) {
-                return res.send('users/signup', {
-                    errors: err.errors,
-                    bp: addr
-                });
-            } else {
-                res.jsonp(addr);
-            }
-        });
-    });
-};
+
+
+
+
+
+
