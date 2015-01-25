@@ -223,6 +223,10 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             controller:'googleMapCtrl'
             }
             )
+            .state('triporder',
+            {url:'/tripOrder/create',
+                templateUrl: 'views/Order/tripOrder.html'
+            })
 		.state('otherwise',
             {url:'*path',
                 templateUrl: 'views/index.html'

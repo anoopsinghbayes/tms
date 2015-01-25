@@ -141,6 +141,9 @@ var EmployeeSchema = new AbstractBusinessPartnerSchema({
     basicSalary:{
         type: Number,
         default: 0
+    },
+    licenceNo:{                       // applicable for driver
+        type: String
     }
 });
 

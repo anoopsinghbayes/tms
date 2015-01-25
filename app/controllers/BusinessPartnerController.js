@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    //BusinessPartner = mongoose.model('BusinessPartner'),
+//BusinessPartner = mongoose.model('BusinessPartner'),
     qs=require('qs'),
     _ = require('lodash');
 
@@ -24,31 +24,53 @@ exports.create = function(req, res) {
     });
 };
 
-exports.all = function(req, res) {
-    var bpModel = getModel(businessPartnerType, req.user.tenant);
-    bpModel.findOne({_id: req.params.bpId}).exec(function(err, bp) {
-        if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(bp);
-        }
-    });
-};
-
-
 exports.show = function(req, res) {
     var businessPartnerType = req.params.businessPartnerType;
-    var bpModel =getModel(businessPartnerType, req.user.tenant);
-    bpModel.find().exec(function(err, bp) {
+    var bpId = req.params.bpId;
+    var bpModel = getModel(businessPartnerType, req.user.tenant);
+    if (bpId){
+        bpModel.findOne({_id: bpId}).exec(function(err, bp) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(bp);
+            }
+        });
+    }
+    else{
+        bpModel.find().exec(function(err, bp) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(bp);
+            }
+        });
+    }
+
+};
+
+/**
+ * Update a BP
+ */
+exports.update = function(req, res) {
+    var businessPartnerType = req.params.businessPartnerType;
+    var bpModel = getModel(businessPartnerType, req.user.tenant);
+    var query = {"_id": req.params.bpId};
+    var update = req.body;
+    var options = {new: true};
+    bpModel.findOneAndUpdate(query, update, options, function(err, bp){
         if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(bp);
-        }
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    bp: bp
+                });
+            } else {
+                res.jsonp(bp);
+            }
     });
 };
 
