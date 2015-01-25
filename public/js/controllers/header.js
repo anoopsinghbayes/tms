@@ -91,29 +91,30 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 }
             ]
         },
+//        {
+//            title:"Vehicles",
+//            iconClass:"fa fa-truck",
+//            link:'Vehicles',
+//            state:'',
+//            isCollapsed:true,
+//            links:[
+//                {
+//                    title:'List',
+//                    state:'vehicles'
+//                },
+//                {
+//                    title: "Maintenance",
+//                    link: 'vehicleMaintainceDetails',
+//                    state:'vehicleMaintainceDetails'
+//
+//
+//                },{
+//                    title:'Finance',
+//                    state:'vehicles.finance'
+//                }]
+//
+//        },
         {
-            title:"Vehicles",
-            iconClass:"fa fa-truck",
-            link:'Vehicles',
-            state:'',
-            isCollapsed:true,
-            links:[
-                {
-                    title:'List',
-                    state:'vehicles'
-                },
-                {
-                    title: "Maintenance",
-                    link: 'vehicleMaintainceDetails',
-                    state:'vehicleMaintainceDetails'
-
-
-                },{
-                    title:'Finance',
-                    state:'vehicles.finance'
-                }]
-
-        },{
             'title':'Invoice',
             iconClass:'fa fa-file-text',
             isCollapsed:true,
