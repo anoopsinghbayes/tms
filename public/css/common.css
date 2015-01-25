@@ -310,7 +310,7 @@ html.bgImg body{
 
 .sideMenu a:link {
     text-decoration: none;
-    color:#fff;
+    color:#BDBABA;
 }
 
 .sideMenu .side-icon{
@@ -320,16 +320,22 @@ html.bgImg body{
 
 .sideMenu a:visited {
     text-decoration: none;
-    color:#fff;
+    color:#BDBABA;
 }
 
 .sideMenu a:hover {
     text-decoration: none;
-    color:grey;
+    color:#FFF;
 }
+
+
+
 
 .sideMenu a:active {
     text-decoration: none;
+}
+.sideMenu li.active a{
+    color:#FFF;
 }
 
 /*css for scrollBar*/

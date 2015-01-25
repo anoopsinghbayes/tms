@@ -1,5 +1,5 @@
 <ul class="sideMenu">
-    <li ng-repeat="link in links">
+    <li ng-repeat="link in links" ui-sref-active="active">
         <a ng-if="link.state" ui-sref="{{link.state}}" ng-click="link.isCollapsed = !link.isCollapsed">
             <i ng-class="link.iconClass" class="fa-lg side-icon"></i>  {{link.title}} <i ng-if="link.links.length>0" class="fa fa-lg" ng-class="{'fa-chevron-down': !link.isCollapsed, 'fa-chevron-right': link.isCollapsed}"></i>
         </a>
