@@ -104,22 +104,10 @@ var VehicleSchema = new AbstractItemSchema({
             type: String,
             default: 0
         },
-        garage: {
-            name:{
-                type: String,
-                trim: true
-            },
-            address:{
-                type: String,
-                trim: true
-            },
-            contact:{
-                type: String,
-                trim: true
-            }
-
-        },
-        makingCost:{type:Number}
+        garageName: {
+            type: String,
+            trim: true
+        }
     }
 );
 
