@@ -68,3 +68,9 @@ logger.init(app, passport, mongoose);
 
 //expose app
 exports = module.exports = app;
+
+
+
+//Cron Job Start
+var job = require('./NotificationServices');
+job.serviceStart();
