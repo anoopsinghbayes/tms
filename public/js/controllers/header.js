@@ -3,6 +3,8 @@
 angular.module('mean.system').controller('HeaderController', ['$scope', 'Global','SlideMenu', function ($scope, Global,SlideMenu) {
     $scope.global = Global;
     $scope.open=false;
+    if($scope.open)
+        SlideMenu.toggleClass();
     $scope.openMenu=function(){
         SlideMenu.toggleClass();
         $scope.open=!$scope.open;
@@ -18,7 +20,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             links:[
                 {
                     title: 'Vehicle',
-                    state: ''
+                    state: 'vehicles'
                 },
                 {
                     title: 'Vehicle Parts',
@@ -83,7 +85,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 },
                 {
                     title:'Vendor',
-                    state:''
+                    state:'Vendors.create'
                 },
                 {
                     title:'Employee',
@@ -91,29 +93,30 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
                 }
             ]
         },
+//        {
+//            title:"Vehicles",
+//            iconClass:"fa fa-truck",
+//            link:'Vehicles',
+//            state:'',
+//            isCollapsed:true,
+//            links:[
+//                {
+//                    title:'List',
+//                    state:'vehicles'
+//                },
+//                {
+//                    title: "Maintenance",
+//                    link: 'vehicleMaintainceDetails',
+//                    state:'vehicleMaintainceDetails'
+//
+//
+//                },{
+//                    title:'Finance',
+//                    state:'vehicles.finance'
+//                }]
+//
+//        },
         {
-            title:"Vehicles",
-            iconClass:"fa fa-truck",
-            link:'Vehicles',
-            state:'',
-            isCollapsed:true,
-            links:[
-                {
-                    title:'List',
-                    state:'vehicles'
-                },
-                {
-                    title: "Maintenance",
-                    link: 'vehicleMaintainceDetails',
-                    state:'vehicleMaintainceDetails'
-
-
-                },{
-                    title:'Finance',
-                    state:'vehicles.finance'
-                }]
-
-        },{
             'title':'Invoice',
             iconClass:'fa fa-file-text',
             isCollapsed:true,
@@ -178,7 +181,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         }
     ];
 
-    $scope.isCollapsed = false;
+    $scope.isCollapsed = true;
 }]);
 angular.module('mean').controller('TabsDemoCtrl',['$scope',function TabsDemoCtrl($scope) {
     $scope.tabs = [

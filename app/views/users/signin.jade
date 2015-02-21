@@ -1,21 +1,25 @@
 extends auth
 
 block auth
-   
-    form.form.signin(action="/users/session", method="post")
-        div.row
-            div.col-xs-12
-                img.img_logo(src='/img/logo_360.svg')
-        fieldset
-            .form-group
-                input#email.form-control(type='text', name="email", placeholder='Email')
 
-            .form-group
-                input#password.form-control(type='password', name="password", placeholder='Password')
+    div.row
+        div.col-xs-12
 
-            .form-actions
-                button.btn.btn-info.btn-block.btn-lg(type='submit') Sign in
-                &nbsp;
-                | or&nbsp;
-                a.show-signup(href="/signup") Sign up
+                form.form.signin(action="/users/session", method="post" )
+
+                    img.img_logo(src='/img/logo_360.svg')
+                    fieldset
+                        .form-group.has-feedback
+                            label &nbsp;
+                            input#email.form-control(type='text', name="email", placeholder='Email')
+                            span.fa.fa-envelope.form-control-feedback
+                        .form-group.has-feedback
+                            label &nbsp;
+                            input#password.form-control(type='password', name="password", placeholder='Password')
+                            span.fa.fa-lock.form-control-feedback
+                        .form-actions
+                            button.btn.btn-info.btn-block.btn-lg(type='submit') Sign in
+                            &nbsp;
+                            | or&nbsp;
+                            a.show-signup(href="/signup") Sign up
      div.blur.gaussian-blur

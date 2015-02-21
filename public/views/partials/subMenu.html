@@ -1,4 +1,4 @@
-<li >
+<li ui-sref-active="active">
       <a ng-if="sublink.state" ui-sref="{{sublink.state}}" ng-click="sublink.isCollapsed = !sublink.isCollapsed">{{sublink.title}}
         <i ng-if="sublink.links.length>0" class="fa" ng-class="{'fa-chevron-down': !sublink.isCollapsed, 'fa-chevron-right': sublink.isCollapsed}"></i>
     </a>
