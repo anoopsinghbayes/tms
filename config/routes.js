@@ -200,4 +200,9 @@ module.exports = function (app, passport, auth) {
     app.post('/address/:businessPartnerType', address.create);
     app.get('/address/*', auth.requiresLogin, address.show);
     app.put('/address/:add  Id', auth.requiresLogin, address.update);
+
+    var master = require('../app/controllers/masterController.js');
+    app.post('/master', master.create);
+    app.get('/master/:orderType', auth.requiresLogin, master.show);
+    app.put('/master/:orderType/:orderId', auth.requiresLogin, master.update);
 };
