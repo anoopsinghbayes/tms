@@ -19,7 +19,7 @@ Item Category           Item Title
 1.Vehicle           ---Vehicle
 2.Vehicle Parts     ---Engine ,Chasses,Tyre etc.
 3.Miscellaneous     ---Fan,Bulb,Table,printer,Office Stationary etc   --Common Office Items
-4.Service           ---Salary,Labour,Electricity,Rent,Telephone,Vehicle Maintenance
+4.Service           ---Salary,Labour,Electricity,Rent,Telephone
 5.Vehicle Docs      ---PUC,State Permit,National Permit,Safety Certificate,Insurance,Explosive License,Fitness Certificate
 6.Tax               ---Toll,Octroi
 7.Product           ---Diesel,Petrol,Oil, and All products transported by vehicle
