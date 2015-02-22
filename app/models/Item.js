@@ -19,7 +19,7 @@ Item Category           Item Title
 1.Vehicle           ---Vehicle
 2.Vehicle Parts     ---Engine ,Chasses,Tyre etc.
 3.Miscellaneous     ---Fan,Bulb,Table,printer,Office Stationary etc   --Common Office Items
-4.Service           ---Salary,Labour,Electricity,Rent,Telephone
+4.Service           ---Salary,Labour,Electricity,Rent,Telephone,detention Charges(for vehicle)
 5.Vehicle Docs      ---PUC,State Permit,National Permit,Safety Certificate,Insurance,Explosive License,Fitness Certificate
 6.Tax               ---Toll,Octroi
 7.Product           ---Diesel,Petrol,Oil, and All products transported by vehicle
@@ -37,7 +37,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
 var util = require('util');
-
+var autoIncrement = require('mongoose-auto-increment');
 
 /**
  * Abstract Item Schema
@@ -164,11 +164,26 @@ var ProductSchema = new AbstractItemSchema({
 
 
 
+
 var Item = mongoose.mtModel('Item', ItemSchema); // our base model
+
+VehicleSchema.plugin(autoIncrement.plugin, 'Vehicle');
 var Vehicle = Item.discriminator('Vehicle', VehicleSchema);
+
+VehiclePartSchema.plugin(autoIncrement.plugin, 'VehiclePart');
 var VehiclePart = Item.discriminator('VehiclePart', VehiclePartSchema);
+
+MiscellaneousSchema.plugin(autoIncrement.plugin, 'Miscellaneous');
 var Miscellaneous = Item.discriminator('Miscellaneous', MiscellaneousSchema);
+
+ServiceSchema.plugin(autoIncrement.plugin, 'Service');
 var Service = Item.discriminator('Service', ServiceSchema);
+
+VehicleDocsSchema.plugin(autoIncrement.plugin, 'VehicleDocs');
 var VehicleDocs = Item.discriminator('VehicleDocs', VehicleDocsSchema);
+
+TaxSchema.plugin(autoIncrement.plugin, 'Tax');
 var Tax = Item.discriminator('Tax', TaxSchema);
+
+ProductSchema.plugin(autoIncrement.plugin, 'Product');
 var Product = Item.discriminator('Product', ProductSchema);

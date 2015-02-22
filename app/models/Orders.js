@@ -94,6 +94,9 @@ var TripSchema = new Schema({
         date:{
             type:Date
         },
+        odometer:{
+            type:Number
+        },
         distance:{
             type:Number
 
