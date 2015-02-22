@@ -1,0 +1,99 @@
+<form >
+    <div class="row">
+        <legend>Garage Details</legend>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Garage Name</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Contact No.</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Date&nbsp;</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Address</label>
+                <div class="controls">
+                    <textarea class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Vehicle No.</label>
+                <div class="controls">
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Service Type</label>
+                <div class="controls">
+                    <select class="form-control">
+                        <option>Regular Service</option>
+                        <option>Maintenance</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Labour Charges</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="number" placeholder="Charges">
+                    <div class="input-group-addon">Rs.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Garage Charges</label>
+                <div class="input-group">
+
+                    <input class="form-control" type="number" placeholder="Charges">
+                    <div class="input-group-addon">Rs.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-warning">Add Line</button>
+        <div class="col-md-12">
+            <h3>Detail Lines</h3>
+
+            <div class="table-responsive">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Present Reading (Kms)</th>
+                        <th>Warranty (Kms)</th>
+                        <th>Warranty (Date)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><textarea type="text" rows="1" class="form-control" value="wheel allignment">wheel allignment</textarea></td>
+                        <td><input type="date" class="form-control" value="12/05/2014"></td>
+                        <td><input type="number" class="form-control" value="12000"></td>
+                        <td><input type="number" class="form-control" value="50000"></td>
+                        <td><input type="date" class="form-control" value="12/05/2014"></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn btn-primary">save</button>
+        </div>
+    </div>
+</form>
