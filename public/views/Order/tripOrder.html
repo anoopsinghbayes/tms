@@ -1,8 +1,7 @@
-<section ng-controller="tripOrderCtrl" class="tripOrderPage well">
-    <form class="form" >
-        <tabset justified="true">
+<section ng-controller="tripOrderCtrl" class="tripOrderPage">
+    <tabset justified="true">
         <tab heading="Order Header">
-                <legend>Edit Header</legend>
+            <form class="form">
                  <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -75,7 +74,7 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-
+            </form>
         </tab>
         <tab heading="Trip Lines" select="initializeMapControls()">
             <div class="row">
@@ -138,13 +137,8 @@
                     </table>
                         </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-
-                </div>
-                <div class="col-xs-8 col-xs-offset-2">
-                    <section id="map" class="map">
+                <div class="col-md-8 col-md-offset-2">
+                    <section id="map">
                         <div ui-map="data.myMap" ui-options="data.mapOptions" class="tripmap-canvas"></div>
                     </section>
                 </div>
@@ -154,5 +148,5 @@
         <tab heading="Expenses">Long Labeled Justified content</tab>
         <tab heading="Subcontractor Details">Long Labeled Justified content</tab>
     </tabset>
-    </form>
+
 </section>

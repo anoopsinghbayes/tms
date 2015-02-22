@@ -48,61 +48,6 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                         }
             }
             ).
-
-            state('Employees',
-            {
-                url:'/employees',
-                //controller:'listCustomer',
-                templateUrl:'views/customer/list.html'
-            }
-        ).
-            state('Employees.create',
-            {url:'/new',
-                views: {
-                    "@" : {
-                        templateUrl:'views/BP/employee/edit.html'
-                        //controller:"createCustomerCtrl"
-                    }
-                }
-            }
-        ).
-            state('Employees.edit',
-            {url:'/:customerId',
-                views: {
-                    "@" : {
-                        templateUrl:'views/customer/edit.html'
-                        //controller:"editCustomerCtrl"
-                    }
-                }
-            }
-        ).
-            state('Vendors',
-            {
-                url:'/Vendors'
-                //controller:'listCustomer',
-                //templateUrl:'views/vendors/list.html'
-            }
-        ).
-            state('Vendors.create',
-            {url:'/new',
-                views: {
-                    "@" : {
-                        templateUrl:'views/BP/vendor/edit.html'
-                        //controller:"createCustomerCtrl"
-                    }
-                }
-            }
-        ).
-            state('Vendors.edit',
-            {url:'/:customerId',
-                views: {
-                    "@" : {
-                        templateUrl:'views/BP/vendor/edit.html'
-                        //controller:"editCustomerCtrl"
-                    }
-                }
-            }
-        ).
 		state('edit.address',
             {url:'/address',
 		templateUrl:'views/customer/address.html'
@@ -213,14 +158,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 })
             .state('vehicles',{
                 url:'/vehicles',
-                templateUrl:'/views/Item/vehicle/list.html',
+                templateUrl:'/views/vehicle/list.html',
                 controller:''
 
             })
         .state('vehicles.create',{
                 url:'/create',
                 views: {
-                    "@": {templateUrl: 'views/Item/vehicle/edit.html',
+                    "@": {templateUrl: 'views/vehicle/vehicle.html',
                         controller: ''
                     }
                 }
@@ -228,14 +173,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('vehicles.finance',{
                 url:'/finance',
                 views: {
-                    "@": {templateUrl: 'views/Item/vehicle/finance.html',
+                    "@": {templateUrl: 'views/vehicle/finance.html',
                         controller: ''
                     }
                 }
             })
             .state('vehicleMaintainceDetails',{
                 url:'/vehicleMaintainceDetails',
-                templateUrl:'views/Item/vehicle/vehicleMaintainceDetails.html',
+                templateUrl:'views/vehicle/vehicleMaintainceDetails.html',
                 controller:''
             })
             .state('TyreDetails',{
@@ -255,7 +200,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             })
             .state('test',
             {url:'/test',
-
+             
 			controller:'ArticlesController',
             templateUrl: 'views/articles/create.html'
             })
@@ -263,7 +208,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/map',
 		templateUrl:'views/map/mapview.html',
 			 controller:'MapCtrl'
-
+			
 		}).state('tenantscreate',
             {url:'/tenants/create',
 			controller:'TenantCtrl',

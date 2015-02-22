@@ -25,21 +25,6 @@ function AbstractAnimalSchema() {
 
 util.inherits(AbstractAnimalSchema, Schema);
 
-//var oneSchema=new Schema({
-//    name:{type:String},
-//    arra:[{
-//    id:mongoose.Schema.Types.ObjectId,
-//    value:{type:String}
-//    }]
-//})
-//
-//var twoSchema=new Schema({
-//    refval:{
-//        name:String,
-//        one:{ref:'oneSchema.arr'}
-//    }
-//})
-
 
 var AnimalSchema = new AbstractAnimalSchema({});
 
@@ -53,4 +38,5 @@ var DogSchema = new AbstractAnimalSchema({
 
 var Animal = mongoose.mtModel('Animal', AnimalSchema); // our base model
 var Dog = Animal.discriminator('Dog', DogSchema); // our derived model (see discriminator)
-var Kitten = Animal.discriminator('Kitten', KittySchema); // our derived model (see discriminator)
+var Kitten = Animal.discriminator('Ki', KittySchema); // our derived model (see discriminator)
+

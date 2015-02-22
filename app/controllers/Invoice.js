@@ -17,17 +17,15 @@ var mongoose = require('mongoose'),
 /**
  * Create a Invoice
  */
-
 exports.create = function(req, res) {
-    var invoiceType = req.params.invoiceType;
-    var invoiceModel =getModel(invoiceType, req.user.tenant);
-    var invoice = new invoiceModel(req.body);
-    invoice.user = req.user;
-    invoice.save(function(err) {
+    Invoice =mongoose.mtModel(req.user.tenant+'.Invoice');
+    //console.log(Order);
+    var invoice = new Invoice(req.body);
+    order.save(function(err) {
+        console.log(err)
         if (err) {
             return res.send('500', {
-                errors: err
-                //bp: bp
+                errors: err.errors
             });
         } else {
             res.jsonp(invoice);
@@ -35,64 +33,27 @@ exports.create = function(req, res) {
     });
 };
 
-/*
-get Invoice
- */
-exports.show = function(req, res) {
-    var invoiceType = req.params.invoiceType;
-    var invoiceId = req.params.invoiceId;
-    var invoiceModel = getModel(invoiceType, req.user.tenant);
-    if (invoiceId){
-        invoiceModel.findOne({_id: invoiceId}).exec(function(err, invoice) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                res.jsonp(invoice);
-            }
-        });
-    }
-    else{
-        invoiceModel.find().exec(function(err, invoice) {
-            if (err) {
-                res.render('error', {
-                    status: 500
-                });
-            } else {
-                res.jsonp(invoice);
-            }
-        });
-    }
 
-};
-
-
-
-
-/*
-
-Update Invoice
-
+/**
+ * Update a Invoice
  */
 exports.update = function(req, res) {
-    var invoiceType = req.params.invoiceType;
-    var invoiceModel = getModel(invoiceType, req.user.tenant);
-    var query = {"_id": req.params.invoiceId};
-    var update = req.body;
-    var options = {new: true};
-    invoiceModel.findOneAndUpdate(query, update, options, function(err, invoice){
-        if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                bp: invoice
-            });
-        } else {
-            res.jsonp(invoice);
-        }
-    });
-};
+    Invoice =mongoose.mtModel(req.user.tenant+'.Invoice');
 
-var getModel = function(modelname,tenant) {
-    return  mongoose.mtModel(tenant + '.' + modelname);
-}
+    Invoice.findOne({_id: req.params.invoiceId},function(err,invoice){
+
+        invoice =_.extend(invoice, req.body);
+
+        invoice.save(function(err) {
+            if (err) {
+
+                return res.send('users/signup', {
+                    errors: err.errors,
+                    invoice: invoice
+                });
+            } else {
+                res.jsonp(invoice);
+            }
+        });
+    })
+};

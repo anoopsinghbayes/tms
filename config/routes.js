@@ -1,97 +1,97 @@
 'use strict';
 
 module.exports = function (app, passport, auth) {
-    //User Routes
-    var users = require('../app/controllers/users');
-    app.get('/signin', users.signin);
-    app.get('/signup', users.signup);
-    app.get('/signout', users.signout);
-    app.get('/users/me', users.me);
+	//User Routes
+	var users = require('../app/controllers/users');
+	app.get('/signin', users.signin);
+	app.get('/signup', users.signup);
+	app.get('/signout', users.signout);
+	app.get('/users/me', users.me);
 
-    //Setting up the users api
-    app.post('/users', users.create);
+	//Setting up the users api
+	app.post('/users', users.create);
 
-    //Setting the local strategy route
-    app.post('/users/session', passport.authenticate('local', {
-        failureRedirect: '/signin',
-        failureFlash: true
-    }), users.session);
+	//Setting the local strategy route
+	app.post('/users/session', passport.authenticate('local', {
+		failureRedirect: '/signin',
+		failureFlash: true
+	}), users.session);
 
-    //Setting the facebook oauth routes
-    app.get('/auth/facebook', passport.authenticate('facebook', {
-        scope: ['email', 'user_about_me'],
-        failureRedirect: '/signin'
-    }), users.signin);
+	//Setting the facebook oauth routes
+	app.get('/auth/facebook', passport.authenticate('facebook', {
+		scope: ['email', 'user_about_me'],
+		failureRedirect: '/signin'
+	}), users.signin);
 
-    app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-        failureRedirect: '/signin'
-    }), users.authCallback);
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+		failureRedirect: '/signin'
+	}), users.authCallback);
 
-    //Setting the github oauth routes
-    app.get('/auth/github', passport.authenticate('github', {
-        failureRedirect: '/signin'
-    }), users.signin);
+	//Setting the github oauth routes
+	app.get('/auth/github', passport.authenticate('github', {
+		failureRedirect: '/signin'
+	}), users.signin);
 
-    app.get('/auth/github/callback', passport.authenticate('github', {
-        failureRedirect: '/signin'
-    }), users.authCallback);
+	app.get('/auth/github/callback', passport.authenticate('github', {
+		failureRedirect: '/signin'
+	}), users.authCallback);
 
-    //Setting the twitter oauth routes
-    app.get('/auth/twitter', passport.authenticate('twitter', {
-        failureRedirect: '/signin'
-    }), users.signin);
+	//Setting the twitter oauth routes
+	app.get('/auth/twitter', passport.authenticate('twitter', {
+		failureRedirect: '/signin'
+	}), users.signin);
 
-    app.get('/auth/twitter/callback', passport.authenticate('twitter', {
-        failureRedirect: '/signin'
-    }), users.authCallback);
+	app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+		failureRedirect: '/signin'
+	}), users.authCallback);
 
-    //Setting the google oauth routes
-    app.get('/auth/google', passport.authenticate('google', {
-        failureRedirect: '/signin',
-        scope: [
+	//Setting the google oauth routes
+	app.get('/auth/google', passport.authenticate('google', {
+		failureRedirect: '/signin',
+		scope: [
             'https://www.googleapis.com/auth/userinfo.profile',
             'https://www.googleapis.com/auth/userinfo.email'
         ]
-    }), users.signin);
+	}), users.signin);
 
-    app.get('/auth/google/callback', passport.authenticate('google', {
-        failureRedirect: '/signin'
-    }), users.authCallback);
+	app.get('/auth/google/callback', passport.authenticate('google', {
+		failureRedirect: '/signin'
+	}), users.authCallback);
 
-    //Finish with setting up the userId param
-    app.param('userId', users.user);
+	//Finish with setting up the userId param
+	app.param('userId', users.user);
 
-    //Article Routes
-    var articles = require('../app/controllers/articles');
-    app.get('/articles', auth.requiresLogin, articles.all);
-    app.post('/articles', auth.requiresLogin, articles.create);
-    app.get('/articles/:articleId', articles.show);
-    app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
-    app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
+	//Article Routes
+	var articles = require('../app/controllers/articles');
+	app.get('/articles', auth.requiresLogin, articles.all);
+	app.post('/articles', auth.requiresLogin, articles.create);
+	app.get('/articles/:articleId', articles.show);
+	app.put('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.update);
+	app.del('/articles/:articleId', auth.requiresLogin, auth.article.hasAuthorization, articles.destroy);
 
-    //Finish with setting up the articleId param
-    app.param('articleId', articles.article);
+	//Finish with setting up the articleId param
+	app.param('articleId', articles.article);
 
 
-    //Customer routes
-    var customer = require('../app/controllers/customer.js');
-    app.post('/customers', auth.requiresLogin, customer.create);
+	//Customer routes
+	var customer = require('../app/controllers/customer.js');
+	app.post('/customers', auth.requiresLogin, customer.create);
     //search for customer by name
 
-    app.get('/customers/:CustomerId', customer.show);
+	app.get('/customers/:CustomerId', customer.show);
 
 
-    app.get('/customers', customer.all);
-    app.put('/customers/:CustomerId', auth.requiresLogin, customer.update);
+	app.get('/customers', customer.all);
+	app.put('/customers/:CustomerId', auth.requiresLogin, customer.update);
 
-
-    //Tenant routes
-    var tenant=require('../app/controllers/tenant');
-    app.get('/tenants', auth.requiresLogin, tenant.all);
-    app.post('/tenants',tenant.create);
-    //Home route
-    var index = require('../app/controllers/index');
-    app.get('/', index.render);
+	
+	//Tenant routes
+	var tenant=require('../app/controllers/tenant');
+	app.get('/tenants', auth.requiresLogin, tenant.all);
+	app.post('/tenants',tenant.create);
+	//Home route
+	var index = require('../app/controllers/index');
+	app.get('/', index.render);
 
 
     //Order Routes
@@ -129,7 +129,7 @@ module.exports = function (app, passport, auth) {
     app.get('/tyres', auth.requiresLogin, Tyre.all);
 
 
-    //Vehicle Routes
+   //Vehicle Routes
     var Vehicle = require('../app/controllers/Vehicle');
     app.post('/vehicles', auth.requiresLogin, Vehicle.create);
     app.put('/vehicles/:vehicleId', auth.requiresLogin, Vehicle.update);
@@ -175,7 +175,6 @@ module.exports = function (app, passport, auth) {
     //Test Route to test new models or methods
     var test = require('../app/controllers/TestController');
     app.get('/test', auth.requiresLogin, test.create);
-    app.post('/test/:ID', auth.requiresLogin, test.update);
 
     //return all the mongoose enums to be used for UI
     var enums=require('../app/models/enums.js');
@@ -193,23 +192,12 @@ module.exports = function (app, passport, auth) {
     app.get('/Item/:itemCategory', auth.requiresLogin, ItemController.show);
 
     var businessPartner = require('../app/controllers/BusinessPartnerController.js');
-
     app.post('/businesspartner/:businessPartnerType', businessPartner.create);
     app.get('/businesspartner/:businessPartnerType/:bpId?', auth.requiresLogin, businessPartner.show);
     app.put('/businesspartner/:businessPartnerType/:bpId', auth.requiresLogin, businessPartner.update);
 
-    app.post('/businesspartner/:businessPartnerType', auth.requiresLogin, businessPartner.create);
-
-
     var address = require('../app/controllers/AddressController.js');
-    app.post('/address', auth.requiresLogin,address.create);
-
-
-
-//New Order Routes
-    var Order = require('../app/controllers/OrderController');
-    app.post('/orders/:orderType', auth.requiresLogin, Order.create);
-
-
-
+    app.post('/address/:businessPartnerType', address.create);
+    app.get('/address/*', auth.requiresLogin, address.show);
+    app.put('/address/:add  Id', auth.requiresLogin, address.update);
 };

@@ -145,14 +145,8 @@ var EmployeeSchema = new AbstractBusinessPartnerSchema({
         type: Number,
         default: 0
     },
-    licenseNo:{                       // applicable for driver
+    licenceNo:{                       // applicable for driver
         type: String
-    },
-    licenseDOI:{                        // applicable for driver
-        type:Date
-    },
-    licenseDOE:{                        // applicable for driver
-        type:Date
     }
 });
 CustomerSchema.plugin(autoIncrement.plugin,{model: 'Customer'});

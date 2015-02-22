@@ -266,5 +266,5 @@ var ServiceOrder = Order.discriminator('ServiceOrder', ServiceOrderSchema); // o
 
 
 
-//mongoose.mtModel('Order', OrdersSchema);
+mongoose.mtModel('Order', OrdersSchema);
 //OrderSchema.plugin(autoIncrement.plugin, 'Order');

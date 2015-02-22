@@ -26,7 +26,12 @@ var AddressSchema=new Schema({
             type: Date,
             default: Date.now
         },
-        adL:{
+        adL1:{
+            type: String,
+
+            trim: true
+        },
+        adL2:{
             type: String,
             trim: true
         },
@@ -47,15 +52,15 @@ var AddressSchema=new Schema({
 
         },
         phM1:{
-            type: String
+            type: Number
 
         },
         phM2:{
-            type: String
+            type: Number
 
         },
         phL:{
-            type: String
+            type: Number
 
         },
         email:{
