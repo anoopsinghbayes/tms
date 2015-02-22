@@ -149,8 +149,14 @@ var EmployeeSchema = new AbstractBusinessPartnerSchema({
         type: String
     }
 });
-CustomerSchema.plugin(autoIncrement.plugin,{model: 'Customer'});
+
 var BusinessPartner = mongoose.mtModel('BusinessPartner', BusinessPartnerSchema); // our base model
+
+CustomerSchema.plugin(autoIncrement.plugin,{model: 'Customer'});
 var Customer = BusinessPartner.discriminator('Customer', CustomerSchema); // our derived model (see discriminator)
+
+VendorSchema.plugin(autoIncrement.plugin,{model: 'Vendor'});
 var Vendor = BusinessPartner.discriminator('Vendor', VendorSchema); // our derived model (see discriminator)
+
+EmployeeSchema.plugin(autoIncrement.plugin,{model: 'Employee'});
 var Employee = BusinessPartner.discriminator('Employee', EmployeeSchema); // our derived model (see discriminator)

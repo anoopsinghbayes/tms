@@ -122,5 +122,9 @@ var AccountsPayableSchema = new AbstractAccountsSchema({
 
 
 var Accounts = mongoose.mtModel('Accounts', AccountsSchema); // base model
+
+AccountsReceivableSchema.plugin(autoIncrement.plugin, 'AccountsReceivable');
 var AccountsReceivable = Accounts.discriminator('AccountsReceivable', AccountsReceivableSchema); // derived model
+
+AccountsPayableSchema.plugin(autoIncrement.plugin, 'AccountsPayable');
 var AccountsPayable = Accounts.discriminator('AccountsPayable', AccountsPayableSchema); // derived model

@@ -15,6 +15,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
+var util = require('util');
 
 
 
