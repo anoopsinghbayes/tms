@@ -125,7 +125,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             links:[
                 {
                     title:'Trip Invoice',
-                    state:''
+                    state:'invoiceExample'
                 },
                 {
                     title:'Rental Invoice',

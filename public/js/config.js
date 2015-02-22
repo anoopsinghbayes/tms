@@ -243,6 +243,11 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 templateUrl:'views/Tyre/tyreDetails.html',
                 controller:''
             })
+            .state('invoiceExample',{
+                url:'/invoiceExample',
+                templateUrl:'views/Invoice/invoiceExample.html',
+                controller:'InvoiceExampleCtrl'
+            })
             .state('InvoiceDetails',{
                 url:'/InvoiceDetails',
                 templateUrl:'views/Invoice/invoiceDetails.html',
@@ -282,6 +287,29 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {url:'/tripOrder/create',
                 templateUrl: 'views/Order/tripOrder.html'
             })
+            .state('purchaseOrder',
+            {url:'/purchaseOrder/create',
+                templateUrl: 'views/Order/purchaseOrder.html',
+                controller:'purchaseOrderCtrl'
+
+            })
+            .state("purchaseOrder.addItem", {
+            url: "/as",
+            onEnter: ['$stateParams', '$state', '$modal','Customers','uiGridConstants','$http', function($stateParams, $state, $modal,Customers,uiGridConstants,$http) {
+                $modal.open({
+                    templateUrl: "views/customer/list.html",
+                    size: 'lg',
+                  //  backdrop:'static',
+                        resolve: {
+                        //item: function() { new Item(123).get(); }
+                    },
+                    controller: 'listCustomer'
+                })
+.result.finally(function() {
+                          $state.go('^');
+                    });
+            }]
+        })
 		.state('otherwise',
             {url:'*path',
                 templateUrl: 'views/index.html'

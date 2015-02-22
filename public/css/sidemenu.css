@@ -1,7 +1,9 @@
 /* Styles go here */
 
-.cbp-spmenu {
-  /*  background: #47a3da;*/
+
+
+        .cbp-spmenu {
+          /*  background: #47a3da;*/
     background: #0C304A;
     position: fixed;
 }
@@ -243,3 +245,25 @@ border-radius: 1px;
     border-left: 5px solid #000;
 }
 @media (min-width:992px){.modal-lg{width:900px}}
+
+@media print {
+    /*as the transitions misbehave with print layout they have to me overridden*/
+
+    .cbp-spmenu,.cbp-spmenu-push
+    {
+        transition: none;
+        -moz-transition: none;
+        -webkit-transition: none;
+    }
+
+    .cbp-spmenu {
+        display: none;
+    }
+    section#main{
+        padding-left: 0;
+        margin-left: 0;
+    }
+    div#divInvoice{
+        background-color: red;
+    }
+}

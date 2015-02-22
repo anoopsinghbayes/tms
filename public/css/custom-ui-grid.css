@@ -1,0 +1,33 @@
+.grid-container{
+    /*width: 1090px;*/
+}
+#mainView{
+    min-hight:500px ;
+}
+.grid {
+    /*min-width: 1000px;*/
+    width: 100%;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.ui-grid-pager-max-pages-number {
+    /*font-size:2rem;*/
+}
+.ui-grid-pager-panel {
+    font-size:1.7rem;
+}
+.ui-grid-pager-control input {
+    line-height:normal;
+}
+
+.ui-grid-top-panel {
+    font-weight:500;
+}
+.ui-grid-menu-button .ui-grid-icon-container {
+    margin: 2px;
+    padding: 2px;
+}
+.ui-grid-header-cell {
+    text-align:center;
+}

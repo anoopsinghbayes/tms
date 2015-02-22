@@ -1,36 +1,15 @@
 
+<!--<div class="row">-->
+    <!--<a ui-sref="customers.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Customer</a>-->
+<!--</div>-->
 <div class="row">
-    <a ui-sref="customers.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Customer</a>
-</div>
-<div class="row">
-    <div class="col-md-12">
-       <div class="table-responsive">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
 
-
-                <th>Name</th>
-                <th>Sales Representative</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Credit Details</th>
-
-            </tr>
-            </thead>
-            <tbody>
-<tr data-ng-repeat="customer in customers">
-
-    <td><a ui-sref="customers.edit({ customerId: customer._id })"> {{customer.companyName}}</a></td>
-    <td>{{customer.salesrep.name}}</td>
-    <td>{{customer.email}}</td>
-    <td>{{customer.contact}}</td>
-    <td>{{customer.address}}</td>
-    <td>{{customer.credit.limit}}</td>
-</tr>
-            </tbody>
-        </table>
-        </div>
+    <div class="col-sm-12">
+        <div class="well grid-container" style="margin: 0 auto">
+            <h3>Customers <a ui-sref="customers.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Customer</a></h3>
+            <br />
+      <div ui-grid="gridOptions"   ui-grid-exporter ui-grid-pagination ui-grid-auto-resize class="grid"></div>
     </div>
+    </div>
+
 </div>

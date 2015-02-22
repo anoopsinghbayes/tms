@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 require('mongoose-multitenant')('_');
 var util = require('util');
 var AddressSchema = mongoose.model('Address');
-
+var autoIncrement = require('mongoose-auto-increment');
 /**
  * Employee Enum
  */
@@ -63,6 +63,8 @@ function AbstractBusinessPartnerSchema() {
         user: {
             type: String
         }
+
+
     });
 
 };
@@ -72,6 +74,7 @@ util.inherits(AbstractBusinessPartnerSchema, Schema);
 var BusinessPartnerSchema = new AbstractBusinessPartnerSchema({});
 
 var CustomerSchema = new AbstractBusinessPartnerSchema({
+
     companyName:{
         type:String,
         required:true
@@ -152,7 +155,7 @@ var EmployeeSchema = new AbstractBusinessPartnerSchema({
         type:Date
     }
 });
-
+CustomerSchema.plugin(autoIncrement.plugin,{model: 'Customer'});
 var BusinessPartner = mongoose.mtModel('BusinessPartner', BusinessPartnerSchema); // our base model
 var Customer = BusinessPartner.discriminator('Customer', CustomerSchema); // our derived model (see discriminator)
 var Vendor = BusinessPartner.discriminator('Vendor', VendorSchema); // our derived model (see discriminator)

@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
     var businessPartnerType = req.params.businessPartnerType;
     var bpModel =getModel(businessPartnerType, req.user.tenant);
+    req.body._id="ABC";
     var bp = new bpModel(req.body);
     bp.user = req.user;
     bp.save(function(err) {
@@ -75,5 +76,6 @@ exports.update = function(req, res) {
 };
 
 var getModel = function(modelname,tenant) {
+
     return  mongoose.mtModel(tenant + '.' + modelname);
 }

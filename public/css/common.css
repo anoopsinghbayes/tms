@@ -1,3 +1,7 @@
+.table{
+    font-size: 13px;
+}
+
 .navbar .nav>li>a.brand {
     padding-left:20px;
     margin-left:0
@@ -341,10 +345,12 @@ html.bgImg body{
 /*css for scrollBar*/
 ::-webkit-scrollbar {
     width: 6px;
-    background-color: #fff0f0;
+    height:6px;
+    /*background-color: #fff0f0;*/
+    background-color: #B8BBBD;
 }
 ::-webkit-scrollbar:hover {
-    width: 20px;
+    width: 8px;
 
 }
 ::-webkit-scrollbar-track {
@@ -352,7 +358,7 @@ html.bgImg body{
 
 }
 :-webkit-scrollbar-track:hover{
-    width: 20px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -508,3 +514,197 @@ form >legend:first-child{
     text-decoration: none;
 }
 /*widget */
+
+.outer-section {
+    border:1px solid #dedede;
+    background-color: #fff;
+}
+
+
+/*css for invoice*/
+
+
+.invoice-wrapper {
+    color:#767676;
+}
+
+.page-invoice .invoice-wrapper {
+    padding: 0 0 30px;
+    background-color: #fff;
+
+}
+
+.invoice-inner {
+    padding: 15px 15px 30px;
+    background-color: #fff;
+    max-width:21cm;
+    position:relative;
+    color:#767676;
+}
+
+.invoice-inner .invoice-sum li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+
+.invoiceBtn {
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+.invoice-container {
+
+}
+.invoice-subheader{
+    margin-top: 10px;
+}
+.letterHeadImg {
+    width:100%;
+    margin:0 auto;
+    display: block;
+}
+
+.hideletterHeadImg {
+    -moz-opacity: 0.09;
+    opacity: 0.09;
+}
+
+@media print {
+    th{
+        font-weight:bold ;
+    }
+    td{
+        font-weight: normal;
+    }
+    .letterHeadImg{
+        padding: 15px;
+    }
+    .borderDashed img:hover{
+        border:none;
+    }
+    .borderDashed img{
+        border:none;
+    }
+    .hideletterHeadImg {
+        display:none;
+    }
+    .test {
+
+        background-color:#000;min-height:30px;
+        /*border:1px solid red;*/
+    }
+
+    .btn ,button {
+        border:none!important;
+        display:none!important;
+    }
+
+}
+
+.draggable{
+    position:relative;
+
+    /*border:1px solid red;*/
+
+    cursor: move;
+
+    width: 265px;
+    height:80px;
+    display:inline-block;
+    text-align:center;
+}
+
+.borderDashed img:hover{
+    border:1px dashed #5b5a5a;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+
+/*testing some pirnt specific css*/
+
+
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+.page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 10mm 20mm;
+    /*margin: 10mm auto;*/
+    border: 1px #D3D3D3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+}
+.subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 257mm;
+    outline: 2cm #FFEAEA solid;
+}
+
+@page {
+    size: A4;
+    /*margin: 0;*/
+}
+@media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;
+    }
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+
+/*print footer*/
+
+@media screen {
+    div.divFooter {
+        display: none;
+    }
+}
+@media print {
+    div.divFooter {
+        position: fixed;
+        bottom: 0;
+        /*border:1px solid red;*/
+        max-height: 10px;
+        display: block;
+        width: 100%;
+    }
+}
