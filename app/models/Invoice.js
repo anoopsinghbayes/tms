@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 require('mongoose-multitenant')('_');
 var util = require('util');
-var autoIncrement = require('mongoose-auto-increment');
+
 
 'use strict';
 

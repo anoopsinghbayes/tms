@@ -246,7 +246,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('invoiceExample',{
                 url:'/invoiceExample',
                 templateUrl:'views/Invoice/invoiceExample.html',
-                controller:'InvoiceExampleCtrl'
+                controller:''
             })
             .state('InvoiceDetails',{
                 url:'/InvoiceDetails',
