@@ -17,6 +17,7 @@ var mongoose = require('mongoose'),
 require('mongoose-multitenant')('_');
 var util = require('util');
 
+var autoIncrement = require('mongoose-auto-increment');
 
 /**
  * Accounts Schema
