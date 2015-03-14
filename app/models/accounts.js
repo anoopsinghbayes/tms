@@ -19,6 +19,10 @@ var util = require('util');
 
 var autoIncrement = require('mongoose-auto-increment');
 
+var accountsStatusEnum=["pending","confirmed","cancelled"];
+
+
+
 /**
  * Accounts Schema
  */
@@ -59,6 +63,7 @@ function AbstractAccountsSchema() {
         status:
         {
             type: String,               //Pending,Confirmed,Cancelled
+            enum:accountsStatusEnum,
             trim: true
         },
 
