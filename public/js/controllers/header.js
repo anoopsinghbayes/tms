@@ -163,8 +163,8 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
 
                 },{
                     title:'Payment Tag',
-                    link: 'PaymentInvoiceLink',
-                    state:'PaymentInvoiceLink'
+                    link: 'PaymentInvoice',
+                    state:'PaymentInvoice'
                 }]
 
         },
