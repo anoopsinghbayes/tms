@@ -100,9 +100,9 @@ module.exports = function (app, passport, auth) {
     app.get('/orders',auth.requiresLogin,Order.all);
 
     //Payment Routes
-    var Payment = require('../app/controllers/Payment');
-    app.post('/payment', auth.requiresLogin, Payment.create);
-
+    var Accounts = require('../app/controllers/accountsController');
+    app.post('/accounts/:accountType', auth.requiresLogin, Accounts.create);
+    app.get('/accounts/:accountType', auth.requiresLogin, Accounts.show);
 
 
     //Book Routes

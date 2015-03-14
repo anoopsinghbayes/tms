@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
     var accountType = req.params.accountType;
     var accModel = getModel(accountType, req.user.tenant);
-    var acc = new bpModel(req.body);
+    var acc = new accModel(req.body);
     acc.user = req.user;
     acc.save(function(err) {
         if (err) {
@@ -43,12 +43,13 @@ exports.show = function(req, res) {
         });
     }
     else{
-        accModel.find().exec(function(err, acc) {
+        accModel.find({}).select('status').exec(function(err, acc) {
             if (err) {
                 res.render('error', {
                     status: 500
                 });
             } else {
+                console.log(acc);
                 res.jsonp(acc);
             }
         });

@@ -20,7 +20,7 @@ var util = require('util');
 var autoIncrement = require('mongoose-auto-increment');
 
 var accountsStatusEnum=["pending","confirmed","cancelled"];
-
+var paymentModeEnum = ["cash","cheque","dd"]
 
 
 /**
@@ -40,13 +40,13 @@ function AbstractAccountsSchema() {
             type: Date
 
         },
-        payer: {
-            type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
+        payerId: {
+            type: String,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
 
         },
-        payee: {
-            type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
+        payeeId: {
+            type: String,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
         },
         paymentRelDate: {
@@ -68,7 +68,8 @@ function AbstractAccountsSchema() {
         },
 
         paymentMode: {
-            type: String                //Cash, Cheque, DD
+            type: String,                //Cash, Cheque, DD
+            enum:paymentModeEnum
 
         },
         paymentAmount:
@@ -89,7 +90,7 @@ function AbstractAccountsSchema() {
         Invoices : [
             {
                 invoiceId:{
-                    type: Schema.Types.ObjectId  //Rererence not given since multiple models are saved in Invoice collection
+                    type: String  //Rererence not given since multiple models are saved in Invoice collection
 
                 },
                 amount:
