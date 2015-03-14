@@ -298,14 +298,14 @@ html.bgImg body{
 
 
 }
-.sideMenu li a>i {
+.sideMenu li a>.icon {
     position: relative;
-    float: left;
-    width: 35px;
+    /*float: left;*/
+    /* width: 35px; */
     margin: -10px -10px;
     margin-right: 5px;
     overflow: hidden;
-    line-height: 40px;
+    /* line-height: 40px; */
     text-align: center;
 }
 .sideMenu ul>li{
