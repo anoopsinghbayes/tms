@@ -32,16 +32,16 @@ function AbstractAccountsSchema() {
             type: Date,
             default: Date.now
         },
-        paymentDate: {
+        paymentEntryDate: {
             type: Date
 
         },
-        FromAccount: {
+        payer: {
             type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
 
         },
-        ToAccount: {
+        payee: {
             type: mongoose.Schema.Types.ObjectId,  //model reference not given, since multiple models in BusinessPartner collection
             trim: true
         },
@@ -56,7 +56,7 @@ function AbstractAccountsSchema() {
             BranchCode      : {type: String,trim: true}
 
         },
-        paymentStatus:
+        status:
         {
             type: String,               //Pending,Confirmed,Cancelled
             trim: true
@@ -71,27 +71,27 @@ function AbstractAccountsSchema() {
             type:Number
         },
 
-        BalanceAmount: {
+        balanceAmount: {
 
             type : Number
 
         },
-        EndDate :{
+        endDate :{
 
             type: Date
         },
 
         Invoices : [
             {
-                InvoiceNo:{
+                invoiceId:{
                     type: Schema.Types.ObjectId  //Rererence not given since multiple models are saved in Invoice collection
 
                 },
-                Amount:
+                amount:
                 {
                     type: Number
                 },
-                ModifiedDate:
+                modifiedDate:
                 {
                     type: Date
                 }
