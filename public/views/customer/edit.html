@@ -1,134 +1,114 @@
 <div class="well">
-	<form name="customerFrm" class="form">
-    <!-- <div class="row">          <legend>Customer</legend>          <div class="col-md-4"></div>          <div class="col-md-4"></div>          <div class="col-md-4"></div>        </div>-->
-    <div class="row">
-        <h4>Details</h4>
-        <hr>
-        <div class="col-md-4">
-            <div class="form-group required">
-                <label class="control-label">Name</label>
-				 <div ng-messages="customerFrm.customerName.$error" class="error-messages1 pull-right clearfix">
-          <!-- the required message is displayed first... -->
-          <div ng-message="required">Customer Name is required.</div>
+    <form name="customerFrm" class="form">
+        <!-- <div class="row">          <legend>Customer</legend>          <div class="col-md-4"></div>          <div class="col-md-4"></div>          <div class="col-md-4"></div>        </div>-->
+        <legend>Details</legend>
+        <div class="row">
 
 
-        </div>
-                <div class="controls">
-                    <input type="text" required name="customerName" class="form-control" data-ng-model="customer.name">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Customer Number</label>
+                    <div class="controls">
+                        <input type="text" disabled name="customerID" class="form-control" data-ng-model="customer._id">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">ID</label>
-				<div class="controls">
-                    <input type="text" disabled name="customerID" class="form-control" data-ng-model="customer._id">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Contact no</label>
-                <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.contact">
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label" >Website</label>
-                <div ng-messages="customerFrm.CustomerWebsite.$error" class="error-messages1 pull-right clearfix">
-                    <div ng-message="pattern">Invalid WebSite</div>
-                </div>
-                <div class="controls">
-                    <input type="text" ng-pattern="/^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/" class="form-control" data-ng-model="customer.website" name="CustomerWebsite">
 
+
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group required">
+                    <label class="control-label">Name</label>
+                    <div ng-messages="customerFrm.customerName.$error" class="error-messages1 pull-right clearfix">
+                        <!-- the required message is displayed first... -->
+                        <div ng-message="required">Customer Name is required.</div>
+
+
+                    </div>
+                    <div class="controls">
+                        <input type="text" required name="customerName" class="form-control" data-ng-model="customer.companyName">
+                    </div>
                 </div>
             </div>
-            <div class="form-group required" >
-                <label class="control-label">e-mail</label>
-                <div class="controls">
-                    <input type="email" name="customerEmail" class="form-control" data-ng-model="customer.email" required>
-               	<div ng-messages="customerFrm.customerEmail.$error" class="error-messages">
-					<i class="fa fa-warning"></i>
-					<div ng-message="email">Invalid email address</div>
-					<div ng-message="required">Please Enter email address</div>
-				</div>
-				</div>
+            <div class="col-md-4">
+
             </div>
-			 
         </div>
-        <div class="col-md-4">
-            <div class="form-group required">
-                <label class="control-label">Address</label>
-                <div class="controls">
-                    <textarea class="form-control" rows="4" data-ng-model="customer.address"></textarea>
+        <legend>Credit Details</legend>
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Credit Limit</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <input type="number" class="form-control" data-ng-model="customer.credit.limit">
+                            <span class="input-group-addon">Rs</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Credit Period</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <input type="number" class="form-control" data-ng-model="customer.credit.period">
+                            <span class="input-group-addon">Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-    </div>
-    <div class="row">
-        <h4>Credit Details</h4>
-        <hr>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Credit Limit</label>
-                <div class="controls">
-                    <div class="input-group">
-                        <input type="text" class="form-control" data-ng-model="customer.credit.limit">
-                        <span class="input-group-addon">Rs</span>
+        <legend>Sales Representative</legend>
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Sales Represntative</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" data-ng-model="customer.salesRep.name">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Phone Number</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" data-ng-model="customer.salesRep.phL">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Mobile Number</label>
+                    <div ng-messages="customerFrm.salesrepMobile.$error" class="error-messages1 pull-right clearfix">
+                        <!-- the required message is displayed first... -->
+                        <div ng-message="required">Lorem ipsum dolor sit adipiscing elit </div>
+                        <!-- then, incase the message is too short, show the message right after -->
+                        <div ng-message="minlength">Your email address is too short...</div>
+                        <!-- of if is too long then let us know -->
+                        <div ng-message="maxlength">Your email address is too long...</div>
+                        <!-- otherwise let us know if the email itself is invalid -->
+                        <div ng-message="pattern">Invalid Mobile Number</div>
+                    </div>
+                    <div class="controls">
+                        <input type="text" class="form-control" name="salesrepMobile" data-ng-model="customer.salesRep.phM" data-ng-pattern="/^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}9[0-9](\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$/">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Credit Period</label>
-                <div class="controls">
-                    <div class="input-group">
-                        <input type="text" class="form-control" data-ng-model="customer.credit.period">
-                        <span class="input-group-addon">Months</span>
-                    </div>
-                </div>
+        <tms-address address="customer.address[0]"></tms-address>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-ng-disabled="customerFrm.$invalid" data-ng-click="save()">Save</button>
+                <button class="btn btn-danger">Cancel</button>
             </div>
         </div>
-        <div class="col-md-4"></div>
-    </div>
-    <div class="row">
-        <h4>Sales Representative</h4>
-        <hr>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Sales Represntative</label>
-                <div class="controls">
-                    <input type="text" class="form-control" data-ng-model="customer.salesrep.name">
-                </div>
-            </div>
-            <button class="btn btn-primary" data-ng-disabled="customerFrm.$invalid" data-ng-click="save()">Save</button>
-            <button class="btn btn-danger">Cancel</button>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Phone Number</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <label class="control-label">Mobile Number</label>
-                <div ng-messages="customerFrm.salesrepMobile.$error" class="error-messages1 pull-right clearfix">
-                    <!-- the required message is displayed first... -->
-                    <div ng-message="required">Lorem ipsum dolor sit adipiscing elit </div>
-                    <!-- then, incase the message is too short, show the message right after -->
-                    <div ng-message="minlength">Your email address is too short...</div>
-                    <!-- of if is too long then let us know -->
-                    <div ng-message="maxlength">Your email address is too long...</div>
-                    <!-- otherwise let us know if the email itself is invalid -->
-                    <div ng-message="pattern">Invalid Mobile Number</div>
-                </div>
-                <div class="controls">
-                    <input type="text" class="form-control" name="salesrepMobile" data-ng-model="customer.salesrep.phoneno" data-ng-pattern="/^((\+){0,1}91(\s){0,1}(\-){0,1}(\s){0,1}){0,1}9[0-9](\s){0,1}(\-){0,1}(\s){0,1}[1-9]{1}[0-9]{7}$/">
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
+
+    </form>
 </div>

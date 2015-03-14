@@ -38,27 +38,17 @@ function AbstractBusinessPartnerSchema() {
     Schema.apply(this, arguments);
 
     this.add({
+        companyName:{
+            type:String,
+            required:true
+        },
         created: {
             type: Date,
             default: Date.now
         },
-        fName: {
-            type: String,
 
-            trim: true
-        },
-        mName: {
-            type: String,
-
-            trim: true
-        },
-        lName: {
-            type: String,
-
-            trim: true
-        },
         address:
-             [AddressSchema]
+             [AddressSchema.schema]
         ,
         user: {
             type: String
@@ -75,10 +65,7 @@ var BusinessPartnerSchema = new AbstractBusinessPartnerSchema({});
 
 var CustomerSchema = new AbstractBusinessPartnerSchema({
 
-    companyName:{
-        type:String,
-        required:true
-    },
+
     credit:{
         limit:{type:Number,min:0,required:false},
         period:{type:Number,min:0,required:false}
@@ -87,15 +74,18 @@ var CustomerSchema = new AbstractBusinessPartnerSchema({
         name: {
             type: String,
             trim: true
+        },
+        phL:{
+            type:String
+        },
+        phM:{
+            type:String
         }
     }
 });
 
 var VendorSchema = new AbstractBusinessPartnerSchema({
-    companyName:{
-        type:String,
-        required:true
-    },
+
     vendorRep: {
         name: {
             type: String,
@@ -105,13 +95,17 @@ var VendorSchema = new AbstractBusinessPartnerSchema({
 
 var EmployeeSchema = new AbstractBusinessPartnerSchema({
 
-    companyName:{
-    type:String,
-    required:true
-    },
-    empId: {
+    fName: {
         type: String,
-        required: true
+        trim: true
+    },
+    mName: {
+        type: String,
+        trim: true
+    },
+    lName: {
+        type: String,
+        trim: true
     },
     jobTitle:{
         type: String,

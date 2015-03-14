@@ -83,7 +83,10 @@ angular.module('mean').directive('subMenu', function ($compile) {
 });
 angular.module('mean').directive('tmsAddress',function(){
     return{
-        templateUrl: 'views/partials/address.html'
+        templateUrl: 'views/partials/address.html',
+        scope:{
+            address:"="
+        }
     }
 });
 
