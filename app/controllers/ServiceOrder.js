@@ -10,7 +10,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    ServiceOrder = mongoose.model('ServiceOrder'),
+    ServiceOrder ,
     _ = require('lodash');
 
 

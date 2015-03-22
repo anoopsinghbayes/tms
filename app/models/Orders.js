@@ -162,9 +162,6 @@ var TripOrderFinance=new Schema({
 
 });
 
-util.inherits(AbstractOrdersSchema, Schema);
-var OrdersSchema = new AbstractOrdersSchema({});
-
 /*
 
  orderType will be Boolean -->
@@ -476,7 +473,7 @@ var ServiceOrderSchema = new AbstractOrdersSchema({
 
 
 
-var Order = mongoose.mtModel('Order', AbstractOrdersSchema); // our base model
+var Order = mongoose.mtModel('Order', OrderSchema); // our base model
 
 
 TripOrderSchema.plugin(autoIncrement.plugin, 'Trip');
