@@ -2,17 +2,14 @@
  * Created by anoop on 8/6/14.
  * //this is to allow reference type under multi tenancy using mongoose multi tenant plugin
  //which needs
- *//*
-
+ */
 
 
 'use strict';
 
-*/
 /**
  * Module dependencies.
- *//*
-
+ */
 var mongoose = require('mongoose'),
     autoIncrement=require('mongoose-auto-increment'),
     Schema = mongoose.Schema;
@@ -22,11 +19,9 @@ var util = require('util');
 var OrderStatus=["open","confirmed","closed","cancelled"];
 
 
-*/
 /**
  * Trip Details
- *//*
-
+ */
 
 
 var SalesTripSchema = new Schema({
@@ -273,4 +268,3 @@ var ServiceOrder = Order.discriminator('ServiceOrder', ServiceOrderSchema); // o
 
 mongoose.mtModel('Order', OrdersSchema);
 //OrderSchema.plugin(autoIncrement.plugin, 'Order');
-*/
