@@ -28,7 +28,7 @@ function AbstractOrdersSchema() {
             type: Date,
             default: Date.now
         },
-        orderStatus:{
+        status:{
             type:String,
             enum:orderStatusEnum
         },
@@ -47,11 +47,11 @@ function AbstractOrdersSchema() {
             ref:'Address',
             $tenant:true
         },
-        orderStartDate: {
+        startDate: {
             type:Date,
             trim:true
         },
-        orderEndDate: {
+        endDate: {
             type:Date,
             trim:true
         }

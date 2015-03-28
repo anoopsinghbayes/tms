@@ -7,32 +7,39 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="PaymentID" data-lblreq="">Payment ID</label>
-                        <input type="text" class="form-control" id="PaymentID" name="PaymentID" placeholder="Payment ID" readonly="true" data-ng-model="Payment.PaymentID"/>
+                        <input type="text" class="form-control" id="PaymentID" name="PaymentID" placeholder="Payment ID" readonly="true" data-ng-model="Accounts._id"/>
 
                     </div>
                     <div class="form-group">
                         <label for="PaymentDate" data-lblreq="">Payment Date</label>
-                        <input id="PaymentDate" name="PaymentDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Payment.PaymentDate" ng-click = "date.open = true"/>
+                        <input id="PaymentDate" name="PaymentDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Accounts.PaymentDate" ng-click = "date.open = true"/>
 
                     </div>
                     <div class="form-group">
                         <label for="PaymentRelDate" data-lblreq="">Payment Confirmation Date</label>
-                        <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Payment.PaymentRelDate" ng-click = "date.open = true"/>
+                        <input id="PaymentRelDate" name="ChequeRelDate" class="form-control" type="text" datepicker-popup="" is-open="date.open"  data-ng-model="Accounts.PaymentRelDate" ng-click = "date.open = true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="PaymentType" data-lblreq="">Payment Type</label>
+                        <select class="form-control" id="PaymentType" name="PaymentType" placeholder="Payment Type"  data-ng-model="Accounts.AccountType">
+                            <option>REC</option>
+                            <option>PAY</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="PaymentFrom" data-lblreq="">Payment From</label>
-                        <input type="text" class="form-control" id="PaymentFrom" name="PaymentFrom" placeholder="Payment From"  data-ng-model="Payment.PaymentFrom"/>
+                        <input type="text" class="form-control" id="PaymentFrom" name="PaymentFrom" placeholder="Payment From"  data-ng-model="Accounts.PaymentFrom"/>
                     </div>
 
                     <div class="form-group">
                         <label for="PaymentTo" data-lblreq="">Payment To</label>
-                        <input type="text" class="form-control" id="PaymentTo" name="PaymentTo" placeholder="Payment To"  data-ng-model="Payment.PaymentTo"/>
+                        <input type="text" class="form-control" id="PaymentTo" name="PaymentTo" placeholder="Payment To"  data-ng-model="Accounts.PaymentTo"/>
                     </div>
 
                     <div class="form-group">
                         <div class="form-group">
                             <label for="PaymentMode" data-lblreq="">Payment Mode</label>
-                            <select class="form-control" id="PaymentMode" name="PaymentMode" placeholder="Payment Mode"  data-ng-model="Payment.PaymentMode">
+                            <select class="form-control" id="PaymentMode" name="PaymentMode" placeholder="Payment Mode"  data-ng-model="Accounts.PaymentMode">
                                 <option>Cheque</option>
                                 <option>DD</option>
                                 <option>Cash</option>
@@ -43,14 +50,14 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label for="PaymentAmount" data-lblreq="">Amount</label>
-                            <input type="text" class="form-control" id="PaymentAmount" name="PaymentAmount" placeholder="Payment Amount"  data-ng-model="Payment.PaymentAmount"/>
+                            <input type="text" class="form-control" id="PaymentAmount" name="PaymentAmount" placeholder="Payment Amount"  data-ng-model="Accounts.PaymentAmount"/>
                         </div>
 
                     </div>
                     <div class="form-group">
                         <div class="form-group">
                             <label for="BalanceAmount" data-lblreq="">Balance Amount</label>
-                            <input type="text" class="form-control" id="BalanceAmount" name="BalanceAmount" placeholder=""  data-ng-model="Payment.BalanceAmount"/>
+                            <input type="text" class="form-control" id="BalanceAmount" name="BalanceAmount" placeholder=""  data-ng-model="Accounts.BalanceAmount"/>
                         </div>
 
                     </div>
@@ -60,28 +67,28 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="BankName" data-lblreq="">Bank Name</label>
-                                <input type="text" class="form-control" id="BankName" name="BankName" placeholder="Bank Name"  data-ng-model="Payment.BankDetails.BankName"/>
+                                <input type="text" class="form-control" id="BankName" name="BankName" placeholder="Bank Name"  data-ng-model="Accounts.BankDetails.BankName"/>
                             </div>
 
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="BranchName" data-lblreq="">Branch Name</label>
-                                <input type="text" class="form-control" id="BranchName" name="BranchName" placeholder="Branch Name"  data-ng-model="Payment.BankDetails.BranchName"/>
+                                <input type="text" class="form-control" id="BranchName" name="BranchName" placeholder="Branch Name"  data-ng-model="Accounts.BankDetails.BranchName"/>
                             </div>
 
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="BranchAddress" data-lblreq="">Branch Address</label>
-                                <input type="text" class="form-control" id="BranchAddress" name="BranchAddress" placeholder="Branch Address"  data-ng-model="Payment.BankDetails.BranchAddress"/>
+                                <input type="text" class="form-control" id="BranchAddress" name="BranchAddress" placeholder="Branch Address"  data-ng-model="Accounts.BankDetails.BranchAddress"/>
                             </div>
 
                         </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="IFSCCode" data-lblreq="">IFSC Code</label>
-                                <input type="text" class="form-control" id="IFSCCode" name="IFSCCode" placeholder="IFSC Code"  data-ng-model="Payment.BankDetails.IFSCCode"/>
+                                <input type="text" class="form-control" id="IFSCCode" name="IFSCCode" placeholder="IFSC Code"  data-ng-model="Accounts.BankDetails.IFSCCode"/>
                             </div>
 
                         </div>
@@ -89,7 +96,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label for="BranchCode" data-lblreq="">Branch Code</label>
-                                <input type="text" class="form-control" id="BranchCode" name="BranchCode" placeholder="Branch Code"  data-ng-model="Payment.BankDetails.BranchCode"/>
+                                <input type="text" class="form-control" id="BranchCode" name="BranchCode" placeholder="Branch Code"  data-ng-model="Accounts.BankDetails.BranchCode"/>
                             </div>
 
                         </div>
