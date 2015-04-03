@@ -2,14 +2,28 @@
  * Created by Administrator on 07/12/2014.
  */
 
-angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout' ,function ($scope,$window,$timeout) {
+angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http' ,function ($scope,$window,$timeout,$http) {
 
     $scope.showmap=false;
     $scope.order={};
+    $scope.getCustomer =function(val){
+        return $http.get('/customers/', {
+            params: {
+                name: val
+            }
+        }).then(function(res){
+            console.log(res.data);
+            return res.data;
+        });
+    };
 
     $scope.order.tripDetails=[];
-
-
+    $scope.selectedTrip={
+        challanNo:123
+    };
+$scope.editTripLine=function(trip){
+    $scope.selectedTrip=trip;
+};
 $scope.addTrip=function(){
     $scope.order.tripDetails.push({});
 }
@@ -51,13 +65,13 @@ $scope.addTrip=function(){
         //colect waypoints
         for(var i=1;i<=$scope.order.tripDetails.length-2;i++){
             tripWayPoints.push({
-                location: $scope.order.tripDetails[i].location,
+                location: $scope.order.tripDetails[i].address,
                 stopover:true}
                );
         }
         var request = {
-            origin: $scope.order.tripDetails[0].location,
-            destination: $scope.order.tripDetails[$scope.order.tripDetails.length-1].location,
+            origin: $scope.order.tripDetails[0].address,
+            destination: $scope.order.tripDetails[$scope.order.tripDetails.length-1].address,
             waypoints:tripWayPoints,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };

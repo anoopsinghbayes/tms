@@ -15,6 +15,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 //enums=require('./app/models/enums'),
 require('mongoose-multitenant')('_');
+//var AddressSchema = mongoose.model('Address');
 var util = require('util');
 var orderStatusEnum=["open","confirmed","closed","cancelled"];
 var cargoUnitEnum=["l","kl","t"];
@@ -32,13 +33,13 @@ function AbstractOrdersSchema() {
             type:String,
             enum:orderStatusEnum
         },
-        itemId:{
-            type:Schema.ObjectId,
+        productId:{
+            type:String,
             ref:'Item',
             $tenant:true
         },
         bpId:{
-            type:Schema.ObjectId,
+            type:String,
             ref:'BusinessPartner',
             $tenant:true
         },
@@ -92,13 +93,23 @@ var TripSchema = new Schema({
             type:String
         },
         date:{
-            type:Date
+            reporting: {
+                type: Date
+            },
+            loadingUnloading:{
+                type: Date
+            }
         },
         odometer:{
             type:Number
         },
         distance:{
-            type:Number
+            calculated: {
+                type: Number
+            },
+            actual:{
+                type: Number
+            }
 
         },
         cargoWeight :{

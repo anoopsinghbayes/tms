@@ -28,7 +28,7 @@
 				<div class="col-sm-4">
 					<div class="form-group">
 						<label for="txtcustomerName" class="control-label" data-lblreq="">Customer Name.</label>
-                        <input type="text" id="txtcustomerName" ng-model="data.customer" placeholder="Customer" typeahead-wait-ms="500" typeahead="customer as customer.name  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html" class="form-control">
+                        <input type="text" id="txtcustomerName" ng-model="data.customer.companyName" placeholder="Customer" typeahead-wait-ms="500" typeahead="customer as customer.companyName  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html" class="form-control">
 
 
 					</div>

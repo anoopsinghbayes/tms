@@ -53,7 +53,7 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             {
                 url:'/employees',
                 //controller:'listCustomer',
-                templateUrl:'views/customer/list.html'
+                templateUrl:'views/Employee/list.html'
             }
         ).
             state('Employees.create',
@@ -202,15 +202,15 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                 controller:''
 
             })
-            .state('employees.create',{
-                url:'/create',
-                views: {
-                    "@" : {
-                        templateUrl: 'views/Employee/edit.html',
-                        controller:""
-                    }
-                }
-                })
+//            .state('employees.create',{
+//                url:'/create',
+//                views: {
+//                    "@" : {
+//                        templateUrl: 'views/Employee/edit.html',
+//                        controller:""
+//                    }
+//                }
+//                })
             .state('vehicles',{
                 url:'/vehicles',
                 templateUrl:'/views/Item/vehicle/list.html',
@@ -284,9 +284,18 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             }
             )
             .state('triporder',
-            {url:'/tripOrder/create',
-                templateUrl: 'views/Order/tripOrder.html'
+            {url:'/tripOrders',
+                templateUrl: 'views/Order/list.html'
             })
+            .state('triporder.create',{
+                url:'/create',
+                views: {
+                    "@": {templateUrl: 'views/Order/tripOrder.html',
+                        controller: ''
+                    }
+                }
+            })
+
             .state('purchaseOrder',
             {url:'/purchaseOrder/create',
                 templateUrl: 'views/Order/purchaseOrder.html',

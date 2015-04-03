@@ -1,80 +1,105 @@
 <section ng-controller="tripOrderCtrl" class="tripOrderPage">
+    <form class="form">
     <tabset justified="true">
         <tab heading="Order Header">
-            <form class="form">
-                 <div class="row">
-                <div class="col-md-4">
+
+            <div class="row">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Order No</label>
+                        <label class="control-label">Order No.</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">DO No.</label>
                         <div class="controls">
                             <input type="text" class="form-control">
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">Status</label>
                         <div class="controls">
                             <select class="form-control">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
+                                <option value="open">Open</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="closed">Closed</option>
+                                <option value="cancelled">Cancelled</option>
                             </select>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Date</label>
+                        <label class="control-label">Customer Name</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" typeahead-wait-ms="500" ng-model="order.customer" typeahead="customer as customer.companyName  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">Address
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Vehicle Number</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Driver</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Product</label>
+                        <div class="controls">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Quantity</label>
+                        <div class="controls">
+                            <input type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Start Date</label>
                         <div class="controls">
                             <input type="date" class="form-control">
                         </div>
                     </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label">Customer Name</label>
+                        <label class="control-label">End Date</label>
                         <div class="controls">
-                            <input type="text" class="form-control">
-                            <div class="form-group">
-                                <label class="control-label">Contact No</label>
-                                <div class="controls">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
+                            <input type="date" class="form-control">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div>
-                        <address>  <strong>Twitter, Inc.</strong><br>  795 Folsom Ave, Suite 600<br>  San Francisco, CA 94107<br>  <abbr title="Phone">P:</abbr> (123) 456-7890</address>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Product Name</label>
-                        <div class="controls">
-                            <select class="form-control">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Type</label>
-                        <div class="controls">
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Quantity</label>
-                        <div class="input-group">
-                            <input type="number" class="form-control">
-               <span class="input-group-btn">
-               <select class="btn">
-                   <option value="Kgs">Kgs</option>
-                   <option value="Tonnes">Tonnes</option>
-               </select>
-               </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
+
             </div>
-            </form>
+
         </tab>
         <tab heading="Trip Lines" select="initializeMapControls()">
             <div class="row">
@@ -82,71 +107,106 @@
                 <div class="col-xs-12">
                     <br/>
 
-                    <div class="table-responsive">
-                    <table class="table table-bordered table-condensed">
+
+                        <section id="map" class="col-xs-offset-2 col-xs-8">
+                            <div ui-map="data.myMap" ui-options="data.mapOptions" class="tripmap-canvas"></div>
+                        </section>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                    <table class="table table-bordered table-condensed table-tripOrder">
+                        <colgroup>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:6%"/>
+                            <col span="1" />
+                            <col span="1" style="width:6%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:5%"/>
+                            <col span="1" style="width:12%"/>
+                            <col span="1" style="width:12%"/>
+                        </colgroup>
                         <thead>
                         <tr class="info">
-
-                            <th colspan="3"></th>
-                            <th colspan="4">Weight/Unit
-                              <select class="pull-right">
-                                    <option value="Kg">kilograms</option>
-                                    <option value="Kl">kilolitre</option>
-                                    <option value="t">tonne</option>
-                                </select>
-                            </th>
-                            <th colspan="2">
-                                <button class="btn" ng-click="addTrip()">add trip</button>
-                                <button class="btn" ng-click="findPath()">Find Path</button>
-                            </th>
+                        <th></th>
+                        <th colspan="3">
+                        <button class="btn btn-primary btn-sm"type="button" ng-click="addTrip()">add trip</button>
+                        <button class="btn btn-primary btn-sm"type="button" ng-click="findPath()">Find Path</button>
+                        </th>
+                        <th colspan="4">Weight/Unit
+                        <select class="pull-right units">
+                        <option value="Kg">kilograms</option>
+                        <option value="Kl">kilolitre</option>
+                        <option value="t">tonne</option>
+                        </select>
+                        </th>
+                        <th colspan="2">
+                        Distance (Kma)
+                        </th>
+                        <th colspan="2">
+                        Date
+                        </th>
 
                         </tr>
                         <tr>
-                            <th class="col-lg-1">Pick/Drop</th>
-                            <th class="col-lg-4">Address</th>
-                            <th class="col-lg-1">Challan No.</th>
-                            <th class="col-lg-1">Tyre</th>
-                            <th class="col-lg-1">Net</th>
-                            <th class="col-lg-1">Gross</th>
-                            <th class="col-lg-1">Shortage</th>
-                            <th class="col-lg-1">Distance(Kms)</th>
-                            <th class="col-lg-1">Date</th>
+                        <th style="max-width: 5%"></th>
+                        <th class="col-lg-" >Pick/Drop</th>
+                        <th class="col-lg-" >Address</th>
+                        <th class="col-lg-" >Challan No.</th>
+                        <th class="col-lg-" >Tyre</th>
+                        <th class="col-lg-" >Net</th>
+                        <th class="col-lg-" >Gross</th>
+                        <th class="col-lg-" >Shortage</th>
+                        <th class="col-lg-" >Kms</th>
+                        <th class="col-lg-" >Actual</th>
+                        <th class="col-lg-" >Reporting</th>
+                        <th class="col-lg-" >Loading/Unloading</th>
 
 
 
                         </tr>
                         </thead>
-                       <tbody>
-                       <tr ng-repeat="trip in order.tripDetails">
-                           <td ><select  class="form-control">
-                               <option value="UP">UP</option>
-                               <option value="P">P</option>
-                               <option value="D">D</option>
-                               <option value="UD">UD</option>
-                           </select></td>
-                           <td ><input class="form-control nput-sm"  places="" ng-model="trip.location" type="text"/></td>
-                           <td ><input class="form-control nput-sm"  type="text"/></td>
-                           <td ><input class="form-control nput-sm" type="number"/></td>
-                           <td ><input class="form-control nput-sm" type="number"/></td>
-                           <td ><input class="form-control nput-sm" type="number"/></td>
-                           <td ><input class="form-control nput-sm" type="number"/></td>
-                           <td ><input class="form-control nput-sm" type="number"/></td>
-                           <td ><input class="form-control nput-sm" type="date"/></td>
-                       </tr>
-                       </tbody>
+                        <tbody>
+                        <tr ng-repeat="trip in order.tripDetails">
+                        <td>
+                            <button class="btn btn-info btn-xs" ng-click="editTripLine(trip)">
+                                <i class="fa fa-edit"></i>
+                            </button></td>
+                        <td >
+                            <select class="" ng-model="trip.locationType">
+                                <option value="UP">UP</option>
+                                <option value="P">P</option>
+                                <option value="D">D</option>
+                                <option value="UD">UD</option>
+                            </select>
+                            </td>
+                       <td><textarea   rows="2" places="" ng-model="trip.address"></textarea></td>
+                        <!--<td ><input type="text" places="" ng-model="trip.address"></td>-->
+                        <td ><input type="text" ng-model="trip.challanNo"></td>
+                        <td ><input type="text" ng-model="trip.cargoWeight.tyreWeight"></td>
+                        <td ><input type="text" ng-model="trip.cargoWeight.netWeight"></td>
+                        <td ><input type="text" ng-model="trip.cargoWeight.grossWeight"></td>
+                        <td ><input type="text" ng-model="trip.cargoWeight.shortage"></td>
+                        <td ><input type="text" ng-model="trip.distance.calculated"></td>
+                        <td ><input type="text" ng-model="trip.distance.actual"></td>
+                        <td ><input type="datetime-local" ng-model="trip.date.reporting"></td>
+                        <td ><input type="datetime-local" ng-model="trip.date.loadingUnloading"></td>
+                        </tr>
+                        </tbody>
                     </table>
                         </div>
+                    </div>
                 </div>
-                <div class="col-md-8 col-md-offset-2">
-                    <section id="map">
-                        <div ui-map="data.myMap" ui-options="data.mapOptions" class="tripmap-canvas"></div>
-                    </section>
-                </div>
+
             </div>
 
         </tab>
         <tab heading="Expenses">Long Labeled Justified content</tab>
         <tab heading="Subcontractor Details">Long Labeled Justified content</tab>
     </tabset>
-
+        <button class="btn btn-primary">Save</button>
+    </form>
 </section>

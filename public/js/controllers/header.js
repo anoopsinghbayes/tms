@@ -49,7 +49,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
             links:[
                 {
                     title: 'Trip Order',
-                    state: ''
+                    state: 'triporder'
                 },
                 {
                     title: 'Rental Order',

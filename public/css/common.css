@@ -271,7 +271,7 @@ html.bgImg body{
 }
 
 
-.tripmap-canvas { height: 550px; }
+.tripmap-canvas { height: 250px; }
 
 
 /*.tripOrderPage{*/
@@ -376,7 +376,7 @@ form >legend:first-child{
 }
 
 #main{
-    margin-top: 65px;
+    top: 65px;
 }
 
 
@@ -705,3 +705,30 @@ form >legend:first-child{
         width: 100%;
     }
 }
+
+
+.table-tripOrder .input-sm{
+    font-size: 11px;
+}
+.table-tripOrder .units{
+    width: auto;
+}
+.table-tripOrder input,select,textarea{
+    position: relative;
+    width: 100%;
+    min-height: 28px;
+    padding: 2px 4px 2px 2px;
+    font-size: 11px;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
+
+.table-tripOrder input[type=datetime-local]
+{
+    max-width: 90%;
+}
+
+

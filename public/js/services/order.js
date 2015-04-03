@@ -3,5 +3,16 @@
  */
 
 angular.module('mean').factory('Order', ['Restangular', function(Restangular) {
-    return Restangular.service('orders');
+    var _customerService=Restangular.service('Customer',Restangular.all('businesspartner'));
+    return{
+        getCustomers:function(){
+            return _customerService.getList();
+        },
+        getCustomer:function(id){
+            return _customerService.one(id).get();
+        },
+        saveCustomer:function(customer){
+            return _customerService.post(customer);
+        }
+    };
 }]);
