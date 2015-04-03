@@ -50,7 +50,7 @@ this.add({
     },
     bpId :
     {
-        type: mongoose.Schema.Types.ObjectId  //since multiple models in BusinessPartner collection reference not given for CustomerID
+        type: String  //since multiple models in BusinessPartner collection reference not given for CustomerID
 
 
     },
@@ -113,7 +113,7 @@ var InvoiceSchema = new AbstractInvoiceSchema({});
  var TripOrderInvoiceLinesSchema= new Schema({
 
         orderId:    {
-             type: mongoose.Schema.Types.ObjectId  // Will come from Orders Collection
+             type: String  // Will come from Orders Collection
 
          },
         orderAmt:{
@@ -171,7 +171,7 @@ var RentalOrderInvoiceSchema = new AbstractInvoiceSchema({
 var GenericOrderInvoiceLinesSchema= new Schema({
 
     orderId:    {
-        type: mongoose.Schema.Types.ObjectId  // Will come from Orders Collection
+        type: String  // Will come from Orders Collection
 
     },
     orderAmt:{
