@@ -48,11 +48,11 @@ function AbstractOrdersSchema() {
             ref:'Address',
             $tenant:true
         },
-        orderStartDate: {
+        StartDate: {
             type:Date,
             trim:true
         },
-        orderEndDate: {
+        EndDate: {
             type:Date,
             trim:true
         }
@@ -211,7 +211,16 @@ var TripOrderSchema = new AbstractOrdersSchema({
     },
     finance:{
         type:[TripOrderFinance]
+    },
+    driver:{
+        type:String,
+        ref:'BusinessPartner',
+        $tenant:true
+    },
+    quantity:{
+        type:Number
     }
+
 
 });
 

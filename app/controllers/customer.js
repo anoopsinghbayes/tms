@@ -85,8 +85,8 @@ exports.all = function(req, res) {
     if (searchQuery.name) {
         //for like query on name
         var regex = new RegExp(searchQuery.name, 'i');
-        Customer.find({firstName: regex})
-            .select('firstName _id addressDetails').exec(function(err, bps) {
+        Customer.find({companyName: regex})
+            .select('companyName _id addressDetails').exec(function(err, bps) {
                 if (err) {
                     res.render('error', {
                         status: 500

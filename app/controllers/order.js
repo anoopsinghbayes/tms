@@ -34,11 +34,9 @@ exports.show = function(req, res) {
     var orderId = req.params.orderId;
     var orderModel = getModel(orderType, req.user.tenant);
     if (orderId){
-        orderModel.findOne({_id: orderId}).exec(function(err, order) {
+        orderModel.findOne({_id: orderId}).populate('bpId').exec(function(err, order) {
             if (err) {
-                res.render('error', {
-                    status: 500
-                });
+                res.jsonp(err);
             } else {
                 res.jsonp(order);
             }

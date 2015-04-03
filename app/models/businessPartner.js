@@ -38,6 +38,9 @@ function AbstractBusinessPartnerSchema() {
     Schema.apply(this, arguments);
 
     this.add({
+        _id:{
+            type:String
+        },
         companyName:{
             type:String,
             required:true
