@@ -491,19 +491,19 @@ var Order = mongoose.mtModel('Order', AbstractOrdersSchema); // our base model
 
 
 TripOrderSchema.plugin(autoIncrement.plugin, 'Trip');
-var TripOrder = Order.discriminator('Trip', TripOrderSchema);
+var TripOrder = Order.discriminator('OTRP', TripOrderSchema);
 
 
 SalesOrderSchema.plugin(autoIncrement.plugin, 'Sales');
-var SalesOrder = Order.discriminator('Sales', SalesOrderSchema);
+var SalesOrder = Order.discriminator('OSLS', SalesOrderSchema);
 
 ServiceOrderSchema.plugin(autoIncrement.plugin, 'Service');
-var ServiceOrder = Order.discriminator('Service', ServiceOrderSchema);
+var ServiceOrder = Order.discriminator('OSER', ServiceOrderSchema);
 
 RentalOrderSchema.plugin(autoIncrement.plugin, 'Rental');
-var RentalOrder = Order.discriminator('Rental', RentalOrderSchema);
+var RentalOrder = Order.discriminator('OREN', RentalOrderSchema);
 
 PurchaseOrderSchema.plugin(autoIncrement.plugin, 'Purchase');
-var PurchaseOrder = Order.discriminator('Purchase', PurchaseOrderSchema);
+var PurchaseOrder = Order.discriminator('OPUR', PurchaseOrderSchema);
 
 

@@ -14,6 +14,7 @@ var mongoose = require('mongoose'),
 /**
  * Find Order by id
  */
+/*
 exports.show = function(req, res, next) {
     console.log(req.params.OrderId);
     Order = mongoose.mtModel(req.user.tenant+'.Order');
@@ -24,10 +25,51 @@ exports.show = function(req, res, next) {
         next();
     });
 };
+*/
+
+
+
+exports.show = function(req, res) {
+    var orderType = req.params.orderType;
+    var orderId = req.params.orderId;
+    var orderModel = getModel(orderType, req.user.tenant);
+    if (orderId){
+        orderModel.findOne({_id: orderId}).exec(function(err, order) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(order);
+            }
+        });
+    }
+    else{
+        orderModel.find().exec(function(err, order) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(order);
+            }
+        });
+    }
+
+};
+
+
+
+
+
+
+
+
 
 /**
  * Create a Customer
  */
+/*
 exports.create = function(req, res) {
     Order =mongoose.mtModel(req.user.tenant+'.Order');
     //console.log(Order);
@@ -48,6 +90,34 @@ exports.create = function(req, res) {
         }
     });
 };
+*/
+
+
+exports.create = function(req, res) {
+    console.log(req);
+    var orderType = req.params.orderType;
+    var orderModel = getModel(orderType, req.user.tenant);
+    //Order =mongoose.mtModel(req.user.tenant+'.Order');
+    var Order = new orderModel(req.body);
+    Order.user = req.user;
+
+    Order.save(function(err) {
+        if (err) {
+            return res.send('500', {
+                errors: err.errors,
+                Order: Order
+            });
+        } else {
+            res.jsonp(Order);
+        }
+    });
+};
+
+
+
+
+
+
 /**
  * Update a order
  */
@@ -83,3 +153,7 @@ exports.all = function(req, res) {
         }
     });
 };
+
+var getModel = function(modelname, tenant) {
+    return  mongoose.mtModel(tenant + '.' + modelname);
+}

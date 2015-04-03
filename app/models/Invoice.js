@@ -219,7 +219,7 @@ var SalesOrderInvoiceSchema = new AbstractInvoiceSchema({
 var Invoice = mongoose.mtModel('Invoice', InvoiceSchema); // our base model
 
 TripOrderInvoiceSchema.plugin(autoIncrement.plugin, 'Trip');
-var TripInvoice = Invoice.discriminator('Trip', TripOrderInvoiceSchema);
+var TripInvoice = Invoice.discriminator('TripI', TripOrderInvoiceSchema);
 
 RentalOrderInvoiceSchema.plugin(autoIncrement.plugin, 'Rental');
 var RentalInvoice = Invoice.discriminator('Rental', RentalOrderInvoiceSchema);

@@ -96,8 +96,9 @@ module.exports = function (app, passport, auth) {
 
     //Order Routes
     var Order = require('../app/controllers/order');
-    app.post('/orders', auth.requiresLogin, Order.create);
-    app.get('/orders',auth.requiresLogin,Order.all);
+    app.post('/orders/:orderType', auth.requiresLogin, Order.create);
+    //app.get('/orders',auth.requiresLogin,Order.all);
+    app.get('/orders/:orderType/:orderId?', auth.requiresLogin, Order.show);
 
     //Payment Routes
     var Accounts = require('../app/controllers/accountsController');
@@ -114,12 +115,13 @@ module.exports = function (app, passport, auth) {
     var ServiceOrder = require('../app/controllers/ServiceOrder');
     app.post('/ServiceOrder', auth.requiresLogin, ServiceOrder.create);
 
-    //Invoice Routes
+
+//Invoice Routes
     var Invoice = require('../app/controllers/Invoice');
-    app.post('/Invoice', auth.requiresLogin, Invoice.create);
+    app.post('/Invoice/:invoiceType', auth.requiresLogin, Invoice.create);
     app.put('/Invoice/:invoiceId', auth.requiresLogin, Invoice.update);
-    //var GenerateInvoice = require('../app/controllers/GenerateInvoice');
-    //app.get('/GenerateInvoice', auth.requiresLogin, GenerateInvoice.getInvDet);
+    app.get('/Invoice/:invoiceType/:bpId', auth.requiresLogin, Invoice.show);
+
 
     //Tyre Routes
     var Tyre = require('../app/controllers/tyreDetails');
