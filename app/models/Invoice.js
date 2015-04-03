@@ -33,7 +33,7 @@ var autoIncrement = require('mongoose-auto-increment');
 
 */
 
-var InvoiceStatusEnum = 'open';
+var InvoiceStatusEnum =["open","closed","cancelled"];
 
 
 
