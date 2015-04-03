@@ -2,10 +2,12 @@
  * Created by Administrator on 07/12/2014.
  */
 
-angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http' ,function ($scope,$window,$timeout,$http) {
+angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder' ,function ($scope,$window,$timeout,$http,TripOrder) {
 
     $scope.showmap=false;
-    $scope.order={};
+    $scope.order={
+        tripDetails:[]
+    };
     $scope.getCustomer =function(val){
         return $http.get('/customers/', {
             params: {
@@ -16,8 +18,15 @@ angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout
             return res.data;
         });
     };
+    $scope.saveTripOrder=function(){
+        $scope.order.bpId=$scope.order.customer._id;
+      console.log($scope.order);
+        TripOrder.save($scope.order).then(function(order){
+            console.log(order);
+        })
 
-    $scope.order.tripDetails=[];
+    };
+
     $scope.selectedTrip={
         challanNo:123
     };

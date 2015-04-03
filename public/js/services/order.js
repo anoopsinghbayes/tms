@@ -2,17 +2,17 @@
  * Created by anoop on 14/6/14.
  */
 
-angular.module('mean').factory('Order', ['Restangular', function(Restangular) {
-    var _customerService=Restangular.service('Customer',Restangular.all('businesspartner'));
+angular.module('mean').factory('TripOrder', ['Restangular', function(Restangular) {
+    var _tripOrderService=Restangular.service('OTRP',Restangular.all('orders'));
     return{
-        getCustomers:function(){
-            return _customerService.getList();
+        get:function(){
+            return _tripOrderService.getList();
         },
-        getCustomer:function(id){
-            return _customerService.one(id).get();
+        getOne:function(id){
+            return _tripOrderService.one(id).get();
         },
-        saveCustomer:function(customer){
-            return _customerService.post(customer);
+        save:function(tripOrder){
+            return _tripOrderService.post(tripOrder);
         }
     };
 }]);
