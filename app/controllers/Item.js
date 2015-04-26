@@ -39,7 +39,26 @@ exports.create = function(req, res) {
     });
 };
 
-
+/**
+ * Update a Item
+ */
+exports.update = function(req, res) {
+    var itemCategory = req.params.itemCategory;
+    var itemModel = getModel(itemCategory, req.user.tenant);
+    var item = new itemModel(req.body);
+    var query = {"_id": req.params.itemId};
+    var update = req.body;
+    var options = {new: true};
+    itemModel.findOneAndUpdate(query, update, options, function(err, item){
+        if (err) {
+            return res.send('500', {
+                errors: err
+            });
+        }  else {
+            res.jsonp(item);
+        }
+    });
+};
 
 
 exports.show = function(req, res, next) {

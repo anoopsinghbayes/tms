@@ -56,6 +56,21 @@ exports.show = function(req, res) {
     }
 };
 
+exports.showConfirmedPayments = function(req, res){
+    var accountType = req.params.accountType;
+    var customerID = req.params.bpId;
+
+    var accModel = getModel(accountType, req.user.tenant);
+
+    accModel.find({$and:[{'payerId': customerID},{'status': 'confirmed'}]}).where('balanceAmount').gt(0).exec(function(err, paym) {
+        if (err) {
+            req.jsonp(err);
+        } else {
+            req.jsonp(paym);
+        }
+    });
+};
+
 /**
  * Update a Account
  */
