@@ -214,14 +214,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
             .state('vehicles',{
                 url:'/vehicles',
                 templateUrl:'/views/Item/vehicle/list.html',
-                controller:''
+                controller:'listVehicle'
 
             })
         .state('vehicles.create',{
                 url:'/create',
                 views: {
                     "@": {templateUrl: 'views/Item/vehicle/edit.html',
-                        controller: ''
+                        controller: 'createVehicleCtrl'
                     }
                 }
             })

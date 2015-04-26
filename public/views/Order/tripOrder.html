@@ -99,7 +99,19 @@
                 </div>
 
             </div>
-
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label">Subcontractor </label>
+                        <div class="input-group">
+               <span class="input-group-addon">
+                  <input type="checkbox" ng-model="order.isSubContracted" ng-change="viewIsSubContracted()">
+               </span>
+                            <input type="text" class="form-control" ng-disabled="!order.isSubContracted" ng-model="order.subcontractor">
+                        </div><!-- /input-group -->
+                        </div>
+                </div>
+            </div>
         </tab>
         <tab heading="Trip Lines" select="initializeMapControls()">
             <div class="row">
@@ -205,7 +217,7 @@
 
         </tab>
         <tab heading="Expenses">Long Labeled Justified content</tab>
-        <tab heading="Subcontractor Details">Long Labeled Justified content</tab>
+        <!--<tab heading="Subcontractor Details">Long Labeled Justified content</tab>-->
     </tabset>
         <button class="btn btn-primary" ng-click="saveTripOrder()">Save</button>
     </form>

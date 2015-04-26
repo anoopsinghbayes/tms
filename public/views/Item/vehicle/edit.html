@@ -1,23 +1,23 @@
 <div class="well">
-    <form  class="form">
+    <form  class="form" name="vehicleFrm">
         <legend>Vehicle Details</legend>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Item Category</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input disabled="disabled" type="text" ng-model="vehicle.itemCategory" class="form-control"></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Item Title</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" disabled="disabled" class="form-control" ng-model="vehicle.itemTitle" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Item Type</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.itemType" ></div>
                 </div>
             </div>
 
@@ -26,19 +26,19 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Vehicle No.</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.vehicleNo" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Chassis No.</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.chassisNo" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Engine No.</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.engineNo" ></div>
                 </div>
             </div>
         </div>
@@ -46,19 +46,19 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Make</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.make" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Model</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.model" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Colour</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.color" ></div>
                 </div>
             </div>
         </div>
@@ -66,19 +66,19 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Size</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.size" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Capacity</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.capacity" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Serial No.</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.serialNo" ></div>
                 </div>
             </div>
         </div>
@@ -86,19 +86,19 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Suspension Type</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.suspensionType" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Garage Name</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.garageName" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Description</label>
-                    <div class="controls"><input type="text" class="form-control"></div>
+                    <div class="controls"><input type="text" class="form-control" ng-model="vehicle.description" ></div>
                 </div>
             </div>
         </div>
@@ -106,20 +106,26 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Manufacturing Date</label>
-                    <div class="controls"><input type="date" class="form-control"></div>
+                    <div class="controls"><input type="date" class="form-control" ng-model="vehicle.mgfDate" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Expiry Date</label>
-                    <div class="controls"><input type="date" class="form-control"></div>
+                    <div class="controls"><input type="date" class="form-control" ng-model="vehicle.expDate" ></div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Registration Date</label>
-                    <div class="controls"><input type="date" class="form-control"></div>
+                    <div class="controls"><input type="date" class="form-control" ng-model="vehicle.regDate" ></div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-ng-disabled="vehicleFrm.$invalid" data-ng-click="save()" disabled="disabled">Save</button>
+                <button class="btn btn-danger">Cancel</button>
             </div>
         </div>
 

@@ -5,8 +5,17 @@
 angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder' ,function ($scope,$window,$timeout,$http,TripOrder) {
 
     $scope.showmap=false;
+
+
     $scope.order={
         tripDetails:[]
+    };
+
+    $scope.viewIsSubContracted=function(){
+        //$scope.order.isSubContracted=isSubContracted;
+            if(!$scope.order.isSubContracted){
+                $scope.order.subcontractor=null;
+            }
     };
     $scope.getCustomer =function(val){
         return $http.get('/customers/', {
