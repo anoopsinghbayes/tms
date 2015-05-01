@@ -203,4 +203,9 @@ module.exports = function (app, passport, auth) {
     app.post('/address/:businessPartnerType', address.create);
     app.get('/address/*', auth.requiresLogin, address.show);
     app.put('/address/:add  Id', auth.requiresLogin, address.update);
+
+    var master = require('../app/controllers/itemMappingController.js');
+    app.post('/master', master.create);
+    app.get('/master/:orderType?/:itemCategory?', auth.requiresLogin, master.show);
+
 };
