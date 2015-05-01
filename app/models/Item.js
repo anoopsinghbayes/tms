@@ -46,7 +46,9 @@ function AbstractItemSchema() {
     Schema.apply(this, arguments);
 
     this.add({
-
+        _id:{
+            type:String
+        },
         created: {
             type: Date,
             default: Date.now

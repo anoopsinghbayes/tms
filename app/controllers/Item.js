@@ -29,10 +29,7 @@ exports.create = function(req, res) {
 
     vm.save(function(err) {
         if (err) {
-            return res.send('500', {
-                errors: err,
-                vm: vm
-            });
+            res.jsonp(err);
         } else {
             res.jsonp(vm);
         }
@@ -63,17 +60,30 @@ exports.update = function(req, res) {
 
 exports.show = function(req, res, next) {
     var itemCategory =req.params.itemCategory;
-    console.log("tenant",req.user.tenant);
     var itemModel =getModel(itemCategory,req.user.tenant);
-    itemModel.find({}).exec(function(err, items) {
-        if (err) {
-            res.render('error', {
-                status: 500
-            });
-        } else {
-            res.jsonp(items);
-        }
-    });
+    var itemId = req.params.itemId;
+    if (itemId){
+        itemModel.findOne({_id: itemId}).exec(function(err, item) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(item);
+            }
+        });
+    }
+    else {
+        itemModel.find({}).exec(function (err, items) {
+            if (err) {
+                res.render('error', {
+                    status: 500
+                });
+            } else {
+                res.jsonp(items);
+            }
+        })
+    };
 };
 
 
