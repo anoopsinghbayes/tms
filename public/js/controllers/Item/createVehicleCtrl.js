@@ -15,7 +15,7 @@ angular.module('mean').controller('listVehicle',['Vehicle','$scope',function(Veh
             {
                 name: 'Vehicle No..', width: '15%',field:'vehicleNo',
                 // "cellTemplate": "<div class=\"ui-grid-cell-contents\"><a href=\"{{COL_FIELD}}\" class=\"\">{{COL_FIELD}} <\/a><\/div>"
-                "cellTemplate":"<div><a ui-sref=\"customers.edit({ customerId: COL_FIELD })\" class=\"ui-grid-cell-contents\">{{COL_FIELD}}<\/a><\/div>"
+                "cellTemplate":"<div><a ui-sref=\"vehicles.edit({ vehicleId: row.entity._id })\" class=\"ui-grid-cell-contents\">{{COL_FIELD}}<\/a><\/div>"
                 ,width:'15%'
             },
             { name: 'Type', width: '15%',field:'type' },
@@ -64,6 +64,7 @@ angular.module('mean').controller('createVehicleCtrl',
             itemTitle:'Vehicle'
         };
         $scope.save=function(){
+            console.log($scope.vehicle);
             Vehicle.saveVehicle($scope.vehicle).then(
                 function(response) {
                     console.log(response);
@@ -74,4 +75,19 @@ angular.module('mean').controller('createVehicleCtrl',
                 });
         };
 
+    }]);
+
+angular.module('mean').controller('editVehicleCtrl',
+    ['$scope','Vehicle','$state','toaster','$stateParams', function ($scope,Vehicle,$state,toaster,$stateParams){
+console.log('state params customer id:',$stateParams.vehicleId);
+        Vehicle.getVehicle($stateParams.vehicleId).then(function(data){
+    console.log(data);
+    $scope.vehicle=data;
+    $scope.vehicle.mfgDate=new Date(data.mfgDate);
+    $scope.save=function(){
+        console.log($scope.vehicle);
+        $scope.vehicle.put();
+        toaster.pop('success','Vehicle Updated',data._id);
+    }
+});
     }]);

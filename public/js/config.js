@@ -225,6 +225,14 @@ angular.module('mean').config(['$stateProvider', '$urlRouterProvider',
                     }
                 }
             })
+            .state('vehicles.edit', {url:'/:vehicleId',
+                views: {
+                    "@" : {
+                        templateUrl:'views/Item/vehicle/edit.html',
+                        controller:"editVehicleCtrl"
+                    }
+                }
+            })
             .state('vehicles.finance',{
                 url:'/finance',
                 views: {

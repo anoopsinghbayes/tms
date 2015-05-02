@@ -8,7 +8,8 @@ angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout
 
 
     $scope.order={
-        tripDetails:[]
+        tripDetails:[],
+        finance:[]
     };
 
     $scope.viewIsSubContracted=function(){
@@ -35,7 +36,9 @@ angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout
         })
 
     };
-
+    $scope.AddExpenseLine=function(){
+        $scope.order.finance.push({});
+    };
     $scope.selectedTrip={
         challanNo:123
     };

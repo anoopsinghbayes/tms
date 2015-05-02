@@ -216,8 +216,56 @@
             </div>
 
         </tab>
-        <tab heading="Expenses">Long Labeled Justified content</tab>
-        <!--<tab heading="Subcontractor Details">Long Labeled Justified content</tab>-->
+        <tab heading="Expenses">
+            <br/>
+            <button class="btn btn-primary" ng-click="AddExpenseLine()">Add Expense Line</button>
+            <table class="table table-bordered table-condensed table-tripOrder">
+                <thead>
+                <tr>
+                    <th>Item Category</th>
+                    <th>Item Title</th>
+                    <!--<th>Item ID</th>-->
+                    <th>Description</th>
+                    <th>Unit</th>
+                    <th>Charges Per Unit</th>
+                    <th>Total Units</th>
+                    <th>Actual Cost</th>
+                    <th>Sales Cost</th>
+                    <th>Chargeable</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="expenseLine in order.finance">
+                    <td><input type="text" ng-model="expenseLine.itemCategory"/></td>
+                    <td><input type="text" ng-model="expenseLine.itemTitle"/></td>
+                    <!--<td><input type="text" ng-model="expenseLine.itemId"/></td>-->
+                    <td><input type="text" ng-model="expenseLine.description"/></td>
+                    <td class="col-sm-2">
+                        <div class="input-group">
+                            <div class="input-group-addon">Per</div>
+                            <select name="" >
+                                <option value="">Hour</option>
+                                <option value="">Day</option>
+                                <option value="">Week</option>
+                                <option value="">Month</option>
+                            </select>
+                            </div>
+                        <!--<input type="text" ng-model="expenseLine.Unit"/>-->
+
+
+
+                    </td>
+                    <td><input type="text" ng-model="expenseLine.chargePerUnit"/></td>
+                    <td><input type="text" ng-model="expenseLine.TotalUnits"/></td>
+                    <td><input type="text" ng-model="expenseLine.actualCost"/></td>
+                    <td><input type="text" ng-model="expenseLine.salesCost"/></td>
+                    <td><input type="checkbox" ng-model="expenseLine.chargeable"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </tab>
+
+
     </tabset>
         <button class="btn btn-primary" ng-click="saveTripOrder()">Save</button>
     </form>
