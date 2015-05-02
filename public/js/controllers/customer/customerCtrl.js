@@ -276,7 +276,7 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$
 }]);
 angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams','toaster', function ($scope,Customers,$stateParams,toaster) {
     console.log('state params customer id:',$stateParams.customerId);
-    Customers.getCustomer($stateParams.customerId).then(function(data){
+    Customers.getCustomer($stateParams.orderId).then(function(data){
        console.log(data);
        $scope.customer=data;
         $scope.save=function(){

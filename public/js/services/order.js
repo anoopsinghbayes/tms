@@ -5,10 +5,10 @@
 angular.module('mean').factory('TripOrder', ['Restangular', function(Restangular) {
     var _tripOrderService=Restangular.service('OTRP',Restangular.all('orders'));
     return{
-        get:function(){
+        getOrders:function(){
             return _tripOrderService.getList();
         },
-        getOne:function(id){
+        getOrder:function(id){
             return _tripOrderService.one(id).get();
         },
         save:function(tripOrder){

@@ -20,7 +20,16 @@ var util = require('util');
 var orderStatusEnum=["open","confirmed","closed","cancelled"];
 var cargoUnitEnum=["l","kl","t"];
 var paymentStatusEnum=["pending","confirmed","cancelled"];
-var locationTypeEnum =["Ultimate Pickup","Ultimate Drop-off","Intermediate Pickup","Intermediate Drop-off","Dead Weight"];
+/*
+location types
+ Ultimate Pickup  UP
+ "Ultimate Drop-off" UD
+ Intermediate Pickup IP
+ Intermediate Drop-off ID
+ Dead Weight DW
+*/
+
+var locationTypeEnum =["UP","UD","IP","ID","DW"];
 
 function AbstractOrdersSchema() {
     Schema.apply(this, arguments);
@@ -155,10 +164,13 @@ var TripOrderFinance=new Schema({
     description:{
         type:String             //description will be same attribute of item master
     },
-    perDayCharge:{
-      type:Number               //e.g. driver per day expense,vehicle per day charge
+    unit:{
+      type:String               //e.g. per day/per month/per hour/per litre for diesel etc
     },
-    totalDays:{
+    totalUnit:{
+      type:Number
+    },
+    costPerUnit:{
         type:Number
     },
     actualCost:{
@@ -167,8 +179,13 @@ var TripOrderFinance=new Schema({
     salesCost:{
         type:String
     },
-    chargeable:{
-        type:Boolean                   //Chargeable =true if add to customer invoice else keep it as internal expense
+    invoice:{
+        sales:{
+            type:Boolean   //replaced with chargeable so that it would be more specific where should this line be shown
+        },
+        cost:{
+            type:Boolean   //i.e in sales invoice ,in cost invoice or both
+        }
     }
 
 });

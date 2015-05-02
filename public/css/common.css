@@ -726,6 +726,9 @@ form >legend:first-child{
     border-radius: 2px;
 }
 
+.table-tripOrder input[type='checkbox'] {
+    min-height: inherit;
+}
 .table-tripOrder input[type=datetime-local]
 {
     max-width: 90%;
