@@ -102,8 +102,8 @@ exports.create = function(req, res) {
     Order.save(function(err) {
         if (err) {
             return res.send('500', {
-                errors: err.errors,
-                Order: Order
+                errors: err
+                //Order: Order
             });
         } else {
             res.jsonp(Order);
@@ -120,21 +120,22 @@ exports.create = function(req, res) {
  * Update a order
  */
 exports.update = function(req, res) {
-    var order = req.customer;
-
-    order = _.extend(order, req.body);
-
-    order.save(function(err) {
+    var orderType = req.params.orderType;
+    var orderModel = getModel(orderType, req.user.tenant);
+    var query = {"_id": req.params.orderId};
+    var update = req.body;
+    //var options = {new: true};
+    orderModel.findOneAndUpdate(query, update, function(err, order){
         if (err) {
-            return res.send('users/signup', {
-                errors: err.errors,
-                order: order
+            return res.send('500', {
+                errors: err
             });
         } else {
             res.jsonp(order);
         }
     });
 };
+
 /*exports.show = function(req, res) {
  res.jsonp(req.bp);
  };*/

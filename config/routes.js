@@ -99,6 +99,7 @@ module.exports = function (app, passport, auth) {
     app.post('/orders/:orderType', auth.requiresLogin, Order.create);
     //app.get('/orders',auth.requiresLogin,Order.all);
     app.get('/orders/:orderType/:orderId?', auth.requiresLogin, Order.show);
+    app.put('/orders/:orderType/:orderId', auth.requiresLogin, Order.update);
 
     //Payment Routes
     var Accounts = require('../app/controllers/accountsController');
