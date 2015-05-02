@@ -1,6 +1,12 @@
 
 <div class="row">
-    <a ui-sref="Employees.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+    <div class="col-sm-12">
+        <div class="well grid-container" style="margin: 0 auto">
+            <a ui-sref="Employees.create" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+            <br />
+            <div ui-grid="gridOptions"   ui-grid-exporter ui-grid-pagination ui-grid-auto-resize class="grid"></div>
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-12">

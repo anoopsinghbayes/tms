@@ -1,144 +1,136 @@
-<form>
-    <legend>Employee Details</legend>
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label class="control-label">First Name*</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label class="control-label">Middle Name*</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="form-group">
-                <label class="control-label">Last Name*</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="control-label">Address*</label>
-                <div class="controls">
-                    <textarea class="form-control"></textarea>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Job Title</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Phone Number</label>
-                <div class="controls">
-                    <input type="text" class="form-control">
-                    <div class="form-group">
-                        <label class="control-label">Mobile Number</label>
-                        <div class="controls">
-                            <input type="text" class="form-control">
-                            <div class="form-group">
-                                <label class="control-label">Date of Birth</label>
-                                <div class="controls">
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">SEX</label>
-                <div class="controls">
-                    <select class="form-control">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Marital Status</label>
-                <div class="controls">
-                    <select class="form-control">
-                        <option>Single</option>
-                        <option>Married</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Date of Joining</label>
-                <div class="controls">
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Basic Salary</label>
-                <div class="controls">
-                    <div class="input-group">
-                        <input type="number" class="form-control">
-                        <span class="input-group-addon">RS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label class="control-label">Photograph</label>
-                <div class="controls">
-                    <input type="file" accept="image/*" capture="camera" class="form-control">
-                    <img src="https://builder.divshot.com/img/placeholder-100x100.gif">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Address Proof</label>
-                <div class="controls">
-                    <input type="file" class="form-control">
-                    <img src="https://builder.divshot.com/img/placeholder-100x100.gif">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Driving License Details</label>
-                <div class="controls">
-                    <input class="form-control" type="text" placeholder="License Number">
-                    <input type="file" class="form-control">
-                    <img src="https://builder.divshot.com/img/placeholder-100x100.gif">
-                </div>
-            </div>
-        </div>
-        </divS>
+<div class="well">
+    <form>
+        <legend>Employee Details</legend>
         <div class="row">
-            <table class="table">
-                <caption><h3>Payment Details</h3></caption>
-                <thead>
-                <tr>
-                    <th class="col-sm-4">date</th>
-                    <th class="col-sm-4">Amount</th>
-                    <th class="col-sm-4">Reason</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr><td>
-
-                    <input type="date" class="form-control">
-
-                </td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><textarea class="form-control"></textarea></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Employee Number</label>
+                    <div class="controls">
+                        <input type="text" disabled name="employeeID" class="form-control" data-ng-model="employee._id">
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">First Name</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Middle Name</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Last Name</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Date of Birth</label>
+                    <div class="controls">
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Sex</label>
+                    <div class="controls">
+                        <select class="form-control">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Maritial Status</label>
+                    <div class="controls">
+                        <select class="form-control">
+                            <option>Single</option>
+                            <option>Married</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Date of Joining</label>
+                    <div class="controls">
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Job Title</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Basic Salary</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">Rs</div>
+                        <input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                        <div class="input-group-addon">Per Month</div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <legend>License Details</legend>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">License No</label>
+                    <div class="controls">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Date of Issues</label>
+                    <div class="controls">
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Date of Expiry</label>
+                    <div class="controls">
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <tms-address></tms-address>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-ng-disabled="customerFrm.$invalid" data-ng-click="save()">Save</button>
+                <button class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
-</form>
