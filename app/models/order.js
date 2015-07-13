@@ -199,7 +199,7 @@ function AbstractOrdersSchema() {
             enum:OrderStatus
         },
         bpId:{
-            type:Schema.ObjectId,
+            type:String,
             ref:'BusinessPartner',
             $tenant:true
         },

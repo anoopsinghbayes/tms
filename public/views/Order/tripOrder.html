@@ -128,7 +128,7 @@
                         <div class="col-xs-12">
                     <table class="table table-bordered table-condensed table-tripOrder">
                         <colgroup>
-                            <col span="1" style="width:5%"/>
+                            <!--<col span="1" style="width:5%"/>-->
                             <col span="1" style="width:6%"/>
                             <col span="1" />
                             <col span="1" style="width:6%"/>
@@ -143,7 +143,7 @@
                         </colgroup>
                         <thead>
                         <tr class="info">
-                        <th></th>
+                        <!--<th></th>-->
                         <th colspan="3">
                         <button class="btn btn-primary btn-sm"type="button" ng-click="addTrip()">add trip</button>
                         <button class="btn btn-primary btn-sm"type="button" ng-click="findPath()">Find Path</button>
@@ -164,7 +164,7 @@
 
                         </tr>
                         <tr>
-                        <th style="max-width: 5%"></th>
+                        <!--<th style="max-width: 5%"></th>-->
                         <th class="col-lg-" >Pick/Drop</th>
                         <th class="col-lg-" >Address</th>
                         <th class="col-lg-" >Challan No.</th>
@@ -183,10 +183,10 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="trip in order.tripDetails">
-                        <td>
-                            <button class="btn btn-info btn-xs" ng-click="editTripLine(trip)">
-                                <i class="fa fa-edit"></i>
-                            </button></td>
+                        <!--<td>-->
+                            <!--<button class="btn btn-info btn-xs" ng-click="editTripLine(trip)">-->
+                                <!--<i class="fa fa-edit"></i>-->
+                            <!--</button></td>-->
                         <td >
                             <select class="" ng-model="trip.locationType">
                                 <option value="UP">UP</option>

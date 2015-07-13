@@ -144,12 +144,12 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
         });
     };
     $scope.saveTripOrder=function(){
-        //$scope.order.bpId=$scope.order.customer._id;
+        $scope.order.bpId=$scope.order.bpId._id;
 
-        $scope.order.put();
-//            .then(function(){
-//            toaster.pop('success','Trip Order Updated',data._id);
-        //});
+        $scope.order.put()
+            .then(function(data){
+            toaster.pop('success','Trip Order Updated',data._id);
+        });
 
 
 
