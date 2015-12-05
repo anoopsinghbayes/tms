@@ -34,6 +34,7 @@
                     </div>
                 </div>
             </div>
+            <legend>Customer Details</legend>
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
@@ -43,9 +44,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8">Address
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label">Customer No.</label>
+                        <div class="controls">
+                    <input class="form-control" type="text" ng-model="order.customer._id"/>
+                            </div>
+                        </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <address ng-if="order.customer.address">
+                        <strong>{{order.customer.address[0].adL1}} ,{{order.customer.address[0].street }}</strong><br>
+                        <strong> {{order.customer.address[0].city }},{{order.customer.address[0].state}} ,{{order.customer.address[0].pin}}</strong><br>
+                        <abbr title="Phone">P:</abbr> {{order.customer.address[0].phL}}
+                        <abbr title="Mobile">P:</abbr> {{order.customer.address[0].phM1}}
+                        <abbr title="Mobile">P:</abbr> {{order.customer.address[0].phM2}}
+                        <abbr title="Email">Email:</abbr> {{order.customer.address[0].email}}
+                    </address>
+
+
+                </div>
+
+            </div>
+
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">

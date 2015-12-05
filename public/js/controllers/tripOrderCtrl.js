@@ -2,7 +2,7 @@
  * Created by Administrator on 07/12/2014.
  */
 
-angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder' ,function ($scope,$window,$timeout,$http,TripOrder) {
+angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder','$state' ,function ($scope,$window,$timeout,$http,TripOrder,$state) {
 
 
     $scope.showmap=false;
@@ -34,6 +34,7 @@ angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout
       console.log($scope.order);
         TripOrder.save($scope.order).then(function(order){
             console.log(order);
+            $state.go('triporder');
         })
 
     };
@@ -116,7 +117,7 @@ $scope.addTrip=function(){
 
 
 ]);
-angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder','$stateParams','toaster',function ($scope,$window,$timeout,$http,TripOrder,$stateParams,toaster) {
+angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder','$stateParams','toaster','$state',function ($scope,$window,$timeout,$http,TripOrder,$stateParams,toaster,$state) {
 
 
     $scope.showmap=false;
@@ -144,11 +145,12 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
         });
     };
     $scope.saveTripOrder=function(){
-        $scope.order.bpId=$scope.order.bpId._id;
+        $scope.order.bpId=$scope.order._id;
 
         $scope.order.put()
             .then(function(data){
             toaster.pop('success','Trip Order Updated',data._id);
+                $state.go('triporder');
         });
 
 
@@ -219,7 +221,8 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
                 $scope.data.distance= response.routes[0].legs[0].distance.value / 1000;
-
+                var lastOrderDetailLine=$scope.order.tripDetails.length-1;
+                $scope.order.tripDetails[lastOrderDetailLine].distance.calculated=$scope.data.distance;
             }
 
 
@@ -233,7 +236,7 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
 
 
 ]);
-angular.module('mean').controller('listTripOrder',['$scope','TripOrder',function($scope,TripOrder){
+angular.module('mean').controller('listTripOrder',['$scope','TripOrder','uiGridConstants',function($scope,TripOrder,uiGridConstants ){
     $scope.gridOptions = {
         paginationPageSizes: [10,25, 50, 75],
         paginationPageSize: 10,
@@ -243,15 +246,38 @@ angular.module('mean').controller('listTripOrder',['$scope','TripOrder',function
         showColumnFooter :false,
         columnDefs: [
             {
-                name: 'Order No.', width: '15%',field:'_id',
+                name: 'Order No.', width: '12%',field:'_id',
                 // "cellTemplate": "<div class=\"ui-grid-cell-contents\"><a href=\"{{COL_FIELD}}\" class=\"\">{{COL_FIELD}} <\/a><\/div>"
                 "cellTemplate":"<div><a ui-sref=\"triporder.edit({ orderId: COL_FIELD })\" class=\"ui-grid-cell-contents\">{{COL_FIELD}}<\/a><\/div>"
                 ,width:'15%'
 
             },
-            { name: 'Order Date', width: '15%',field:'StartDate',type: 'date', cellFilter: 'date:"dd-MM-yyyy"'},
-            { name: 'Customer', width: '20%',field:'bpId'},
-            { name: 'Status', width: '20%',field:'orderStatus' }
+            { name: 'Order Date', width: '16%',field:'StartDate',type: 'date',
+                cellFilter: 'date:\'MM/dd/yyyy\'',
+                filterCellFiltered:true
+               // filterHeaderTemplate: '<div class="ui-grid-filter-container" ng-repeat="colFilter in col.filters"><input type="date" class="ui-grid-filter-input" ng-model="colFilter.term"/></div>'
+
+            },
+            { name:'DO.No.',width:'12%',field:'doNo'},
+            { name: 'Customer', width: '17%',field:'bpId'},
+            {name:'Product',width:'12%',field:'productId'},
+            {name:'Quantity',width:'6%',field:'quantity'},
+            {name:'Vehicle No.',width:'12%',field:'vehicleNo'},
+            { name: 'Status',width:'10%',field:'orderStatus'
+//                ,filter: {
+//
+//                type: uiGridConstants.filter.SELECT,
+//                selectOptions: [
+//                    { value: 'open', label: 'Open' },
+//                    { value: 'confirmed', label: 'Confirmed' },
+//                    { value: 'closed', label: 'Closed'},
+//                    { value: 'cancelled', label: 'Cancelled' }
+//                    ]
+//
+//            }
+
+            }
+
 
 
 

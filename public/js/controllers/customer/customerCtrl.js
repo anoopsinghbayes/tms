@@ -63,194 +63,7 @@ angular.module('mean').controller('listCustomer', ['$scope','Customers','uiGridC
 
             //$scope.customers=customers;
           $scope.gridOptions.data =customers;
-//              [
-//              {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },
-//              {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              },  {
-//                  "_id": "54c4c9047e8759101c3f3038",
-//                  "fName": "Prashnat",
-//                  "mName": "Abhiram",
-//                  "lName": "Jha",
-//                  "user": "{ _id: 53b98e66b6354c1c1b146b4f,\n  provider: 'local',\n  name: 'ram',\n  email: 'ram@ram.com',\n  tenant: 'abc',\n  username: 'ram',\n  __v: 0 }",
-//                  "companyName": "vikrant Roadways",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2015-01-25T10:44:20.937Z"
-//              },
-//              {
-//                  "_id": "548c5d078cdb93cc1dcf8f8f",
-//                  "fName": "swapnil",
-//                  "mName": "Ipsum aliquip est fugiat veniam magna tempor ad magna voluptate.",
-//                  "lName": "jadhav",
-//                  "user": "53b98e66b6354c1c1b146b4f",
-//                  "companyName": "Commodo Lorem ullamco magna anim occaecat ipsum sunt.",
-//                  "__v": 0,
-//                  "__t": "Customer",
-//                  "address": [],
-//                  "created": "2014-12-13T15:36:39.775Z"
-//              }
-//          ];
+
         });
 
 
@@ -275,14 +88,19 @@ angular.module('mean').controller('createCustomerCtrl', ['$scope','Customers','$
     }
 }]);
 angular.module('mean').controller('editCustomerCtrl', ['$scope','Customers','$stateParams','toaster', function ($scope,Customers,$stateParams,toaster) {
+
     console.log('state params customer id:',$stateParams.customerId);
-    Customers.getCustomer($stateParams.orderId).then(function(data){
+    Customers.getCustomer($stateParams.customerId).then(function(data){
        console.log(data);
        $scope.customer=data;
         $scope.save=function(){
             console.log($scope.customer);
-            $scope.customer.put();
-            toaster.pop('success','Customer Updated',data._id);
+            $scope.customer.put().then(function(data){
+                toaster.pop('success',"Customer Updated",data._id);
+            },function(err){
+                console.log(err);
+            });
+
         }
    });
 }]);
