@@ -15,6 +15,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
         </button>
+            <button type="button" class="navbar-toggle" ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="/">TMS</a>
             </div>
             
@@ -23,15 +29,15 @@
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>-->
     </ul>
-
-    <ul class="nav pull-right navbar-nav" data-ng-hide="global.authenticated">
+    <div class="navbar-collapse collapse"  ng-class="!isCollapsed && 'in'">
+    <ul class="nav navbar-right navbar-nav" data-ng-hide="global.authenticated">
         <li><a href="signup">Signup</a>
         </li>
         <li class="divider-vertical"></li>
         <li><a href="signin">Signin</a>
         </li>
     </ul>
-    <ul class="nav pull-right navbar-nav" data-ng-show="global.authenticated">
+    <ul class="nav navbar-right navbar-nav" data-ng-show="global.authenticated">
         <li class="dropdown" dropdown>
             <a href="#" class="dropdown-toggle" dropdown-toggle>
 				{{global.user.name}} <b class="caret"></b>
@@ -42,6 +48,7 @@
             </ul>
         </li>
     </ul>
+        </div>
 </div>
     </div>
     </div>

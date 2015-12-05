@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('mean.system').controller('HeaderController', ['$scope', 'Global','SlideMenu', function ($scope, Global,SlideMenu) {
+    $scope.isCollapsed = false;
     $scope.global = Global;
     $scope.open=false;
     if($scope.open)
         SlideMenu.toggleClass();
     $scope.openMenu=function(){
+        console.log($scope.isCollapsed);
         SlideMenu.toggleClass();
         $scope.open=!$scope.open;
         //console.log(SlideMenu);
