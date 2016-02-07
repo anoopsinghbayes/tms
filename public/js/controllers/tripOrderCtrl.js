@@ -31,11 +31,12 @@ angular.module('mean').controller('tripOrderCtrl', ['$scope','$window','$timeout
     };
     $scope.saveTripOrder=function(){
         $scope.order.bpId=$scope.order.customer._id;
-      console.log($scope.order);
+        console.log($scope.order);
         TripOrder.save($scope.order).then(function(order){
             console.log(order);
             $state.go('triporder');
         })
+
 
     };
     $scope.AddExpenseLine=function(){
@@ -102,9 +103,21 @@ $scope.addTrip=function(){
 
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
-                $scope.data.distance= response.routes[0].legs[0].distance.value / 1000;
+                console.log(response.routes);
+                for(var i=0;i<$scope.order.tripDetails.length-1;i++)
+                {
+                    //dont fill first trip distance
+                    console.log(i+1,$scope.order.tripDetails[i+1]);
+                    $scope.order.tripDetails[i+1].distance={
+                        calculated:response.routes[0].legs[i].distance.value / 1000
+
+
+                    }
+                }
+                //$scope.data.distance= response.routes[0].legs[0].distance.value / 1000;
 
             }
+
 
 
         });
@@ -119,13 +132,93 @@ $scope.addTrip=function(){
 ]);
 angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$timeout','$http','TripOrder','$stateParams','toaster','$state',function ($scope,$window,$timeout,$http,TripOrder,$stateParams,toaster,$state) {
 
-
+//to active tabs  programatically on validation errors
+    $scope.tabs={
+        tripOrderHeader:true,
+        tripOrderLines:false
+    }
     $scope.showmap=false;
 
+    $scope.gridOptions={
+        rowTemplate: '<ng-form name="TripLines"><div' +
+            '  ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"'+
+            '  ui-grid-one-bind-id-grid="rowRenderIndex + \'-\' + col.uid + \'-cell\'"'+
+            '  class="ui-grid-cell"'+
+            '  ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"'+
+            '  role="{{col.isRowHeader ? \'rowheader\' : \'gridcell\'}}"'+
+            '  ui-grid-cell>'+
+            '</div></ng-form>',
+        enableSorting: false,
+        rowHeight:42,
+        columnDefs: [
+            {
+                name: 'Pick/Drop',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><select  ng-model="row.entity.locationType"><option value="UP">UP</option><option value="P">P</option><option value="D">D</option><option value="UD">UD</option> </select></div>'
+            },
 
+            { name:'Address',
+                width:550,
+                "cellTemplate":'<div class="ui-grid-cell-contents"><input name="address" required="" places="" type="text" ng-model="row.entity.address"/><div ng-messages="TripLines.address.$error" class="error-messages1 pull-right clearfix"  role="alert"><div  ng-message="required">Address is required.</div></div></div>'
+
+            },
+            {
+              name:'Challan No.',
+                width:100,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="text" required="" name="challNo" ng-model="row.entity.challanNo" class=""><div ng-messages="TripLines.challNo.$error" class="error-messages1 pull-right clearfix"  role="alert"><div  ng-message="required">Required.</div></div></div>'
+            },
+            {
+                name:'Tyre',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.cargoWeight.tyreWeight" class=""></div>'
+            },
+            {
+                name:'Net',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.cargoWeight.netWeight" class=""></div>'
+            },
+            {
+                name:'Gross',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.cargoWeight.grossWeight" class=""></div>'
+            },
+            {
+                name:'Shortage',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.cargoWeight.shortage" class=""></div>'
+            },
+            {
+                name:'Kms',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.distance.calculated" class=""></div>'
+            },
+            {
+                name:'Actual',
+                width:80,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="number" ng-model="row.entity.distance.actual" class=""></div>'
+            },
+            {
+                name:'Reporting',
+                width:190,
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="datetime-local" ng-model="row.entity.date.reporting" /></div>'
+            },
+            {
+                name:'Loading/Unloadiing',
+                width:190,
+                //field:'date.reporting',
+                cellTemplate:'<div class="ui-grid-cell-contents"><input type="datetime-local" ng-model="row.entity.date.loadingUnloading" /></div>'
+            }
+
+        ]
+    }
     TripOrder.getOrder($stateParams.orderId).then(function(order){
         console.log('trip order eidt',order);
         $scope.order=order;
+
+        $scope.gridOptions.data=order.tripDetails;
+        //code for new UI-grid for testing
+
+
     });
 
     $scope.viewIsSubContracted=function(){
@@ -144,17 +237,29 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
             return res.data;
         });
     };
-    $scope.saveTripOrder=function(){
-        $scope.order.bpId=$scope.order._id;
+    //copy
+    $scope.saveTripOrder=function(form) {
+        console.log(form);
+        //focus the right tab on validation error
+        if(form.fmrTripOrderHeader.$invalid){
+            $scope.tabs.tripOrderHeader=true;
+            $scope.tabs.tripOrderLines=false;
+        }
+        else if(form.fmrTripOrderLines.$invalid){
+            $scope.tabs.tripOrderHeader=false;
+            $scope.tabs.tripOrderLines=true;
+        }
+        if (form.$valid) {
+            $scope.order.bpId = $scope.order.bpId._id;
+            // console.log($scope.order);
+            $scope.order.put()
+                .then(function (data) {
+                    toaster.pop('success', 'Trip Order Updated', data._id);
+                    $state.go('triporder');
+                });
 
-        $scope.order.put()
-            .then(function(data){
-            toaster.pop('success','Trip Order Updated',data._id);
-                $state.go('triporder');
-        });
 
-
-
+        }
     };
     $scope.AddExpenseLine=function(){
         $scope.order.finance.push({});
@@ -220,9 +325,19 @@ angular.module('mean').controller('editTripOrderCtrl', ['$scope','$window','$tim
 
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
-                $scope.data.distance= response.routes[0].legs[0].distance.value / 1000;
-                var lastOrderDetailLine=$scope.order.tripDetails.length-1;
-                $scope.order.tripDetails[lastOrderDetailLine].distance.calculated=$scope.data.distance;
+                console.log(response.routes);
+                for(var i=0;i<$scope.order.tripDetails.length-1;i++)
+                {
+                    //dont fill first trip distance
+                    console.log(i+1,$scope.order.tripDetails[i+1]);
+                    $scope.order.tripDetails[i+1].distance={
+                        calculated:response.routes[0].legs[i].distance.value / 1000
+
+
+                    }
+                }
+                //$scope.data.distance= response.routes[0].legs[0].distance.value / 1000;
+
             }
 
 

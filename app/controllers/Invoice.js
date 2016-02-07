@@ -60,7 +60,68 @@ exports.update = function (req, res) {
     })
 };
 
+// method to generate Trip Order Invoice
+exports.createTripOrderInvoice=function(req,res){
+    var TripOrder=mongoose.mtModel(req.user.tenant + '.' + "OTRP");
+   var TripOrderInvoice=mongoose.mtModel(req.user.tenant+'.'+"TripOrderInvoice");
 
+    TripOrder.findOne({_id: 'OTRP0000000004'}).exec(function(err, order) {
+        if(err){
+            return res.jsonp(err);
+        }
+        else{
+            var Distance=0;
+            var Amount=0;
+            var Rate=400;
+            var Invoice={
+                orderId:'OTRP0000000004',
+                orderAmt:50000,
+
+                invoiceLines:[]
+            };
+
+            var InvoiceLineItem={to:'',
+                from:'',
+                distance:0,
+                challanNo:'',
+
+                product:'',
+                remarks:'ok',
+                vehicleNo:'MH43 W 6014'
+
+            };
+
+            order.tripDetails.forEach(function(tripOrderLine){
+                Distance=+tripOrderLine.distance.actual||0;
+                if(tripOrderLine.locationType=="UP"){
+                    console.log("tripOrderLine",tripOrderLine.address);
+                    InvoiceLineItem.from=tripOrderLine.address;
+                    InvoiceLineItem.challanNo=tripOrderLine.challanNo;
+                    InvoiceLineItem.product=tripOrderLine.productId;
+                }
+                else if(tripOrderLine.locationType=="UD"){
+                    InvoiceLineItem.to=tripOrderLine.address;
+                    InvoiceLineItem.distance=Distance;
+                    Distance=0;
+                    Invoice.invoiceLines.push(InvoiceLineItem);
+                   // InvoiceLineItem={};
+                }
+            })
+            console.log('Invoice',Invoice);
+            var invoice=new TripOrderInvoice(Invoice);
+            invoice.save(function(err) {
+                if (err) {
+                    return res.jsonp(err);
+                } else {
+                    res.jsonp(invoice);
+                }
+            });
+
+           // return res.jsonp(Invoice);
+        }
+
+    });
+}
 exports.show = function(req, res) {
     var invType = req.params.invoiceType;
 

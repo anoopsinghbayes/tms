@@ -112,23 +112,20 @@ var InvoiceSchema = new AbstractInvoiceSchema({});
 
  var TripOrderInvoiceLinesSchema= new Schema({
 
-        orderId:    {
-             type: String  // Will come from Orders Collection
+    to:{
+        type:String
+    },
+     from:{
+         type:String
+     },
 
-         },
-        orderAmt:{
-            type:Number
-
-        },
-        lrNo:{
+     challanNo:{
             type:String
         },
         shortageAmt:{
             type:Number
         },
-        vehicleNo:{
-            type:String
-        },
+
         pickUpDate:{
             type:Date
         },
@@ -141,7 +138,10 @@ var InvoiceSchema = new AbstractInvoiceSchema({});
         remarks:{
 
          type:String
-        }
+        },
+     vehicleNo:{
+         type:String
+     }
 
 
 
@@ -152,9 +152,18 @@ var InvoiceSchema = new AbstractInvoiceSchema({});
 
  var TripOrderInvoiceSchema = new AbstractInvoiceSchema({
 
+     orderId:    {
+         type: String  // Will come from Orders Collection
+
+     },
+     orderAmt:{
+         type:Number
+
+     },
         invoiceLines:[TripOrderInvoiceLinesSchema]
 
     });
+
 
 
 
@@ -218,8 +227,11 @@ var SalesOrderInvoiceSchema = new AbstractInvoiceSchema({
 
 var Invoice = mongoose.mtModel('Invoice', InvoiceSchema); // our base model
 
-TripOrderInvoiceSchema.plugin(autoIncrement.plugin, 'Trip');
-var TripInvoice = Invoice.discriminator('TripI', TripOrderInvoiceSchema);
+
+var TripInvoice = Invoice.discriminator('TripOrderInvoice', TripOrderInvoiceSchema);
+//apply auto increment on TripOrderInvoice model below
+TripOrderInvoiceSchema.plugin(autoIncrement.plugin, 'TripOrderInvoice');
+
 
 RentalOrderInvoiceSchema.plugin(autoIncrement.plugin, 'Rental');
 var RentalInvoice = Invoice.discriminator('Rental', RentalOrderInvoiceSchema);

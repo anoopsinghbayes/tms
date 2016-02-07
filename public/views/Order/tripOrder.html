@@ -1,8 +1,12 @@
 <section  class="tripOrderPage">
-    <form class="form">
+    <form name="frmTripOrder" class="form" ng-submit="saveTripOrder(frmTripOrder)" novalidate="">
     <tabset justified="true">
-        <tab heading="Order Header">
-
+        <tab active="tabs.tripOrderHeader">
+            <tab-heading>
+                <span class="fa fa-tasks fa-lg"></span>
+                <span>Order Header</span>
+            </tab-heading>
+            <fieldset ng-form="fmrTripOrderHeader">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
@@ -15,8 +19,11 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">DO No.</label>
+                        <div ng-messages="fmrTripOrderHeader.doNo.$error" class="error-messages1 pull-right clearfix">
+                            <div ng-message="required">DO No. is required.</div>
+                        </div>
                         <div class="controls">
-                            <input type="text" class="form-control" ng-model="order.doNo">
+                            <input type="text" name="doNo" required="" class="form-control" ng-model="order.doNo">
                         </div>
                     </div>
                 </div>
@@ -34,40 +41,42 @@
                     </div>
                 </div>
             </div>
-            <legend>Customer Details</legend>
+            <!--<legend>Customer Details</legend>-->
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">Customer Name</label>
                         <div class="controls">
-                            <input type="text" class="form-control" typeahead-wait-ms="500" ng-model="order.customer" typeahead="customer as customer.companyName  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html">
+                            <input type="text" class="form-control" typeahead-wait-ms="500" ng-model="order.bpId" typeahead="customer as customer.companyName  for customer in getCustomer($viewValue)" typeahead-template-url="views/partials/CustomerDropDown.html">
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label">Customer No.</label>
                         <div class="controls">
-                    <input class="form-control" type="text" ng-model="order.customer._id"/>
+                    <input class="form-control" disabled="disabled" type="text" ng-model="order.bpId._id"/>
                             </div>
                         </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <address ng-if="order.customer.address">
-                        <strong>{{order.customer.address[0].adL1}} ,{{order.customer.address[0].street }}</strong><br>
-                        <strong> {{order.customer.address[0].city }},{{order.customer.address[0].state}} ,{{order.customer.address[0].pin}}</strong><br>
-                        <abbr title="Phone">P:</abbr> {{order.customer.address[0].phL}}
-                        <abbr title="Mobile">P:</abbr> {{order.customer.address[0].phM1}}
-                        <abbr title="Mobile">P:</abbr> {{order.customer.address[0].phM2}}
-                        <abbr title="Email">Email:</abbr> {{order.customer.address[0].email}}
-                    </address>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                    <label class="control-label" for="">Address</label>
+                    <div class="controls">
+                        <address class="form-control-static" ng-if="order.bpId.address">
+                            <strong>{{order.bpId.address[0].adL1}} ,{{order.bpId.address[0].street }}</strong><br>
+                            <strong> {{order.bpId.address[0].city }},{{order.bpId.address[0].state}} ,{{order.bpId.address[0].pin}}</strong><br>
+                            <abbr title="Phone">P:</abbr> {{order.bpId.address[0].phL}}
+                            <abbr title="Mobile">P:</abbr> {{order.bpId.address[0].phM1}}
+                            <abbr title="Mobile">P:</abbr> {{order.bpId.address[0].phM2}}
+                            <abbr title="Email">Email:</abbr> {{order.bpId.address[0].email}}
+                        </address>
 
-
+                    </div>
+                    </div>
                 </div>
-
             </div>
+
 
             <div class="row">
                 <div class="col-sm-4">
@@ -135,167 +144,189 @@
                         </div>
                 </div>
             </div>
+            </fieldset>
         </tab>
-        <tab heading="Trip Lines" select="initializeMapControls()">
-            <div class="row">
+        <tab  select="initializeMapControls()"  active="tabs.tripOrderLines">
+
+            <tab-heading>
+                <span class="fa fa-list fa-lg"></span>
+                <span>Trip Lines</span>
+            </tab-heading>
+
+            <div disabled="disabled" class="row" ng-form="fmrTripOrderLines">
+
 
                 <div class="col-xs-12">
-                    <br/>
 
 
-                        <section id="map" class="col-xs-offset-2 col-xs-8">
+
+                        <section id="map" class="col-xs-7">
                             <div ui-map="data.myMap" ui-options="data.mapOptions" class="tripmap-canvas"></div>
                         </section>
+                    <section class="col-xs-5">
+                        <trip-cost-estimate></trip-cost-estimate>
+                    </section>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                    <table class="table table-bordered table-condensed table-tripOrder">
-                        <colgroup>
+                            <button class="btn btn-primary btn-sm"type="button" ng-click="addTrip()">add trip</button>
+                            <button class="btn btn-primary btn-sm"type="button" ng-click="findPath()">Find Path</button>
+                    <!--<table class="table table-bordered table-condensed table-tripOrder">-->
+                        <!--<colgroup>-->
+                            <!--&lt;!&ndash;<col span="1" style="width:5%"/>&ndash;&gt;-->
+                            <!--<col span="1" style="width:6%"/>-->
+                            <!--<col span="1" />-->
+                            <!--<col span="1" style="width:6%"/>-->
                             <!--<col span="1" style="width:5%"/>-->
-                            <col span="1" style="width:6%"/>
-                            <col span="1" />
-                            <col span="1" style="width:6%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:5%"/>
-                            <col span="1" style="width:12%"/>
-                            <col span="1" style="width:12%"/>
-                        </colgroup>
-                        <thead>
-                        <tr class="info">
-                        <!--<th></th>-->
-                        <th colspan="3">
-                        <button class="btn btn-primary btn-sm"type="button" ng-click="addTrip()">add trip</button>
-                        <button class="btn btn-primary btn-sm"type="button" ng-click="findPath()">Find Path</button>
-                        </th>
-                        <th colspan="4">Weight/Unit
-                        <select class="pull-right units">
-                        <option value="Kg">kilograms</option>
-                        <option value="Kl">kilolitre</option>
-                        <option value="t">tonne</option>
-                        </select>
-                        </th>
-                        <th colspan="2">
-                        Distance (Kma)
-                        </th>
-                        <th colspan="2">
-                        Date
-                        </th>
+                            <!--<col span="1" style="width:5%"/>-->
+                            <!--<col span="1" style="width:5%"/>-->
+                            <!--<col span="1" style="width:5%"/>-->
+                            <!--<col span="1" style="width:5%"/>-->
+                            <!--<col span="1" style="width:5%"/>-->
+                            <!--<col span="1" style="width:12%"/>-->
+                            <!--<col span="1" style="width:12%"/>-->
+                        <!--</colgroup>-->
+                        <!--<thead>-->
+                        <!--<tr class="info">-->
+                        <!--&lt;!&ndash;<th></th>&ndash;&gt;-->
+                        <!--<th colspan="3">-->
+                        <!--<button class="btn btn-primary btn-sm"type="button" ng-click="addTrip()">add trip</button>-->
+                        <!--<button class="btn btn-primary btn-sm"type="button" ng-click="findPath()">Find Path</button>-->
+                        <!--</th>-->
+                        <!--<th colspan="4">Weight/Unit-->
+                        <!--<select class="pull-right units">-->
+                        <!--<option value="Kg">kilograms</option>-->
+                        <!--<option value="Kl">kilolitre</option>-->
+                        <!--<option value="t">tonne</option>-->
+                        <!--</select>-->
+                        <!--</th>-->
+                        <!--<th colspan="2">-->
+                        <!--Distance (Kma)-->
+                        <!--</th>-->
+                        <!--<th colspan="2">-->
+                        <!--Date-->
+                        <!--</th>-->
 
-                        </tr>
-                        <tr>
-                        <!--<th style="max-width: 5%"></th>-->
-                        <th class="col-lg-" >Pick/Drop</th>
-                        <th class="col-lg-" >Address</th>
-                        <th class="col-lg-" >Challan No.</th>
-                        <th class="col-lg-" >Tyre</th>
-                        <th class="col-lg-" >Net</th>
-                        <th class="col-lg-" >Gross</th>
-                        <th class="col-lg-" >Shortage</th>
-                        <th class="col-lg-" >Kms</th>
-                        <th class="col-lg-" >Actual</th>
-                        <th class="col-lg-" >Reporting</th>
-                        <th class="col-lg-" >Loading/Unloading</th>
+                        <!--</tr>-->
+                        <!--<tr>-->
+                        <!--&lt;!&ndash;<th style="max-width: 5%"></th>&ndash;&gt;-->
+                        <!--<th class="col-lg-" >Pick/Drop</th>-->
+                        <!--<th class="col-lg-" >Address</th>-->
+                        <!--<th class="col-lg-" >Challan No.</th>-->
+                        <!--<th class="col-lg-" >Tyre</th>-->
+                        <!--<th class="col-lg-" >Net</th>-->
+                        <!--<th class="col-lg-" >Gross</th>-->
+                        <!--<th class="col-lg-" >Shortage</th>-->
+                        <!--<th class="col-lg-" >Kms</th>-->
+                        <!--<th class="col-lg-" >Actual</th>-->
+                        <!--<th class="col-lg-" >Reporting</th>-->
+                        <!--<th class="col-lg-" >Loading/Unloading</th>-->
 
 
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="trip in order.tripDetails">
-                        <!--<td>-->
-                            <!--<button class="btn btn-info btn-xs" ng-click="editTripLine(trip)">-->
-                                <!--<i class="fa fa-edit"></i>-->
-                            <!--</button></td>-->
-                        <td >
-                            <select class="" ng-model="trip.locationType">
-                                <option value="UP">UP</option>
-                                <option value="P">P</option>
-                                <option value="D">D</option>
-                                <option value="UD">UD</option>
-                            </select>
-                            </td>
-                       <td><textarea   rows="2" places="" ng-model="trip.address"></textarea></td>
-                        <!--<td ><input type="text" places="" ng-model="trip.address"></td>-->
-                        <td ><input type="text" ng-model="trip.challanNo"></td>
-                        <td ><input type="text" ng-model="trip.cargoWeight.tyreWeight"></td>
-                        <td ><input type="text" ng-model="trip.cargoWeight.netWeight"></td>
-                        <td ><input type="text" ng-model="trip.cargoWeight.grossWeight"></td>
-                        <td ><input type="text" ng-model="trip.cargoWeight.shortage"></td>
-                        <td ><input type="text" ng-model="trip.distance.calculated"></td>
-                        <td ><input type="text" ng-model="trip.distance.actual"></td>
-                        <td ><input type="datetime-local" ng-model="trip.date.reporting"></td>
-                        <td ><input type="datetime-local" ng-model="trip.date.loadingUnloading"></td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="trip in order.tripDetails">-->
+                        <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<button class="btn btn-info btn-xs" ng-click="editTripLine(trip)">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<i class="fa fa-edit"></i>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</button></td>&ndash;&gt;-->
+                        <!--<td >-->
+                            <!--<select class="" ng-model="trip.locationType">-->
+                                <!--<option value="UP">UP</option>-->
+                                <!--<option value="P">P</option>-->
+                                <!--<option value="D">D</option>-->
+                                <!--<option value="UD">UD</option>-->
+                            <!--</select>-->
+                            <!--</td>-->
+                       <!--<td>-->
+                           <!--&lt;!&ndash;<textarea   rows="2" places="" ng-model="trip.address"></textarea>&ndash;&gt;-->
+                           <!--<input type="text" places="" ng-model="trip.address"/>-->
+                       <!--</td>-->
+                        <!--&lt;!&ndash;<td ><input type="text" places="" ng-model="trip.address"></td>&ndash;&gt;-->
+                        <!--<td ><input type="text" ng-model="trip.challanNo"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.cargoWeight.tyreWeight"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.cargoWeight.netWeight"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.cargoWeight.grossWeight"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.cargoWeight.shortage"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.distance.calculated"></td>-->
+                        <!--<td ><input type="text" ng-model="trip.distance.actual"></td>-->
+                        <!--<td ><input type="datetime-local" ng-model="trip.date.reporting"></td>-->
+                        <!--<td ><input type="datetime-local" ng-model="trip.date.loadingUnloading"></td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
                         </div>
                     </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="grid1" style="width: 100%;height:250px" ui-grid="gridOptions" ui-grid-auto-resize class="grid"></div>
+                    </div>
+                </div>
                 </div>
 
-            </div>
+
 
         </tab>
-        <tab heading="Expenses">
-            <br/>
-            <button class="btn btn-primary" ng-click="AddExpenseLine()">Add Expense Line</button>
-            <table class="table table-bordered table-condensed table-tripOrder">
-                <thead>
-                <tr>
-                    <th colspan="8"></th>
-                    <th colspan="2">Invoice</th>
-                </tr>
-                <tr>
-                    <th>Item Category</th>
-                    <th>Item Title</th>
-                    <!--<th>Item ID</th>-->
-                    <th>Description</th>
-                    <th>Unit</th>
-                    <th>Charges Per Unit</th>
-                    <th>Total Units</th>
-                    <th>Actual Cost</th>
-                    <th>Sales Cost</th>
-                    <th>Cost</th>
-                    <th>Sales</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="expenseLine in order.finance">
-                    <td><input type="text" ng-model="expenseLine.itemCategory"/></td>
-                    <td><input type="text" ng-model="expenseLine.itemTitle"/></td>
-                    <!--<td><input type="text" ng-model="expenseLine.itemId"/></td>-->
-                    <td><input type="text" ng-model="expenseLine.description"/></td>
-                    <td class="col-sm-2">
-                        <div class="input-group">
-                            <div class="input-group-addon">Per</div>
-                            <select name="" ng-model="expenseLine.unit">
-                                <option value="">Hour</option>
-                                <option value="">Day</option>
-                                <option value="">Week</option>
-                                <option value="">Month</option>
-                            </select>
-                            </div>
-                        <!--<input type="text" ng-model="expenseLine.Unit"/>-->
+        <!--<tab >-->
+            <!--<tab-heading><span>Expenses</span></tab-heading>-->
+            <!--<br/>-->
+            <!--<button class="btn btn-primary" ng-click="AddExpenseLine()">Add Expense Line</button>-->
+            <!--<table class="table table-bordered table-condensed table-tripOrder">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th colspan="8"></th>-->
+                    <!--<th colspan="2">Invoice</th>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<th>Item Category</th>-->
+                    <!--<th>Item Title</th>-->
+                    <!--&lt;!&ndash;<th>Item ID</th>&ndash;&gt;-->
+                    <!--<th>Description</th>-->
+                    <!--<th>Unit</th>-->
+                    <!--<th>Charges Per Unit</th>-->
+                    <!--<th>Total Units</th>-->
+                    <!--<th>Actual Cost</th>-->
+                    <!--<th>Sales Cost</th>-->
+                    <!--<th>Cost</th>-->
+                    <!--<th>Sales</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr ng-repeat="expenseLine in order.finance">-->
+                    <!--<td><input type="text" ng-model="expenseLine.itemCategory"/></td>-->
+                    <!--<td><input type="text" ng-model="expenseLine.itemTitle"/></td>-->
+                    <!--&lt;!&ndash;<td><input type="text" ng-model="expenseLine.itemId"/></td>&ndash;&gt;-->
+                    <!--<td><input type="text" ng-model="expenseLine.description"/></td>-->
+                    <!--<td class="col-sm-2">-->
+                        <!--<div class="input-group">-->
+                            <!--<div class="input-group-addon">Per</div>-->
+                            <!--<select name="" ng-model="expenseLine.unit">-->
+                                <!--<option value="">Hour</option>-->
+                                <!--<option value="">Day</option>-->
+                                <!--<option value="">Week</option>-->
+                                <!--<option value="">Month</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+                        <!--&lt;!&ndash;<input type="text" ng-model="expenseLine.Unit"/>&ndash;&gt;-->
 
 
 
-                    </td>
-                    <td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.costPerUnit"/></td>
-                    <td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.totalUnit"/></td>
-                    <td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.actualCost"/></td>
-                    <td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.salesCost"/></td>
-                    <td><input type="checkbox" ng-model="expenseLine.cost.sales"/></td>
-                    <td><input type="checkbox" ng-model="expenseLine.invoice.cost"/></td>
-                </tr>
-                </tbody>
-            </table>
-        </tab>
+                    <!--</td>-->
+                    <!--<td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.costPerUnit"/></td>-->
+                    <!--<td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.totalUnit"/></td>-->
+                    <!--<td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.actualCost"/></td>-->
+                    <!--<td class="col-sm-1"><input type="number" min="0"  ng-model="expenseLine.salesCost"/></td>-->
+                    <!--<td><input type="checkbox" ng-model="expenseLine.cost.sales"/></td>-->
+                    <!--<td><input type="checkbox" ng-model="expenseLine.invoice.cost"/></td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</tab>-->
 
 
     </tabset>
-        <button class="btn btn-primary" ng-click="saveTripOrder()">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
     </form>
 </section>

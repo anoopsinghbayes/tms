@@ -236,8 +236,26 @@ var TripOrderSchema = new AbstractOrdersSchema({
     },
     quantity:{
         type:Number
-    }
+    },
+    costSummary:{
+        rateUnit:{
+            type:String
 
+        },
+        rate:{
+            type:Number
+        },
+        taxPercentage:{
+            type:Number
+        },
+        taxAmount:{
+            type:Number
+        },
+        Amount:{
+            type:Number
+        }
+
+    }
 
 });
 

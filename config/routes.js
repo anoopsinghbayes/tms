@@ -122,7 +122,7 @@ module.exports = function (app, passport, auth) {
     app.post('/Invoice/:invoiceType', auth.requiresLogin, Invoice.create);
     app.put('/Invoice/:invoiceId', auth.requiresLogin, Invoice.update);
     app.get('/Invoice/:invoiceType/:bpId', auth.requiresLogin, Invoice.show);
-
+    app.get('/invoice/test',auth.requiresLogin,Invoice.createTripOrderInvoice);
 
     //Tyre Routes
     var Tyre = require('../app/controllers/tyreDetails');

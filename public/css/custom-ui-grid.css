@@ -31,3 +31,30 @@
 .ui-grid-header-cell {
     text-align:center;
 }
+
+.ui-grid-cell-contents{
+    padding: 5px 5px;
+}
+.ui-grid-cell-contents input,select,textarea{
+    width: 100%;
+    min-height: 28px;
+    padding: 2px 4px 2px 2px;
+    font-size: 11px;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
+
+div.ui-grid-cell input,select,textarea{
+    width: 100%;
+    min-height: 28px;
+    padding: 2px 4px 2px 2px;
+    font-size: 11px;
+    color: #555555;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+}
